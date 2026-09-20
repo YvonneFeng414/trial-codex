@@ -14,14 +14,6 @@
 `run_batch.sh` 使用项目独立的 `.codex-home/`，所以第一次跑批前要先登录：
 
 ```bash
-tools/init_codex_home.sh
-./run_batch.sh --limit 2
-```
-
-初始化只需做一次。之后直接运行 `run_batch.sh` 即可。如果要切换 Codex 账号，重新登录并
-明确覆盖原来的项目凭据：
-
-```bash
 tools/init_codex_home.sh --login --force
 ```
 
