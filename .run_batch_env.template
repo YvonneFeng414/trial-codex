@@ -1,0 +1,5 @@
+export RB_MAIL_TO="you@gmail.com"
+export RB_MAIL_FROM="you@gmail.com"
+export RB_SMTP_URL="smtps://smtp.gmail.com:465"
+export RB_SMTP_USER="you@gmail.com"
+export RB_SMTP_TOKEN="16-char App passwords"
