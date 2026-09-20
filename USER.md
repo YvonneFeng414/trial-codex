@@ -18,7 +18,7 @@ tools/init_codex_home.sh --login --force
 ```
 
 重点看这个文件
-`~/.codex/auth.json`：
+`~/.codex-home/auth.json`：
 
 ---
 
