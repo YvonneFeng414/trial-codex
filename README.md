@@ -12,7 +12,9 @@ tools/init_codex_home.sh
 
 To copy the current file-backed `~/.codex/auth.json`, use
 `tools/init_codex_home.sh --copy-current`. Add `--force` when intentionally replacing
-an existing project login.
+an existing project login. If browser login reuses the wrong ChatGPT account, run
+`tools/init_codex_home.sh --login --device-auth --force` and authenticate the intended
+account with the displayed device code.
 
 ## Goal
 

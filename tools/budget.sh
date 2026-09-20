@@ -32,7 +32,10 @@
 
 # Config. Every default yields to a value the caller has already set, so
 # run_batch.sh's flags win and a fixture can point these at a sandbox.
-: "${RB_OUT_DIR:=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/test_result}"
+RB_REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+: "${RB_CODEX_HOME:=$RB_REPO_DIR/.codex-home}"
+: "${RB_OUT_DIR:=$RB_REPO_DIR/test_result}"
+export CODEX_HOME="$RB_CODEX_HOME"
 : "${RB_LEDGER:=$RB_OUT_DIR/_ledger.tsv}"
 : "${RB_BUDGET:=$RB_OUT_DIR/_budget.tsv}"
 : "${RB_STOP:=$RB_OUT_DIR/.stop}"
@@ -169,7 +172,8 @@ rb_probe_rate_limits() {
             '{"id":2,"method":"account/rateLimits/read","params":null}'
             sleep "$RB_PROBE_WAIT"
         } | "$RB_CODEX" app-server 2>/dev/null \
-          | "$RB_JQ" -r 'select(.id==2) | .result.rateLimits
+          | "$RB_JQ" -r 'select(.id==2 and (.error == null))
+              | .result.rateLimits | select(type == "object")
               | [ (.primary.usedPercent // "-"), (.primary.resetsAt // "-"),
                   (.secondary.usedPercent // "-"), (.secondary.resetsAt // "-"),
                   (.planType // "-") ] | @tsv' 2>/dev/null | head -1 )"
