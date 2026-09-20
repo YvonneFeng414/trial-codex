@@ -17,15 +17,8 @@
 tools/init_codex_home.sh --login --force
 ```
 
-如果不想重新登录，也可以复制当前文件形式保存的全局凭据
+重点看这个文件
 `~/.codex/auth.json`：
-
-```bash
-tools/init_codex_home.sh --copy-current
-```
-
-如果项目凭据已经存在，复制时同样需要加 `--force`。`.codex-home/` 已被 Git 忽略；其中
-的 `auth.json` 含有访问令牌，不能提交、分享或粘贴到日志和工单中。
 
 ---
 
