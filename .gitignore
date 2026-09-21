@@ -1,0 +1,21 @@
+.uv-cache*
+.venv*
+.codex-home/
+
+test_result/*
+!test_result/.gitkeep
+
+.DS_Store
+*.pdf
+
+.run_batch_env
+.env
+
+*_ours.md
+
+*__pycache__/
+
+# credentials for tools/notify.sh; never committed
+.env.*
+
+archive*

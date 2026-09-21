@@ -28,6 +28,9 @@ tools/init_codex_home.sh --login --force
 ./run_batch.sh --limit 10 --dry-run              # 只看会处理哪些，不跑
 ./run_batch.sh --limit 2                         # 冒烟测试
 ./run_batch.sh --limit 200 --session-budget 4h   # 正式跑
+
+./run_batch.sh --limit 4 --workers 2  
+# 跑4个，用2个cpus/workers
 ```
 
 两点就够：
@@ -62,7 +65,7 @@ plan      plus
 
 ```bash
 tools/budget.sh --probe          # 先确认额度回来了
-./run_batch.sh --limit 200 --session-budget 4h --resume --ignore-stop
+./run_batch.sh --limit 200 --resume --ignore-stop
 ```
 
 两个 flag 都不能省：

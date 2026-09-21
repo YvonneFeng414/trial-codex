@@ -31,7 +31,7 @@ REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # The directory is gitignored because it contains auth.json and other private state.
 export CODEX_HOME="$REPO_DIR/.codex-home"
 
-INPUT_DIR="/Users/yixuanfeng/Desktop/web-download/downloads/nejm"
+INPUT_DIR="/Users/yixuanfeng/Desktop/web-download/downloads/nejm" # TODO: change this input dir
 OUT_DIR="test_result"
 LIMIT=3
 OFFSET=0
