@@ -7,6 +7,8 @@ test_result/*
 
 .DS_Store
 *.pdf
+!samples/*/*.pdf
+
 
 .run_batch_env
 .env
