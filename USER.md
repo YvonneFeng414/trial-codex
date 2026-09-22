@@ -22,6 +22,10 @@ tools/init_codex_home.sh --login --force
 
 ---
 
+```bash
+./run_batch.sh --dry-run --input-dir /Users/yixuanfeng/Desktop/web-download/downloads-clean --limit 100 --assignment-label 0 
+```
+
 ## 1. 跑一批
 
 ```bash
@@ -29,8 +33,7 @@ tools/init_codex_home.sh --login --force
 ./run_batch.sh --limit 2                         # 冒烟测试
 ./run_batch.sh --limit 200 --session-budget 4h   # 正式跑
 
-./run_batch.sh --limit 4 --workers 2  
-# 跑4个，用2个cpus/workers
+./run_batch.sh --limit 4 --workers 2  # 跑4个，用2个cpus/workers
 ```
 
 两点就够：
@@ -38,6 +41,28 @@ tools/init_codex_home.sh --login --force
 - **`--session-budget` 是最该给的参数。** 给了它，脚本只在「剩余时间够跑完一个 job」时
   才开新 job（按历史 p90 耗时估），所以不会开一个注定跑不完的 job。
 - **重复跑同一条命令是安全的。** 已经生成的 `<id>.md` 会被自动跳过。
+
+---
+
+## 1.5 多台机器分工：`--assignment-label`
+
+`assignment.csv`（两列 `label,id`，`id` 是 `<journal>-<article-id>`）把整个语料切成
+三份。每台机器只跑自己那一份：
+
+```bash
+./run_batch.sh --assignment-label 0 --limit 200  # 0 号机
+```
+
+- 不给这个参数就是老行为：`--input-dir` 底下的 PDF 全跑。
+- **过滤发生在 `--offset` / `--limit` 之前**，所以 `--limit 200` 是「我这一份里的
+  200 个」，不是「全部里的前 200 个，其中恰好有几个是我的」。
+- **顺序跟着 `assignment.csv` 的行序，不是目录里的字母序。** 所以 `--limit 200` 取的是
+  「我这份的前 200 行」，语料目录里多一个少一个文件都不会打乱这个顺序。同一篇文章有
+  两个 protocol PDF 时，两个挨在一起出现。不给 `--assignment-label` 时仍然是路径字母序。
+- 标签写错会直接报错并列出文件里有哪些标签，不会安安静静地一个都不跑。
+- 三个标签对应的 PDF 数：0 → 736，1 → 751，2 → 757（合起来正好 2244，不重不漏）。
+  比文章数（714/742/745）多，是因为有 44 篇文章带了两个 protocol PDF。
+- 换文件用 `--assignment-file`，默认是仓库根目录的 `assignment.csv`。
 
 ---
 

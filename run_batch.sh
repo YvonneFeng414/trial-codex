@@ -9,6 +9,8 @@
 #   ./run_batch.sh --progress verbose # mirror each Codex session to the terminal
 #   ./run_batch.sh --notify-test      # check the banner and email path, then exit
 #
+#   ./run_batch.sh --assignment-label 0 --limit 50   # this machine's share only
+#
 #   ./run_batch.sh --session-budget 4h --limit 200   # stop cleanly before the limit
 #   ./run_batch.sh --resume --ignore-stop            # pick up after a drain
 #   tools/budget.sh --probe                          # quota left, costs no tokens
@@ -34,6 +36,10 @@ export CODEX_HOME="$REPO_DIR/.codex-home"
 # INPUT_DIR="/Users/yixuanfeng/Desktop/web-download/downloads/nejm" # TODO: change this input dir
 INPUT_DIR="/Users/yixuanfeng/Desktop/trial-codex/samples"
 OUT_DIR="test_result"
+# Work split across machines: a label,id CSV whose id is <journal>-<article-id>. Only
+# read when --assignment-label asks for it, so a machine without the file still runs.
+ASSIGNMENT_FILE="/Users/yixuanfeng/Desktop/trial-codex/assignment.csv"
+ASSIGNMENT_LABEL=""
 LIMIT=3
 OFFSET=0
 WORKERS=3
@@ -58,12 +64,19 @@ IGNORE_STOP=0
 RESUME=0
 
 usage() {
-    sed -n '3,24p' "${BASH_SOURCE[0]}" | sed 's/^# \{0,1\}//'
+    sed -n '3,26p' "${BASH_SOURCE[0]}" | sed 's/^# \{0,1\}//'
     cat <<'EOF'
 
 Options:
   --input-dir DIR   root searched recursively for *_protocol*.pdf
   --out-dir DIR     output directory (default: test_result)
+  --assignment-label L  process only the PDFs labeled L in the assignment CSV;
+                        comma-separated for several (0,2). Applied before --offset
+                        and --limit, and emitted in the CSV's row order, so those
+                        page through this machine's share as the CSV lists it.
+                        Default: no filter, every PDF under --input-dir, path order
+  --assignment-file F   the label,id CSV, id being <journal>-<article-id>
+                        (default: assignment.csv in the repo root)
   --limit N         number of PDFs to process (default: 3)
   --offset N        skip the first N PDFs (default: 0)
   --workers N       parallel primary Codex sessions (default: 3; each uses a reviewer)
@@ -129,6 +142,60 @@ derive_id() {
     # directories carry one (10.1136:bmj.j5157). Fold it the way the DOI slash is
     # already folded upstream.
     printf '%s' "${id//:/_}"
+}
+
+# rb_filter_assignment
+# Reads PDF paths on stdin and passes through only those assigned to this machine,
+# emitting them in the assignment file's own row order rather than in path order.
+# A no-op unless --assignment-label was given, so the default run is unchanged.
+#
+# Order matters because --offset and --limit page through this output: following the
+# CSV means "the first 200 rows of my share", which is the same set of PDFs on every
+# machine and stays stable when the corpus directory gains or loses a file.
+#
+# The CSV key is <journal>-<article-id>, which is the first two components of the id
+# derive_id builds, so the two are read off the same path and stay in agreement.
+rb_filter_assignment() {
+    [[ -n "$ASSIGNMENT_LABEL" ]] || { cat; return 0; }
+
+    awk -F/ -v csv="$ASSIGNMENT_FILE" -v want="$ASSIGNMENT_LABEL" '
+        BEGIN {
+            n = split(want, w, ",")
+            for (i = 1; i <= n; i++) wanted[w[i]] = 1
+            while ((getline line < csv) > 0) {
+                # The file is CRLF. Without this every id carries a trailing \r and
+                # nothing matches, silently selecting no work at all.
+                gsub(/\r/, "", line)
+                p = index(line, ",")
+                if (p == 0) continue
+                label = substr(line, 1, p - 1)
+                id = substr(line, p + 1)
+                gsub(/:/, "_", id)
+                known[id] = 1
+                if ((label in wanted) && !(id in mine)) {
+                    mine[id] = 1
+                    order[++ranked] = id
+                }
+            }
+        }
+        {
+            key = (NF >= 3) ? $(NF - 2) "-" $(NF - 1) : ""
+            gsub(/:/, "_", key)
+            # Held rather than printed, so the CSV can decide the order below. An
+            # article with two protocol PDFs keeps both, in the order they arrived.
+            if (key in mine) held[key] = held[key] $0 "\n"
+            # Labeled for another machine: expected, and the whole point of the flag.
+            # No row at all is a gap between the corpus and the CSV, so say so.
+            else if (!(key in known)) unknown++
+        }
+        END {
+            for (i = 1; i <= ranked; i++)
+                if (order[i] in held) printf "%s", held[order[i]]
+            if (unknown)
+                printf "warn: %d pdf(s) have no row in %s and were excluded\n", \
+                    unknown, csv > "/dev/stderr"
+        }
+    '
 }
 
 # progress LEVEL MESSAGE...
@@ -364,6 +431,8 @@ while [[ $# -gt 0 ]]; do
     case "$1" in
         --input-dir) [[ $# -ge 2 ]] || { echo "missing value for $1" >&2; exit 2; }; INPUT_DIR="$2"; shift 2 ;;
         --out-dir)   [[ $# -ge 2 ]] || { echo "missing value for $1" >&2; exit 2; }; OUT_DIR="$2"; shift 2 ;;
+        --assignment-label) [[ $# -ge 2 ]] || { echo "missing value for $1" >&2; exit 2; }; ASSIGNMENT_LABEL="$2"; shift 2 ;;
+        --assignment-file)  [[ $# -ge 2 ]] || { echo "missing value for $1" >&2; exit 2; }; ASSIGNMENT_FILE="$2"; shift 2 ;;
         --limit)     [[ $# -ge 2 ]] || { echo "missing value for $1" >&2; exit 2; }; LIMIT="$2"; shift 2 ;;
         --offset)    [[ $# -ge 2 ]] || { echo "missing value for $1" >&2; exit 2; }; OFFSET="$2"; shift 2 ;;
         --workers)   [[ $# -ge 2 ]] || { echo "missing value for $1" >&2; exit 2; }; WORKERS="$2"; shift 2 ;;
@@ -460,6 +529,23 @@ fi
 
 [[ -d "$INPUT_DIR" ]] || { echo "input dir not found: $INPUT_DIR" >&2; exit 1; }
 
+# Checked only when the filter is actually requested. A label that matches no row
+# would otherwise select nothing and report it as "no PDFs found", which points at
+# the input directory rather than at the typo.
+if [[ -n "$ASSIGNMENT_LABEL" ]]; then
+    [[ -r "$ASSIGNMENT_FILE" ]] || { echo "assignment file not readable: $ASSIGNMENT_FILE" >&2; exit 1; }
+    AVAILABLE_LABELS="$(tr -d '\r' <"$ASSIGNMENT_FILE" | awk -F, 'NR > 1 && $1 != "" { print $1 }' | sort -u)"
+    IFS=, read -ra REQUESTED_LABELS <<<"$ASSIGNMENT_LABEL"
+    for label in "${REQUESTED_LABELS[@]}"; do
+        [[ -n "$label" ]] || { echo "assignment-label must not contain an empty value" >&2; exit 2; }
+        grep -Fxq -- "$label" <<<"$AVAILABLE_LABELS" || {
+            echo "no rows labeled '$label' in $ASSIGNMENT_FILE" >&2
+            echo "labels present: $(tr '\n' ' ' <<<"$AVAILABLE_LABELS")" >&2
+            exit 2
+        }
+    done
+fi
+
 CODEX_BIN="$(command -v codex || true)"
 UV_BIN="$(command -v uv || true)"
 [[ -n "$CODEX_BIN" ]] || { echo "codex executable not found" >&2; exit 1; }
@@ -491,6 +577,7 @@ while IFS= read -r pdf; do
 done < <(
     find "$INPUT_DIR" -type f -name '*_protocol*.pdf' -print \
         | sort \
+        | rb_filter_assignment \
         | tail -n "+$((OFFSET + 1))" \
         | head -n "$LIMIT"
 ) >"$MANIFEST"
@@ -513,12 +600,13 @@ fi
 
 TOTAL="$(wc -l <"$MANIFEST" | tr -d ' ')"
 if [[ "$TOTAL" -eq 0 ]]; then
-    echo "no *_protocol*.pdf found under $INPUT_DIR (offset=$OFFSET limit=$LIMIT)" >&2
+    echo "no *_protocol*.pdf found under $INPUT_DIR (offset=$OFFSET limit=$LIMIT${ASSIGNMENT_LABEL:+ assignment-label=$ASSIGNMENT_LABEL})" >&2
     exit 1
 fi
 
 if [[ "$PROGRESS" != "quiet" ]]; then
     echo "input   : $INPUT_DIR"
+    [[ -z "$ASSIGNMENT_LABEL" ]] || echo "assigned: label $ASSIGNMENT_LABEL  ($ASSIGNMENT_FILE)"
     echo "output  : $OUT_DIR"
     echo "harness : $CODEX_BIN${MODEL:+  (model: $MODEL)}"
     echo "reviewer: $REVIEW_MODEL"
