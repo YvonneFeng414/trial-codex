@@ -47,6 +47,9 @@ RETRIES=1
 RETRY_SLEEP=15
 MODEL="gpt-5.6-terra"
 REVIEW_MODEL="gpt-5.6-luna"
+# Reasoning effort for MODEL. Distinct from VERBOSITY below, which is SAP output
+# detail carried in the prompt and never reaches the model's reasoning parameter.
+EFFORT="medium"
 VERBOSITY="high"
 PROGRESS="normal"
 FORCE=0
@@ -83,7 +86,8 @@ Options:
   --retries N       retries after an agent/lint failure (default: 1)
   --model NAME      model passed to `codex exec` (default: gpt-5.6-terra)
   --review-model N  reviewer subagent model (default: gpt-5.6-luna)
-  --verbosity LEVEL SAP detail: low, medium, or high (default: high)
+  --effort LEVEL    reasoning effort for --model (default: medium)
+  --verbosity LEVEL SAP detail, not model reasoning: low, medium, or high (default: high)
   --progress LEVEL  console detail: quiet, normal, or verbose (default: normal)
                     quiet   only the final summary on stdout; failures on stderr
                     normal  run header, one line per job, final summary
@@ -231,10 +235,29 @@ run_step() {
     return "${PIPESTATUS[0]}"
 }
 
+# rb_review_has_line REVIEW LINE
+# Whole-line match against the review file, forgiving trailing whitespace only.
+# Wording and case must still match exactly: AGENTS.md makes these literals a
+# contract with the reviewer, so only an invisible difference is worth excusing.
+#
+# One awk process, deliberately not `sed | grep -q`: this script runs under
+# `set -o pipefail`, and a -q grep that matches early closes the pipe, so sed
+# dies of SIGPIPE and the pipeline reports failure for a line that is present.
+# The earlier the match, the more reliably it breaks -- a first-line match all
+# but always does. ENVIRON rather than -v, which would expand backslashes.
+rb_review_has_line() {
+    RB_WANT="$2" awk '
+        BEGIN { want = ENVIRON["RB_WANT"] }
+        { line = $0; sub(/[[:space:]]+$/, "", line); if (line == want) { found = 1; exit } }
+        END { exit !found }
+    ' "$1"
+}
+
 run_one() {
     local pdf="$1"
     local id final draft evidence review extracted log start elapsed bytes page_count
     local attempt rc lint_rc evidence_rc review_rc prompt jsonl lastmsg usage cls
+    local declared verdict
     local in_tok=0 out_tok=0 tot_tok=0 admit_rc
     local -a codex_args
 
@@ -328,7 +351,25 @@ Fix all violations before finishing."
 
         # A verdict is valid only for the draft produced in this attempt. Evidence and
         # draft remain available to help a fresh retry, but review must be regenerated.
+        #
+        # The rejected review is moved aside rather than discarded. Truncating it in
+        # place destroys the only record of why the gate below refused it, so a retry
+        # that then succeeds leaves the original failure permanently undiagnosable.
+        # Archives never feed the gate; they exist only to be read afterwards.
+        if [[ -s "$review" ]]; then
+            if ((attempt > 0)); then
+                mv -f "$review" "${review}.attempt${attempt}"
+            else
+                mv -f "$review" "${review}.stale"
+            fi
+        fi
         : >"$review"
+
+        # rb_run_codex overwrites the transcript, which costs the rejected attempt's
+        # reviewer exchange for the same reason. Keep it alongside its review.
+        if ((attempt > 0)) && [[ -s "$jsonl" ]]; then
+            mv -f "$jsonl" "${jsonl}.attempt${attempt}"
+        fi
 
         codex_args=(
             exec
@@ -344,6 +385,9 @@ Fix all violations before finishing."
         if [[ -n "$RB_MODEL" ]]; then
             codex_args+=(--model "$RB_MODEL")
         fi
+        # -c parses its value as TOML, so the level is passed quoted rather than
+        # leaning on the bare-word-to-literal-string fallback.
+        codex_args+=(-c "model_reasoning_effort=\"$RB_EFFORT\"")
 
         progress step "[codex] $id  attempt $((attempt + 1))/$((RB_RETRIES + 1)) -> $log"
         printf '%s\n' "$prompt" | rb_run_codex "$id" "$log" "$jsonl" "$RB_CODEX" "${codex_args[@]}" -
@@ -376,13 +420,27 @@ Fix all violations before finishing."
         else
             echo "error: Codex did not produce evidence: $evidence" >>"$log"
         fi
-        if [[ -s "$review" ]] \
-            && grep -Fxq "Reviewer model: $RB_REVIEW_MODEL" "$review" \
-            && grep -qx '## Final field checklist' "$review" \
-            && grep -qx 'VERDICT: PASS' "$review"; then
-            review_rc=0
+        # Checked one requirement at a time. A single combined test reports only that
+        # the review was rejected, which is not enough to tell a reviewer that ran as
+        # the wrong model from one that merely mislabelled its checklist heading.
+        if [[ ! -s "$review" ]]; then
+            echo "error: Codex did not produce review: $review" >>"$log"
         else
-            echo "error: reviewer model declaration, final field checklist, or standalone VERDICT: PASS is missing: $review" >>"$log"
+            review_rc=0
+            if ! rb_review_has_line "$review" "Reviewer model: $RB_REVIEW_MODEL"; then
+                review_rc=1
+                declared="$(grep -m1 '^Reviewer model:' "$review")"
+                echo "error: review declares the wrong reviewer model: expected 'Reviewer model: $RB_REVIEW_MODEL', found '${declared:-<no Reviewer model: line>}': $review" >>"$log"
+            fi
+            if ! rb_review_has_line "$review" '## Final field checklist'; then
+                review_rc=1
+                echo "error: review is missing the exact line '## Final field checklist': $review" >>"$log"
+            fi
+            if ! rb_review_has_line "$review" 'VERDICT: PASS'; then
+                review_rc=1
+                verdict="$(grep -m1 'VERDICT' "$review")"
+                echo "error: review is missing the standalone line 'VERDICT: PASS'${verdict:+ (nearest VERDICT line: '$verdict')}: $review" >>"$log"
+            fi
         fi
         if [[ -s "$draft" ]]; then
             run_step "$id" "$log" "$RB_UV" run tools/lint_sap.py "$draft" --max-page "$page_count"
@@ -395,7 +453,7 @@ Fix all violations before finishing."
             mv -f "$draft" "$final"
             elapsed=$((SECONDS - start))
             bytes="$(wc -c <"$final" | tr -d ' ')"
-            [[ "$RB_KEEP_JSONL" == "always" ]] || rm -f "$jsonl"
+            [[ "$RB_KEEP_JSONL" == "always" ]] || rm -f "$jsonl" "$jsonl".attempt*
             rb_append_ledger "$id" OK "$((attempt + 1))" "$elapsed" "$bytes" \
                 "$in_tok" "$out_tok" "$tot_tok" "-"
             progress job "[ok]   $id  ${elapsed}s  ${bytes}B"
@@ -405,7 +463,7 @@ Fix all violations before finishing."
     done
 
     elapsed=$((SECONDS - start))
-    [[ "$RB_KEEP_JSONL" == "never" ]] && rm -f "$jsonl"
+    [[ "$RB_KEEP_JSONL" == "never" ]] && rm -f "$jsonl" "$jsonl".attempt*
     rb_append_ledger "$id" FAIL "$((RB_RETRIES + 1))" "$elapsed" 0 \
         "$in_tok" "$out_tok" "$tot_tok" "codex=$rc evidence=$evidence_rc review=$review_rc lint=$lint_rc"
     progress fail "[FAIL] $id  ${elapsed}s -> $log"
@@ -439,6 +497,7 @@ while [[ $# -gt 0 ]]; do
         --retries)   [[ $# -ge 2 ]] || { echo "missing value for $1" >&2; exit 2; }; RETRIES="$2"; shift 2 ;;
         --model)     [[ $# -ge 2 ]] || { echo "missing value for $1" >&2; exit 2; }; MODEL="$2"; shift 2 ;;
         --review-model) [[ $# -ge 2 ]] || { echo "missing value for $1" >&2; exit 2; }; REVIEW_MODEL="$2"; shift 2 ;;
+        --effort)    [[ $# -ge 2 ]] || { echo "missing value for $1" >&2; exit 2; }; EFFORT="$2"; shift 2 ;;
         --verbosity) [[ $# -ge 2 ]] || { echo "missing value for $1" >&2; exit 2; }; VERBOSITY="$2"; shift 2 ;;
         --progress)  [[ $# -ge 2 ]] || { echo "missing value for $1" >&2; exit 2; }; PROGRESS="$2"; shift 2 ;;
         --force)     FORCE=1; shift ;;
@@ -470,6 +529,13 @@ done
 [[ "$WORKERS" -gt 0 ]] || { echo "workers must be greater than zero" >&2; exit 2; }
 [[ -n "$MODEL" ]] || { echo "model must not be empty" >&2; exit 2; }
 [[ -n "$REVIEW_MODEL" ]] || { echo "review model must not be empty" >&2; exit 2; }
+# The union of what the model catalog offers. gpt-5.6-terra takes all six; another
+# --model may take fewer (gpt-5.5 stops at xhigh), and Codex rejects it at request
+# time. Validating the union keeps this script from second-guessing the catalog.
+case "$EFFORT" in
+    low|medium|high|xhigh|max|ultra) ;;
+    *) echo "effort must be one of: low, medium, high, xhigh, max, ultra" >&2; exit 2 ;;
+esac
 case "$VERBOSITY" in
     low|medium|high) ;;
     *) echo "verbosity must be one of: low, medium, high" >&2; exit 2 ;;
@@ -609,6 +675,7 @@ if [[ "$PROGRESS" != "quiet" ]]; then
     [[ -z "$ASSIGNMENT_LABEL" ]] || echo "assigned: label $ASSIGNMENT_LABEL  ($ASSIGNMENT_FILE)"
     echo "output  : $OUT_DIR"
     echo "harness : $CODEX_BIN${MODEL:+  (model: $MODEL)}"
+    echo "effort  : $EFFORT"
     echo "reviewer: $REVIEW_MODEL"
     echo "detail  : $VERBOSITY"
     echo "progress: $PROGRESS"
@@ -633,7 +700,8 @@ fi
 # _status.tsv is no longer truncated here; it is regenerated from the ledger
 # once the workers are done, so a run that dies still leaves the ledger intact.
 export RB_OUT_DIR="$OUT_DIR" RB_STATUS="$STATUS" RB_CODEX="$CODEX_BIN" RB_UV="$UV_BIN" \
-       RB_MODEL="$MODEL" RB_REVIEW_MODEL="$REVIEW_MODEL" RB_VERBOSITY="$VERBOSITY" \
+       RB_MODEL="$MODEL" RB_REVIEW_MODEL="$REVIEW_MODEL" RB_EFFORT="$EFFORT" \
+       RB_VERBOSITY="$VERBOSITY" \
        RB_PROGRESS="$PROGRESS" RB_FORCE="$FORCE" RB_RETRIES="$RETRIES" \
        RB_RETRY_SLEEP="$RETRY_SLEEP" \
        RB_LEDGER="$LEDGER" RB_BUDGET="$BUDGET" RB_STOP="$STOP" RB_JQ="$JQ_BIN" \

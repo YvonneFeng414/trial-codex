@@ -39,12 +39,17 @@ required Markdown structure below.
    subagent. Give it the protocol-text, evidence, draft, page-count, verbosity, and
    review paths. The reviewer must independently inspect the source and write its
    findings to the review path. The reviewer must not edit the evidence file or draft.
-9. If the reviewer reports findings, revise the evidence and draft, then ask the same
-   reviewer subagent to review again. The reviewer must preserve earlier findings and
-   add their resolution status to the review history. Repeat until the reviewer adds a
-   final checklist and a standalone line exactly equal to `VERDICT: PASS`. The primary
-   agent must never write or alter the review file itself.
-10. Run `uv run tools/lint_sap.py DRAFT --max-page PAGE_COUNT`, fix every violation,
+9. Check the review file's `Reviewer model:` line as soon as the first cycle lands. If
+   it does not match the model supplied in the prompt, the reviewer cannot pass, so
+   stop and respawn it on the correct model before doing anything else. Do not work
+   through its findings first: the verdict is unreachable no matter how many you fix,
+   and resolving them costs a full cycle that then has to be repeated.
+10. If the reviewer reports findings, revise the evidence and draft, then ask the same
+    reviewer subagent to review again. The reviewer must preserve earlier findings and
+    add their resolution status to the review history. Repeat until the reviewer adds a
+    final checklist and a standalone line exactly equal to `VERDICT: PASS`. The primary
+    agent must never write or alter the review file itself.
+11. Run `uv run tools/lint_sap.py DRAFT --max-page PAGE_COUNT`, fix every violation,
     and rerun it until it passes. Do not finish unless the evidence and review files
     exist, the reviewer verdict passes, and the linter passes.
 
@@ -126,14 +131,27 @@ value; if the requested model could not be used, it must report a finding and mu
 pass. The review file must be auditable. On the first review, create `## Review cycle 1`; on
 later reviews, append another numbered cycle without deleting earlier cycles. Each
 finding must name the exact SAP field, classify it as `OMISSION`, `CONTRADICTION`,
-`UNSUPPORTED`, `MISCLASSIFIED`, `CITATION`, or `VERBOSITY`, explain the issue, cite
-PDF-marker pages, and end with `Status: OPEN`. On a later cycle, record each earlier
+`UNSUPPORTED`, `MISCLASSIFIED`, `CITATION`, `VERBOSITY`, or `REGRESSION`, explain the
+issue, cite PDF-marker pages, and end with `Status: OPEN`. On a later cycle, record each earlier
 finding as `RESOLVED` or keep it `OPEN`; do not silently drop it.
 
-Before the final checklist, the reviewer must run a contradiction scan and record it as
-`## Cross-field scan` in the review file. Checking one field at a time cannot find these
-defects, because each field is individually defensible; only the pair is wrong. The scan
-must:
+Cycle 1 fixes the finding set. It must be the reviewer's complete enumeration: run the
+cross-field scan and walk every field of the template before writing it, and raise there
+every issue the review will ever raise. A later cycle adjudicates that set. It must not
+add a finding about text the revision did not touch - a defect present in the first draft
+and missed in cycle 1 is out of scope afterwards, however real it is. The one exception is
+a defect the revision itself introduced, such as a draft field corrected while its
+evidence entry was left contradicting it: classify that `REGRESSION`, name what changed
+since the previous cycle, and cite both versions. Without this rule the review does not
+converge. Each cycle resolves findings while raising fresh ones, so the verdict stays out
+of reach however many the primary agent fixes, and the retry that follows discards every
+cycle and starts the whole job again.
+
+In cycle 1, and again before the final checklist, the reviewer must run a contradiction
+scan and record it as `## Cross-field scan` in the review file. The later scan confirms
+the revision introduced no new contradiction; it is not a fresh hunt for missed ones.
+Checking one field at a time cannot find these defects, because each field is
+individually defensible; only the pair is wrong. The scan must:
 
 1. list every field in the draft marked `Not reported in protocol`, `Not applicable`, or
    otherwise stated as unavailable, including free-form wordings such as `the test is

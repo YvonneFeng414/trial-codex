@@ -2,8 +2,8 @@
 .venv*
 .codex-home/
 
-test_result/*
-!test_result/.gitkeep
+test_result*/*
+!test_result*/.gitkeep
 
 .DS_Store
 *.pdf
