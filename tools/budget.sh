@@ -395,7 +395,7 @@ rb_write_progress() {
             head -c 800 "$w/${id}.lastmsg.txt"
             printf '\n```\n\n'
         fi
-        printf '## Next session\n\nRe-run the same command. No sap_%s.md exists, so this id is\n' "$id"
+        printf '## Next session\n\nRe-run the same command. No %s.md exists, so this id is\n' "$id"
         printf 'reattempted in a fresh Codex session; the files above are reused as-is\n'
         printf 'per AGENTS.md step 6.\n'
     } >"$f" 2>/dev/null

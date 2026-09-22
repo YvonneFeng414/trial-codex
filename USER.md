@@ -37,7 +37,7 @@ tools/init_codex_home.sh --login --force
 
 - **`--session-budget` 是最该给的参数。** 给了它，脚本只在「剩余时间够跑完一个 job」时
   才开新 job（按历史 p90 耗时估），所以不会开一个注定跑不完的 job。
-- **重复跑同一条命令是安全的。** 已经生成的 `sap_<id>.md` 会被自动跳过。
+- **重复跑同一条命令是安全的。** 已经生成的 `<id>.md` 会被自动跳过。
 
 ---
 
@@ -88,7 +88,7 @@ cat test_result/_ledger.tsv     # 逐行明细，永不清空，跨 session 累�
 
 | 状态 | 含义 |
 |---|---|
-| `OK` | 做完了，`sap_<id>.md` 已生成 |
+| `OK` | 做完了，`<id>.md` 已生成 |
 | `SKIP` | 输出已存在，跳过 |
 | `UNSUPPORTED_SCAN` | 扫描件，需要 OCR，本脚本处理不了 |
 | `FAIL` | 真失败（agent 或 lint 没过），重跑会重试 |
@@ -135,11 +135,15 @@ export RB_SMTP_TOKEN="16 位应用专用密码"
 
 ## 附录：文件都在哪
 
-默认都在 `test_result/` 下：
+默认都在 `test_result/` 下。`<id>` 由 PDF 的路径决定：输入是
+`<journal>/<article-id>/<file-id>.pdf`，`<id>` 就是 `<journal>++<article-id>++<file-id>`
+（例如 `lancet++10.1016_S0140-6736_15_60158-1++mmc1_protocol`）。用整条路径是必要的：
+同名的附件文件在不同文章里反复出现（Lancet 的附件几乎都叫 `mmc1_protocol.pdf`），
+只取文件名会撞 id，撞上的会在 manifest 去重时被丢掉。
 
 | 路径 | 是什么 |
 |---|---|
-| `sap_<id>.md` | **最终产物** |
+| `<id>.md` | **最终产物** |
 | `_ledger.tsv` | 累积账本，永不清空，跨 session 的唯一真相 |
 | `_status.tsv` | 本轮视图，每轮从账本重新生成 |
 | `_budget.tsv` | 额度观测记录 |

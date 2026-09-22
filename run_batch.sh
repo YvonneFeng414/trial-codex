@@ -31,7 +31,8 @@ REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # The directory is gitignored because it contains auth.json and other private state.
 export CODEX_HOME="$REPO_DIR/.codex-home"
 
-INPUT_DIR="/Users/yixuanfeng/Desktop/web-download/downloads/nejm" # TODO: change this input dir
+# INPUT_DIR="/Users/yixuanfeng/Desktop/web-download/downloads/nejm" # TODO: change this input dir
+INPUT_DIR="/Users/yixuanfeng/Desktop/trial-codex/samples"
 OUT_DIR="test_result"
 LIMIT=3
 OFFSET=0
@@ -100,12 +101,34 @@ EOF
 [[ -r "$REPO_DIR/tools/budget.sh" ]] || { echo "tools/budget.sh not found in $REPO_DIR" >&2; exit 1; }
 . "$REPO_DIR/tools/budget.sh"
 
+# derive_id PDF_PATH  ->  <journal>++<article-id>++<file-id>
+# The corpus is laid out as <root>/<journal>/<article-id>/<file-id>.pdf, so the id is
+# the last three path components. Read from the path's tail rather than relative to
+# --input-dir, so pointing a run at the corpus root or at one journal directory yields
+# the same id, and a worker needs nothing but the PDF path it is handed.
+#
+# The whole path is load-bearing: supplement filenames repeat across articles (every
+# Lancet supplement is mmc1_protocol.pdf), so a basename-derived id collides and the
+# manifest dedup silently drops the duplicates.
 derive_id() {
-    local stem id
+    local abs dir stem article journal id
     stem="$(basename "$1")"
     stem="${stem%.pdf}"
-    id="$(printf '%s' "$stem" | grep -oE '^[a-zA-Z]+[0-9]+' || true)"
-    printf '%s' "${id:-$stem}"
+    dir="$(dirname "$1")"
+    abs="$(cd "$dir" 2>/dev/null && pwd)" && dir="$abs"
+
+    article="$(basename "$dir")"
+    journal="$(basename "$(dirname "$dir")")"
+
+    # A path shallower than <journal>/<article-id>/<file>.pdf contributes what it has.
+    id="$stem"
+    [[ "$article" == "/" || "$article" == "." ]] || id="${article}++${id}"
+    [[ "$journal" == "/" || "$journal" == "." ]] || id="${journal}++${id}"
+
+    # ':' is legal in a POSIX filename but Finder renders it as '/', and some article
+    # directories carry one (10.1136:bmj.j5157). Fold it the way the DOI slash is
+    # already folded upstream.
+    printf '%s' "${id//:/_}"
 }
 
 # progress LEVEL MESSAGE...
@@ -158,7 +181,7 @@ run_one() {
     fi
 
     id="$(derive_id "$pdf")"
-    final="$RB_OUT_DIR/sap_${id}.md"
+    final="$RB_OUT_DIR/${id}.md"
     draft="$RB_OUT_DIR/work/${id}.draft.md"
     evidence="$RB_OUT_DIR/work/${id}.evidence.md"
     review="$RB_OUT_DIR/work/${id}.review.md"
@@ -464,7 +487,7 @@ fi
 : >"$MANIFEST"
 while IFS= read -r pdf; do
     id="$(derive_id "$pdf")"
-    printf '%s\t%s\t%s\n' "$id" "$pdf" "$OUT_DIR/sap_${id}.md"
+    printf '%s\t%s\t%s\n' "$id" "$pdf" "$OUT_DIR/${id}.md"
 done < <(
     find "$INPUT_DIR" -type f -name '*_protocol*.pdf' -print \
         | sort \
