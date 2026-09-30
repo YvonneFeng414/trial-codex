@@ -21,3 +21,13 @@ test_result*/*
 .env.*
 
 archive*
+
+prod_result*/*
+
+resources/*
+
+bmj_result*
+ocr_pdfs/
+ocr_result*/*
+Benchmark*
+data*
