@@ -31,3 +31,7 @@ ocr_pdfs/
 ocr_result*/*
 Benchmark*
 data*
+
+*.logs*
+
+*.disabled

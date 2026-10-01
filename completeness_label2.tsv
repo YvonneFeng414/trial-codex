@@ -1,0 +1,738 @@
+file	stat_score	overall_score	filled	partial	not_reported	not_applicable	main_gaps
+nejm++10.1056_NEJMoa2116596++nejmoa2116596_protocol.md	0.989	0.982	80	1	1	2	2.2 Minimization or Blocking; 2.3 Sample Size Re-Estimation / Amendments
+nejm++10.1056_NEJMoa1700518++nejmoa1700518_protocol.md	0.989	0.978	66	1	1	3	2.2 Minimization or Blocking; 2.3 Variability Assumption
+nejm++10.1056_NEJMoa1515920++nejmoa1515920_protocol.md	0.978	0.988	81	0	1	2	2.3 Dropout / Non-Adherence Inflation
+lancet++10.1016_S0140-6736_19_31149-3++mmc1_protocol.md	0.969	0.981	77	3	0	0	2.3 Variability Assumption; 5.4 Missing Data Assumptions; 5.6 Grading Scales and Causality
+nejm++10.1056_NEJMoa2200963++nejmoa2200963_protocol.md	0.968	0.976	98	5	0	2	2.2 Minimization; 2.3 Sample Size Re-Estimation; 4.4 Reasons for Withdrawal; 5.4 Missing Data Assumptions; 5.6 Grading Scales and Causality
+nejm++10.1056_NEJMoa2310392++nejmoa2310392_protocol.md	0.967	0.981	75	1	1	3	2.3 Sample Size Re-Estimation / Amendments; 3.2 Protocol Deviation Definition
+nejm++10.1056_NEJMoa1602046++nejmoa1602046_protocol.md	0.967	0.979	91	2	1	2	2.3 Required Number of Events; 2.3 Software Used for Calculation; 2.2 Minimization or Blocking
+nejm++10.1056_NEJMoa1408544++nejmoa1408544_protocol.md	0.967	0.973	71	2	1	2	2.2 Stratification Factors; 2.3 Software Used for Calculation; 5.3 Alternative Methods if Assumptions Fail
+nejm++10.1056_NEJMoa1503184++nejmoa1503184_protocol.md	0.967	0.969	91	4	1	2	2.2 Minimization or Blocking; 2.3 Dropout / Non-Adherence Inflation; 5.4 Missing Data Assumptions; 5.7 Statistical Software
+nejm++10.1056_NEJMoa2022190++nejmoa2022190_protocol.md	0.967	0.968	76	1	2	3	2.2 Minimization or Blocking; 2.3 Software Used for Calculation; 2.3 Statistical Test Assumed
+nejm++10.1056_NEJMoa2107038++nejmoa2107038_protocol.md	0.967	0.966	100	1	3	2	1.2 Secondary/Exploratory Objectives; 2.3 Statistical Test Assumed; 3.3 Per Protocol
+nejm++10.1056_NEJMoa1315226++nejmoa1315226_protocol.md	0.967	0.960	83	3	2	2	1.2 Exploratory Objectives; 2.2 Minimization; 2.3 Software Used for Calculation; 5.5 Biomarker Analyses
+nejm++10.1056_NEJMoa1504720++nejmoa1504720_protocol.md	0.957	0.978	87	2	1	2	2.3 Dropout / Non-Adherence Inflation; 2.5 Stopping Guidelines; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa2112187++nejmoa2112187_protocol.md	0.957	0.963	78	2	2	2	2.2 Minimization; 2.3 Re-Estimation; 2.5 Stopping Guidelines; 3.3 Per Protocol
+lancet++10.1016_S0140-6736_25_01726-X++mmc1_protocol.md	0.957	0.951	78	0	4	2	2.2 Stratification Factors; 2.2 Minimization or Blocking; 2.3 Required Number of Events; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1612917++nejmoa1612917_protocol.md	0.957	0.928	82	3	5	2	2.3 Software; 5.2 Transformations; 5.4 Missing Data
+nejm++10.1056_NEJMoa2204601++nejmoa2204601_protocol.md	0.956	0.961	73	2	3	3	2.2 Blocking; 2.3 Control-arm value; 2.3 Treatment-arm value; 2.3 Software
+nejm++10.1056_NEJMoa2209275++nejmoa2209275_protocol.md	0.956	0.952	69	1	3	3	1.2 Exploratory Objectives; 2.2 Minimization or Blocking; 2.3 Variability Assumption; 2.3 Required Number of Events
+nejm++10.1056_NEJMoa2314149++nejmoa2314149_protocol.md	0.956	0.944	65	6	1	2	5.3 Alternative Methods; 2.3 Software Used; 5.3 Assumption Checks
+nejm++10.1056_NEJMoa1213917++nejmoa1213917_protocol.md	0.956	0.942	70	5	2	2	2.2 Stratification; 2.2 Minimization; 5.4 Missing Data Assumptions; 5.7 Statistical Software
+nejm++10.1056_NEJMoa2313040++nejmoa2313040_protocol.md	0.955	0.967	86	2	2	4	2.2 Minimization or Blocking; 2.3 Software Used for Calculation; 2.3 Dropout / Non-Adherence Inflation; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa2400201++nejmoa2400201_protocol.md	0.955	0.951	67	3	2	4	2.2 Minimization; 2.3 Re-Estimation; 2.3 Test/Software; 4.3 Recruitment
+nejm++10.1056_NEJMoa1112168++nejmoa1112168_protocol.md	0.955	0.950	75	2	3	4	2.3 Sample Size Re-Estimation; 3.1 Alpha Level; 4.3 Recruitment; 4.5 Summary Methods
+nejm++10.1056_NEJMoa2100665++nejmoa2100665_protocol.md	0.955	0.942	72	3	3	4	1.2 Exploratory Objectives; 2.2 Minimization or Blocking; 2.3 Basis for Assumptions; 2.3 Software Used for Calculation; 4.3 Recruitment; 5.3 Assumption Checks
+nejm++10.1056_NEJMoa1916046++nejmoa1916046_protocol.md	0.947	0.964	105	4	2	1	2.2 Minimization; 2.3 Required Number of Events; 2.3 Software; 4.3 Recruitment
+jama++10.1001_jama.2015.16669++jpc150007supp1_prod_protocol.md	0.946	0.972	86	3	1	2	2.3 Required Number of Events; 2.3 Variability Assumption; 2.6 Final Analysis Timing; 5.3 Alternative Methods
+nejm++10.1056_NEJMoa1708984++nejmoa1708984_protocol.md	0.946	0.970	114	1	3	2	2.2 Minimization or Blocking; 2.3 Variability Assumption; 2.3 Software Used for Calculation; 3.1 Multiplicity Adjustment
+lancet++10.1016_S0140-6736_23_00806-1++mmc1_protocol.md	0.946	0.965	81	4	1	2	2.3 Sample Size Re-Estimation; 3.2 Adherence Definition; 3.3 Per Protocol; 4.4 Reasons for Withdrawal; 5.6 Grading Scales and Causality
+nejm++10.1056_NEJMoa1213755++nejmoa1213755_protocol.md	0.946	0.959	80	5	1	2	5.3 Alternative Methods; 2.3 Target Difference; 2.2 Blocking; 5.3 Sensitivity Analyses; 5.5 Additional Analyses
+jama++10.1001_jama.2014.8735++joi140099supp1_prod_protocol.md	0.946	0.953	80	4	2	2	2.3 Software Used for Calculation; 2.5 Stopping Guidelines; 3.2 Protocol Deviation Reporting; 5.2 Infant Transformations / Derived Variables; 5.4 Missing Data Assumptions
+lancet++10.1016_S0140-6736_25_01811-2++mmc1_protocol.md	0.944	0.954	92	3	3	4	2.3 Variability Assumption; 3.3 Per Protocol; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1709118++nejmoa1709118_protocol.md	0.944	0.954	91	3	3	4	2.2 Minimization; 2.3 Pantoprazole Dropout/Re-Estimation; 5.5 Additional Analyses
+nejm++10.1056_NEJMoa2501510++nejmoa2501510_protocol.md	0.944	0.952	68	3	2	3	2.3 Software Used for Calculation; 2.5 Stopping Guidelines; 4.3 Recruitment
+nejm++10.1056_NEJMoa2214403++nejmoa2214403_protocol.md	0.944	0.948	71	4	2	3	2.3 Dropout / Non-Adherence Inflation; 2.3 Sample Size Re-Estimation / Amendments; 4.4 Reasons for Withdrawal; 5.7 Statistical Software
+lancet++10.1016_S0140-6736_20_30258-0++mmc1_protocol.md	0.943	0.973	87	3	1	4	2.3 Assumed Treatment-Arm Value; 2.3 Statistical Test Assumed; 2.3 Sample Size Re-Estimation / Amendments; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa2027760++nejmoa2027760_protocol.md	0.943	0.964	66	1	2	7	2.3 Dropout / Non-Adherence Inflation; 2.3 Software Used for Calculation; 2.3 Sample Size Re-Estimation / Amendments
+lancet++10.1016_S0140-6736_25_01196-1++mmc1_protocol.md	0.943	0.951	65	7	0	4	2.2 Minimization; 2.3 Control/Treatment values; 2.3 Dropout; 2.3 Re-estimation; 5.5 Additional Analyses
+nejm++10.1056_NEJMoa1805104++nejmoa1805104_protocol.md	0.941	0.931	104	8	4	8	2.2 Minimization; 2.3 PFS Variability; 2.3 PFS Software; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1412679++nejmoa1412679_protocol.md	0.937	0.956	87	0	4	5	2.2 Minimization or Blocking; 2.3 Required Number of Events; 3.2 Protocol Deviation Definition; 3.3 Per Protocol
+nejm++10.1056_NEJMoa1307684++nejmoa1307684_protocol.md	0.935	0.963	89	3	2	2	2.2 Minimization or Blocking; 2.3 Statistical Test Assumed; 2.3 Sample Size Re-Estimation / Amendments; 2.3 Software Used for Calculation
+nejm++10.1056_NEJMoa1203421++nejmoa1203421_protocol.md	0.935	0.956	86	0	4	3	2.2 Minimization or Blocking; 3.3 Per Protocol; 5.3 Alternative Methods if Assumptions Fail; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa2111016++nejmoa2111016_protocol.md	0.935	0.955	73	3	2	2	2.3 Software; 2.5 Stopping Guidelines; 2.2 Minimization or Blocking; 2.3 Variability Assumption
+nejm++10.1056_NEJMoa1914609++nejmoa1914609_protocol.md	0.935	0.954	110	9	1	6	2.3 Variability Assumption; 2.3 Sample Size Re-Estimation; 3.3 Per Protocol; 5.4 Missing Data Assumptions; 5.7 Statistical Software
+jama++10.1001_jama.2018.14283++joi180110supp1_prod_protocol.md	0.935	0.939	81	7	2	3	2.3 Dropout; 5.2 Biomarker Transformations; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa2216480++nejmoa2216480_protocol.md	0.935	0.939	84	1	5	2	2.2 Stratification Factors/Minimization; 2.3 Software Used; 5.3 Assumption Checks/Alternative Methods
+nejm++10.1056_NEJMoa1902226++nejmoa1902226_protocol.md	0.935	0.926	83	8	3	2	2.2 Minimization; 2.3 Software; 5.2 Post-diabetes units
+nejm++10.1056_NEJMoa2100708++nejmoa2100708_protocol.md	0.933	0.985	97	5	2	3	2.2 Minimization or Blocking; 2.5 Alpha Spending or Adjustment; 2.3 Dropout / Non-Adherence Inflation
+jama++10.1001_jama.2019.20687++joi190142supp1_prod_protocol.md	0.933	0.968	73	3	4	3	2.2 Stratification; 2.2 Minimization; 2.3 Software; 5.3 Alternative Methods
+nejm++10.1056_NEJMoa2410659++nejmoa2410659_protocol.md	0.933	0.966	112	0	4	6	2.3 Sample Size Re-Estimation; 2.3 Software Used
+nejm++10.1056_NEJMoa2025797++nejmoa2025797_protocol.md	0.933	0.951	76	2	3	3	2.2 Minimization or Blocking; 2.3 Software Used for Calculation; 3.2 Adherence Definition; 3.3 Per Protocol; 5.7 Statistical Software
+nejm++10.1056_NEJMoa2400314++nejmoa2400314_protocol.md	0.933	0.951	75	4	2	3	2.3 Software; 5.3 Assumption Checks; 1.2 Exploratory Objectives
+nejm++10.1056_NEJMoa2409515++nejmoa2409515_protocol.md	0.933	0.951	75	4	2	3	2.2 Minimization or Blocking; 3.3 Per Protocol; 2.3 Software Used for Calculation; 2.5 Alpha Spending or Adjustment
+nejm++10.1056_NEJMoa1716995++nejmoa1716995_protocol.md	0.933	0.938	75	2	4	3	2.2 Stratification Factors; 2.2 Minimization or Blocking; 2.3 Dropout / Non-Adherence Inflation; 2.3 Software Used for Calculation; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1703068++nejmoa1703068_protocol.md	0.932	0.951	67	3	2	4	2.2 Minimization or Blocking; 2.3 Dropout / Non-Adherence Inflation; 3.2 Protocol Deviation Definition; 3.3 Per Protocol; 5.7 Statistical Software
+nejm++10.1056_NEJMoa1309533++nejmoa1309533_protocol.md	0.932	0.941	63	2	3	4	2.5 Alpha Spending; 5.4 Missing Data Assumptions; 2.2 Stratification Factors
+nejm++10.1056_NEJMoa2212728++nejmoa2212728_protocol.md	0.932	0.938	74	2	4	4	2.2 Minimization or Blocking; 2.3 Dropout / Non-Adherence Inflation; 2.3 Sample Size Re-Estimation / Amendments; 2.3 Software Used for Calculation
+lancet++10.1016_S0140-6736_15_00817-X++mmc1_protocol.md	0.930	0.947	97	3	4	4	2.2 Minimization/Blocking; 2.3 Variability Assumption; 2.3 PFS Software; 5.2 CgA/NSE Units
+nejm++10.1056_NEJMoa1802670++nejmoa1802670_protocol.md	0.929	0.905	98	5	8	3	2.3 Assumed Treatment-Arm Value; 2.3 Required Number of Events; 5.2 Transformations; 5.7 Statistical Software
+nejm++10.1056_NEJMoa2106567++nejmoa2106567_protocol.md	0.927	0.952	79	2	3	2	2.3 Required Number of Events; 2.3 Software; 3.3 Per Protocol; 2.6 Final Analysis Timing; 4.3 Recruitment
+nejm++10.1056_NEJMoa1400590++nejmoa1400590_protocol.md	0.927	0.946	104	4	4	4	2.2 Minimization or Blocking; 2.3 Required Number of Events; 2.3 Sample Size Re-Estimation / Amendments; 5.7 Statistical Software
+nejm++10.1056_NEJMoa1508606++nejmoa1508606_protocol.md	0.926	0.957	88	4	2	2	2.3 Software; 2.5 Alpha Spending
+nejm++10.1056_NEJMoa2101544++nejmoa2101544_protocol.md	0.924	0.975	113	5	1	2	2.3 Dropout; 2.3 Software; 5.3 Assumption Checks; 5.4 Missing Data Assumptions; 5.7 Statistical Software
+jama++10.1001_jama.2022.16464++joi220099supp1_prod_1664218829.27132_protocol.md	0.924	0.966	98	1	3	2	2.3 Variability Assumption; 2.3 Software Used for Calculation; 5.3 Alternative Methods if Assumptions Fail; 5.3 Assumption Checks
+nejm++10.1056_NEJMoa1509852++nejmoa1509852_protocol.md	0.924	0.961	86	1	3	3	2.3 Sample Size Re-Estimation; 5.3 Assumption Checks; 5.3 Alternative Methods; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa2113017++nejmoa2113017_protocol.md	0.924	0.959	103	5	2	2	2.2 Minimization or Blocking; 2.3 Software Used for Calculation; 3.3 Intention-to-Treat; 5.3 Assumption Checks; 5.3 Alternative Methods; 5.4 Handling Methods; 5.7 Statistical Software
+nejm++10.1056_NEJMoa1506223++nejmoa1506223_protocol.md	0.924	0.957	77	3	2	2	2.3 Software; 2.5 Stopping Guidelines; 3.3 Intention-to-Treat
+nejm++10.1056_NEJMoa1215541++nejmoa1215541_protocol.md	0.924	0.956	94	7	1	2	2.3 Software Used for Calculation; 2.5 Stopping Guidelines; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1613683++nejmoa1613683_protocol.md	0.924	0.939	75	4	3	2	2.2 Minimization or Blocking; 3.2 Protocol Deviation Definition; 3.3 Per Protocol; 4.3 Recruitment; 5.4 Missing Data Assumptions; 5.5 Additional Analyses
+nejm++10.1056_NEJMoa1500857++nejmoa1500857_protocol.md	0.924	0.936	71	4	3	2	2.2 Stratification Factors; 2.3 Dropout / Non-Adherence Inflation; 3.3 Per Protocol; 5.3 Alternative Methods; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1505533++nejmoa1505533_protocol.md	0.924	0.935	100	2	6	2	1.2 Exploratory Objectives; 2.2 Method; 2.3 Variability Assumption; 2.3 Required Number of Events; 2.3 Software Used for Calculation; 2.5 Stopping Guidelines
+nejm++10.1056_NEJMoa1715955++nejmoa1715955_protocol.md	0.924	0.929	89	4	5	2	3.3 Per Protocol; 5.3 Alternative Methods; 5.2 Transformations
+nejm++10.1056_NEJMoa1708831++nejmoa1708831_protocol.md	0.922	0.977	170	6	1	3	2.3 Required Number of Events; 2.3 Dropout; 3.2 Protocol Deviation Definition; 5.6 Causality
+nejm++10.1056_NEJMoa1501917++nejmoa1501917_protocol.md	0.922	0.972	151	7	1	3	2.3 Required Number of Events; 3.2 Adherence Definition; 3.2 Protocol Deviation Definition; 4.3 Recruitment; 5.6 Grading Scales and Causality
+lancet++10.1016_S0140-6736_25_00194-1++mmc1_protocol.md	0.922	0.965	92	11	1	3	2.3 Variability Assumption; 5.2 EQ-5D-5L Transformations; 5.4 Missing Data Assumptions
+lancet++10.1016_S0140-6736_26_00258-8++mmc1_protocol.md	0.922	0.960	108	1	4	3	2.2 Blocking; 2.3 Required Events; 2.3 Re-Estimation; 2.3 Software; 5.3 Subgroup Analyses
+nejm++10.1056_NEJMoa2206714++nejmoa2206714_protocol.md	0.922	0.957	76	3	2	3	2.3 Sample Size Re-Estimation / Amendments; 2.3 Software Used for Calculation; 2.3 Dropout / Non-Adherence Inflation
+nejm++10.1056_NEJMoa1415463++nejmoa1415463_protocol.md	0.922	0.952	85	7	1	3	2.3 Required Number of Events; 3.3 Per Protocol; 5.3 Alternative Methods if Assumptions Fail
+nejm++10.1056_NEJMoa2029849++nejmoa2029849_protocol.md	0.922	0.949	84	1	4	3	2.2 Minimization; 2.3 Dropout; 2.3 Software; 3.3 Intention-to-Treat; 3.3 Per Protocol
+nejm++10.1056_NEJMoa1112433++nejmoa1112433_protocol.md	0.922	0.947	78	5	2	3	2.2 Minimization or Blocking; 2.3 Variability Assumption; 2.3 Required Number of Events; 2.3 Sample Size Re-Estimation / Amendments; 2.3 Software Used for Calculation; 4.3 Recruitment; 5.3 Assumption Checks
+nejm++10.1056_NEJMoa1411090++nejmoa1411090_protocol.md	0.922	0.944	83	2	4	3	2.2 Minimization or Blocking; 2.3 Dropout; 2.3 Re-Estimation; 2.3 Software; 4.3 Recruitment
+nejm++10.1056_NEJMoa2035807++nejmoa2035807_protocol.md	0.922	0.932	142	5	8	15	2.3 ORR/DCR arm values and events; 2.2 Minimization; 3.3 Per Protocol; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa2107934++nejmoa2107934_protocol.md	0.922	0.930	84	5	4	3	2.3 Required Number of Events; 2.3 Dropout Inflation; 2.2 Minimization; 5.2 ADA Transformations; 5.7 Statistical Software
+jama++10.1001_jama.2021.10207++joi210070supp1_prod_1631212847.50978_protocol.md	0.922	0.929	76	6	3	3	2.3 Software; 3.3 Per Protocol; 4.5 Summary Methods; 5.7 Statistical Software
+jama++10.1001_jama.2021.0202++joi210002supp2_prod_1613412631.85755_protocol.md	0.922	0.927	82	1	6	3	2.3 Statistical Test; 2.3 Dropout; 2.3 Software; 3.3 Per Protocol
+nejm++10.1056_NEJMoa1706442++nejmoa1706442_protocol.md	0.922	0.927	79	7	3	3	2.3 Software Used for Calculation; 5.2 All-cause mortality timing/transformations; 2.3 Dropout Inflation
+lancet++10.1016_S0140-6736_19_32591-7++mmc1_protocol.md	0.921	0.943	106	5	4	3	2.2 Minimization or Blocking; 2.3 OS Target Difference; 3.2 Protocol Deviation Definition; 3.3 Per Protocol; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2018.6129++jpc180004supp1_prod_protocol.md	0.920	0.938	73	4	3	4	2.3 Sample Size Re-Estimation; 2.3 Software; 2.2 Minimization or Blocking; 2.5 Stopping Guidelines
+nejm++10.1056_NEJMoa2035908++nejmoa2035908_protocol.md	0.920	0.938	80	5	3	4	2.2 Minimization or Blocking; 2.3 Dropout / Non-Adherence Inflation; 3.3 Per Protocol
+nejm++10.1056_NEJMoa2107519++nejmoa2107519_protocol.md	0.920	0.938	73	4	3	4	2.3 Software; 3.3 Per Protocol; 2.6 Final Analysis Timing; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1507192++nejmoa1507192_protocol.md	0.920	0.937	124	5	6	17	2.3 Software Used for Calculation; 2.3 CAEP Power; 5.4 12-month effectiveness handling
+nejm++10.1056_NEJMoa1716793++nejmoa1716793_protocol.md	0.919	0.947	97	3	4	4	2.3 Design Effect/Clustering; 2.3 Software Used; 2.2 Minimization/Blocking; 3.3 Intention-to-Treat
+nejm++10.1056_NEJMoa2312382++nejmoa2312382_protocol.md	0.918	0.923	94	4	6	11	2.2 Minimization or Blocking; 2.3 Dropout / Non-Adherence Inflation; 2.3 Sample Size Re-Estimation / Amendments
+nejm++10.1056_NEJMoa1706450++nejmoa1706450_protocol.md	0.917	0.976	78	4	2	2	2.3 Dropout; 2.3 Software; 2.5 Stopping Guidelines; 5.4 Missing Data Assumptions; 5.7 Statistical Software
+nejm++10.1056_NEJMoa2109927++nejmoa2109927_protocol.md	0.917	0.918	114	18	2	4	2.2 Stratification Factors; 2.2 Minimization or Blocking; 2.3 Statistical Test Assumed; 2.3 Sample Size Re-Estimation; 5.3 Assumption Checks; 5.7 Statistical Software
+nejm++10.1056_NEJMoa1609709++nejmoa1609709_protocol.md	0.916	0.942	112	4	5	7	2.2 Minimization or Blocking; 2.3 Power (PK); 2.3 Software Used (PK); 2.3 Dropout (OS)
+nejm++10.1056_NEJMoa1305074++nejmoa1305074_protocol.md	0.915	0.944	73	5	2	5	2.3 Software; 3.3 Per Protocol; 2.3 Sample Size Re-Estimation; 5.3 Covariate Adjustment
+jama++10.1001_jama.2019.13772++joi190101supp1_prod_protocol.md	0.915	0.937	80	3	4	1	2.3 Variability Assumption; 5.3 Assumption Checks; 5.3 Alternative Methods if Assumptions Fail; 4.5 Summary Methods
+nejm++10.1056_NEJMoa1810171++nejmoa1810171_protocol.md	0.913	0.946	96	1	5	2	2.2 Minimization or Blocking; 2.3 Variability Assumption; 2.3 Dropout / Non-Adherence Inflation; 2.3 Software Used for Calculation; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1114138++nejmoa1114138_protocol.md	0.913	0.944	83	4	3	2	2.2 Minimization or Blocking; 3.3 Per Protocol; 5.3 Alternative Methods if Assumptions Fail; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1606468++nejmoa1606468_protocol.md	0.913	0.942	79	4	3	2	2.2 Blocking; 2.3 Software; 2.5 Stopping Guidelines; 2.3 Sample Size Re-Estimation
+nejm++10.1056_NEJMoa2119115++nejmoa2119115_protocol.md	0.913	0.936	85	6	3	2	2.2 Minimization or Blocking; 3.3 Per Protocol; 5.3 Alternative Methods if Assumptions Fail
+nejm++10.1056_NEJMoa1401561++nejmoa1401561_protocol.md	0.913	0.928	69	3	4	2	2.2 Method; 2.2 Minimization or Blocking; 2.3 Sample Size Re-Estimation / Amendments; 3.3 Per Protocol; 5.3 Alternative Methods if Assumptions Fail
+nejm++10.1056_NEJMoa2312695++nejmoa2312695_protocol.md	0.913	0.919	78	2	6	2	2.2 Minimization or Blocking; 3.2 Protocol Deviation Definition; 3.3 Per Protocol; 5.4 Missing Data Assumptions; 5.7 Statistical Software
+nejm++10.1056_NEJMoa1715944++nejmoa1715944_protocol.md	0.911	0.950	93	6	2	3	2.3 Statistical Test; 2.3 Software; 2.3 Sample Size Re-Estimation
+nejm++10.1056_NEJMoa2102388++nejmoa2102388_protocol.md	0.911	0.941	78	4	3	3	2.2 Minimization; 2.3 Dropout; 2.3 Software Used; 2.5 Stopping Guidelines
+jama++10.1001_jama.2022.2832++joi220023supp1_prod_1648650464.45346_protocol.md	0.911	0.938	88	6	3	3	2.2 Minimization; 2.3 Required Number of Events; 2.3 Dropout / Non-Adherence Inflation
+nejm++10.1056_NEJMoa1710775++nejmoa1710775_protocol.md	0.911	0.936	94	3	5	4	2.2 Minimization; 2.3 Required Events; 2.3 Software; 2.5 Stopping Guidelines; 5.4 Missing Assumptions
+nejm++10.1056_NEJMoa1610227++nejmoa1610227_protocol.md	0.911	0.929	102	4	6	3	2.3 Required Number of Events; 2.3 Sample Size Re-Estimation; 2.5 Alpha Spending; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa2304753++nejmoa2304753_protocol.md	0.911	0.923	88	5	5	4	2.2 Minimization; 2.3 Software; 3.3 Per Protocol; 4.3 Recruitment; 5.3 Alternative Methods
+nejm++10.1056_NEJMoa1302097++nejmoa1302097_protocol.md	0.911	0.918	74	8	3	3	2.3 Required Events; 2.3 Dropout Inflation; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1611594++nejmoa1611594_protocol.md	0.909	0.931	65	4	3	4	2.3 Assumed Treatment-Arm Value; 2.3 Software Used for Calculation; 3.1 Multiplicity Adjustment; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1801005++nejmoa1801005_protocol.md	0.909	0.931	98	7	4	7	2.3 Variability/Dropout (ORR); 3.2 Protocol Deviation Reporting; 3.3 Per Protocol
+nejm++10.1056_NEJMoa1607887++nejmoa1607887_protocol.md	0.908	0.935	75	7	2	10	2.5 Stopping Guidelines; 3.3 Intention-to-Treat; 5.3 Alternative Methods
+nejm++10.1056_NEJMoa1900750++nejmoa1900750_protocol.md	0.908	0.920	79	4	5	6	2.3 Software; 3.3 Per Protocol; 4.3 Recruitment; 5.3 Assumption Checks; 5.4 Missing Data Assumptions; 5.7 Statistical Software
+nejm++10.1056_NEJMoa2117912++nejmoa2117912_protocol.md	0.907	0.943	72	5	2	5	2.3 Software; 3.1 Multiplicity Adjustment; 5.3 Alternative Methods; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2019.16711++joi190118supp1_prod_protocol.md	0.907	0.928	74	6	3	5	2.2 Minimization; 2.3 Software; 2.5 Stopping Guidelines; 3.3 Per Protocol
+nejm++10.1056_NEJMoa2001180++nejmoa2001180_protocol.md	0.907	0.928	88	4	5	7	2.2 Minimization or Blocking; 2.3 Dropout; 2.3 Software; 2.5 Stopping Guidelines; 4.3 Recruitment; 5.4 Missing Data Assumptions; 5.7 Statistical Software
+nejm++10.1056_NEJMoa2025956++nejmoa2025956_protocol.md	0.906	0.948	109	2	5	2	2.3 Dropout; 2.3 Software; 2.3 Re-Estimation; 2.5 Alpha Spending
+nejm++10.1056_NEJMoa1914617++nejmoa1914617_protocol.md	0.905	0.955	143	10	2	3	2.3 Required Number of Events; 2.3 Variability Assumption; 2.3 Sample Size Re-Estimation; 3.2 Adherence Definition
+nejm++10.1056_NEJMoa2116045++nejmoa2116045_protocol.md	0.905	0.924	77	5	4	6	2.2 Stratification Factors; 2.2 Minimization or Blocking; 2.3 Dropout / Non-Adherence Inflation; 2.3 Software Used for Calculation
+jama++10.1001_jama.2020.3138++joi200027supp1_prod_protocol.md	0.904	0.949	91	6	2	1	2.3 Sample Size Re-Estimation; 3.3 Per Protocol; 2.3 Variability Assumption; 3.1 Multiplicity Adjustment; 5.3 Subgroup Analyses
+nejm++10.1056_NEJMoa1112072++nejmoa1112072_protocol.md	0.904	0.899	69	4	6	3	2.3 Dropout / Non-Adherence Inflation; 2.3 Software Used for Calculation; 4.3 Recruitment; 5.7 Statistical Software
+nejm++10.1056_NEJMoa1910355++nejmoa1910355_protocol.md	0.902	0.948	107	6	3	2	2.3 Variability Assumption; 2.3 Software Used for Calculation; 3.3 Other Populations
+nejm++10.1056_NEJMoa2023345++nejmoa2023345_protocol.md	0.902	0.947	97	3	4	2	2.2 Blocking; 2.3 Software; 2.5 Alpha Spending; 5.3 Alternative Methods
+nejm++10.1056_NEJMoa2202170++nejmoa2202170_protocol.md	0.902	0.939	91	4	4	5	2.3 Variability; 2.3 Dropout; 2.3 Software; 3.3 Per Protocol
+nejm++10.1056_NEJMoa2209083++nejmoa2209083_protocol.md	0.902	0.939	75	4	3	2	2.3 Sample Size Re-Estimation; 2.3 Software; 3.3 Other Populations; 5.6 Grading Scales
+nejm++10.1056_NEJMoa2201904++nejmoa2201904_protocol.md	0.902	0.936	87	2	5	2	2.2 Minimization; 2.3 Required Events; 2.3 Software; 5.3 Assumption Checks; 5.3 Alternative Methods; 5.4 Missing Data Assumptions
+lancet++10.1016_S0140-6736_22_00564-5++mmc1_protocol.md	0.902	0.933	82	4	4	2	2.3 Variability; 2.3 Dropout; 2.3 Software; 2.6 Final timing; 5.2 Death transformations
+nejm++10.1056_NEJMoa2304820++nejmoa2304820_protocol.md	0.902	0.930	75	10	1	2	2.3 Dropout / Non-Adherence Inflation; 2.3 Required Number of Events; 2.3 Statistical Test Assumed; 3.3 Per Protocol; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1406470++nejmoa1406470_protocol.md	0.902	0.929	70	5	3	2	2.3 Re-Estimation; 2.3 Software; 2.5 Alpha Spending; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa2033130++nejmoa2033130_protocol.md	0.902	0.928	87	6	4	5	2.3 Software Used for Calculation; 3.3 Per Protocol; 5.7 Statistical Software; 3.2 Protocol Deviation Definition
+nejm++10.1056_NEJMoa1911361++nejmoa1911361_protocol.md	0.902	0.909	72	5	5	2	2.3 Software; 3.2 Adherence Definition; 5.4 Missing Data Assumptions; 5.2 HRQoL Measurement/Transformations
+nejm++10.1056_NEJMoa2409845++nejmoa2409845_protocol.md	0.902	0.909	71	7	4	2	2.3 Required Number of Events; 2.5 Alpha Spending; 5.1 Safety Transformations
+nejm++10.1056_NEJMoa1914347++nejmoa1914347_protocol.md	0.900	0.938	75	2	4	7	2.3 Dropout; 3.2 Adherence Definition; 3.3 Per Protocol; 5.3 Alternative Methods
+nejm++10.1056_NEJMoa1908639++nejmoa1908639_protocol.md	0.900	0.935	141	8	6	8	2.2 Minimization or Blocking; 2.3 Assumed Control/Treatment Values; 2.3 Required Number of Events; 3.3 Per Protocol; 4.3 Recruitment
+nejm++10.1056_NEJMoa2502082++nejmoa2502082_protocol.md	0.900	0.935	79	1	5	3	2.3 Software; 2.5 Stopping Guidelines; 3.3 Per Protocol
+nejm++10.1056_NEJMoa1408684++nejmoa1408684_protocol.md	0.900	0.933	81	4	4	3	2.2 Minimization; 2.3 Re-Estimation; 2.3 Software; 3.1 Confidence Intervals; 5.3 Assumption Checks; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1507476++nejmoa1507476_protocol.md	0.900	0.927	121	1	9	9	2.2 Minimization; 2.3 Software Used; 3.1 Multiplicity Adjustment; 5.3 Covariate Adjustment; 5.3 Assumption Checks; 5.3 Alternative Methods; 5.7 Statistical Software
+lancet++10.1016_S0140-6736_25_00333-2++mmc1_protocol.md	0.900	0.926	91	5	5	3	2.3 Required Number of Events; 2.3 Software Used; 3.2 Protocol Deviation Reporting; 5.4 Missing Data
+nejm++10.1056_NEJMoa2111749++nejmoa2111749_protocol.md	0.900	0.923	87	5	5	3	2.2 Stratification/Blocking; 2.3 Statistical Test/Events/Software; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2019.2942++joi190026supp2_prod_1655321720.83793_protocol.md	0.900	0.911	63	7	3	3	2.2 Minimization or Blocking; 2.3 Sample Size Re-Estimation; 5.3 Alternative Methods; 5.7 Statistical Software
+nejm++10.1056_NEJMoa2201302++nejmoa2201302_protocol.md	0.900	0.907	71	5	5	3	2.2 Stratification Factors; 2.3 Re-Estimation; 2.3 Software; 5.3 Alternative Methods
+nejm++10.1056_NEJMoa1104318++nejmoa1104318_protocol.md	0.898	0.922	84	9	3	4	2.3 Required Number of Events; 5.4 Missing Data Assumptions; 3.3 Per Protocol
+nejm++10.1056_NEJMoa2308815++nejmoa2308815_protocol.md	0.898	0.903	64	2	6	4	2.2 Stratification Factors; 2.2 Minimization or Blocking; 2.3 Statistical Test Assumed; 2.3 Software Used for Calculation; 3.1 Multiplicity Adjustment
+nejm++10.1056_NEJMoa1908490++nejmoa1908490_protocol.md	0.897	0.922	53	1	4	18	2.3 Dropout / Non-Adherence Inflation; 2.3 Sample Size Re-Estimation / Amendments; 3.1 Alpha Level; 3.3 Intention-to-Treat; 4.3 Recruitment
+nejm++10.1056_NEJMoa1607427++nejmoa1607427_protocol.md	0.895	0.931	94	2	6	4	2.3 Variability; 2.3 OS Dropout/Re-estimation/Software; 5.3 Alternative Methods
+nejm++10.1056_NEJMoa2108793++nejmoa2108793_protocol.md	0.894	0.950	102	7	2	1	2.3 Required Number of Events; 2.3 Software Used for Calculation; 5.3 Alternative Methods; 5.4 Missing Data Assumptions; 5.7 Statistical Software
+nejm++10.1056_NEJMoa2405923++nejmoa2405923_protocol.md	0.894	0.920	119	5	8	5	2.3 Software; 2.3 Variability; 3.3 Per Protocol; 5.2 Registry Transformations
+nejm++10.1056_NEJMoa1303646++nejmoa1303646_protocol.md	0.894	0.918	81	5	5	1	2.3 Required Number of Events; 2.3 Software; 3.3 Per Protocol; 2.2 Stratification Factors
+lancet++10.1016_S0140-6736_25_01069-4++mmc1_protocol.md	0.893	0.917	86	4	6	2	1.2 Exploratory Objectives; 2.3 Re-Estimation; 2.3 Software; 2.5 Stopping Guidelines; 3.3 Per Protocol
+nejm++10.1056_NEJMoa1800866++nejmoa1800866_protocol.md	0.892	0.932	126	7	6	7	2.3 Software Used for Calculation; 2.3 Dropout / Non-Adherence Inflation; 5.3 Alternative Methods if Assumptions Fail
+nejm++10.1056_NEJMoa1308573++nejmoa1308573_protocol.md	0.892	0.912	111	6	8	9	2.3 Variability Assumption; 2.3 Software Used for Calculation; 3.3 Per Protocol
+nejm++10.1056_NEJMoa2108903++nejmoa2108903_protocol.md	0.892	0.901	83	7	6	6	2.2 Stratification; 2.3 Control-Arm Value; 2.3 Software; 4.3 Recruitment
+nejm++10.1056_NEJMoa1313984++nejmoa1313984_protocol.md	0.891	0.933	74	5	3	2	2.3 Variability; 3.2 Adherence Definition; 5.3 Assumption Checks; 5.3 Alternative Methods; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1610493++nejmoa1610493_protocol.md	0.891	0.927	71	10	1	2	2.3 Required Number of Events; 2.3 Software Used; 3.1 Confidence Intervals; 5.4 Missing Data Assumptions
+lancet++10.1016_S0140-6736_23_00642-6++mmc1_protocol.md	0.891	0.926	67	3	4	2	2.3 Required Number of Events; 2.3 Software Used; 2.5 Alpha Spending; 3.3 Per Protocol
+nejm++10.1056_NEJMoa1813046++nejmoa1813046_protocol.md	0.891	0.920	84	5	5	2	2.3 Variability; 2.3 Events; 2.3 Software; 3.3 Per Protocol; 5.2 Recurrent stroke/SIS units
+nejm++10.1056_NEJMoa2201662++nejmoa2201662_protocol.md	0.891	0.919	77	4	5	2	2.3 Variability; 2.3 Required Number of Events; 2.3 Software; 3.2 Protocol Deviations; 5.2 Transformations
+nejm++10.1056_NEJMoa1915922++nejmoa1915922_protocol.md	0.891	0.904	69	3	6	2	2.3 Required Events/Software; 3.3 Per Protocol; 5.2 SAQ Transformations; 5.6 Grading/Causality
+nejm++10.1056_NEJMoa2008290++nejmoa2008290_protocol.md	0.891	0.899	74	3	7	3	2.3 Required Events; 2.3 Dropout Inflation; 3.3 Per Protocol; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa2000741++nejmoa2000741_protocol.md	0.889	0.936	107	5	5	3	2.3 Statistical Test; 2.3 Required Events; 2.3 Software; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa2307227++nejmoa2307227_protocol.md	0.889	0.933	87	7	3	3	2.3 Required Number of Events; 3.1 Multiplicity Adjustment; 5.3 Assumption Checks; 5.3 Alternative Methods; 5.4 Missing Data Assumptions
+lancet++10.1016_S0140-6736_16_31419-2++mmc1_protocol.md	0.889	0.929	90	4	5	4	1.2 Exploratory Objectives; 2.3 Dropout / Non-Adherence Inflation; 2.5 Stopping Guidelines; 5.3 Alternative Methods if Assumptions Fail
+nejm++10.1056_NEJMoa2106535++nejmoa2106535_protocol.md	0.889	0.927	82	1	6	3	2.3 Required Events; 2.3 Dropout Inflation; 2.3 Re-Estimation; 2.3 Software; 2.5 Alpha Spending; 4.3 Recruitment
+nejm++10.1056_NEJMoa2029073++nejmoa2029073_protocol.md	0.889	0.926	73	4	4	3	1.2 Objectives; 2.3 Control/Treatment Values; 2.3 Software; 2.5 Stopping Guidelines
+lancet++10.1016_S0140-6736_16_31275-2++mmc1_protocol.md	0.889	0.918	134	0	12	12	2.3 Software; 5.3 Assumption Checks; 5.3 Alternative Methods
+nejm++10.1056_NEJMoa1908380++nejmoa1908380_protocol.md	0.889	0.918	66	2	5	3	2.3 Required Number of Events; 2.3 Software Used for Calculation; 5.3 Assumption Checks; 5.3 Alternative Methods if Assumptions Fail; 5.4 Missing Data Assumptions
+lancet++10.1016_S0140-6736_22_01198-9++mmc1_protocol.md	0.889	0.916	77	9	3	3	2.3 Required Number of Events; 2.3 Software; 3.3 Intention-to-Treat; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1215734++nejmoa1215734_protocol.md	0.888	0.920	85	3	6	8	2.2 Blocking; 2.3 Dropout and Software; 2.5 Stopping Guidelines; 5.3 Assumption Checks; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1805131++nejmoa1805131_protocol.md	0.888	0.919	77	4	5	12	2.3 Sample Size Re-Estimation; 3.3 Intention-to-Treat; 3.3 Per Protocol; 5.3 Covariate Adjustment; 5.3 Assumption Checks
+lancet++10.1016_S0140-6736_16_32616-2++mmc1_protocol.md	0.887	0.920	94	7	5	4	3.2 Protocol Deviation Reporting; 3.3 Per Protocol; 5.3 Assumption Checks; 5.3 Alternative Methods; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1709684++nejmoa1709684_protocol.md	0.887	0.920	89	6	5	4	2.3 Dropout/Non-Adherence Inflation; 2.3 Software Used for Calculation; 3.3 Per Protocol
+nejm++10.1056_NEJMoa1602001++nejmoa1602001_protocol.md	0.887	0.915	82	8	4	4	2.3 Software Used for Calculation; 3.2 Protocol Deviation Definition; 5.3 Assumption Checks; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa2103629++nejmoa2103629_protocol.md	0.886	0.919	72	3	5	4	2.2 Minimization; 2.3 Software; 2.5 Stopping Guidelines; 5.3 Assumption Checks; 5.3 Alternative Methods
+nejm++10.1056_NEJMoa1908655++nejmoa1908655_protocol.md	0.886	0.917	114	5	8	10	2.2 Minimization; 2.3 Software; 2.3 Required Events
+nejm++10.1056_NEJMoa2308809++nejmoa2308809_protocol.md	0.886	0.904	60	3	5	4	2.2 Minimization or Blocking; 2.3 Software Used for Calculation; 3.3 Per Protocol; 5.3 Assumption Checks; 5.3 Alternative Methods if Assumptions Fail
+jama++10.1001_jama.2020.3308++joi200029supp1_prod_1606935887.48995_protocol.md	0.885	0.921	66	8	2	2	2.3 Variability Assumption; 5.3 Alternative Methods; 2.5 Stopping Guidelines; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa2214924++nejmoa2214924_protocol.md	0.885	0.919	83	5	5	5	2.3 Sample Size Re-Estimation; 2.3 Software Used; 3.3 Intention-to-Treat; 5.3 Alternative Methods
+jama++10.1001_jama.2023.11043++joi230073supp1_prod_1689353562.43233_protocol.md	0.885	0.909	99	2	9	6	2.2 Minimization or Blocking; 2.3 Dropout / Non-Adherence Inflation (3); 2.3 Software Used for Calculation (partial); 3.2 Protocol Deviation Definition; 3.3 Per Protocol
+nejm++10.1056_NEJMoa2114464++nejmoa2114464_protocol.md	0.885	0.909	72	5	5	2	2.3 Variability Assumption; 2.3 Required Number of Events; 2.3 Software Used for Calculation; 3.3 Per Protocol
+nejm++10.1056_NEJMoa1607303++nejmoa1607303_protocol.md	0.885	0.907	120	3	11	6	2.2 Method; 2.2 Minimization or Blocking; 2.3 Variability Assumption; 2.3 Software Used for Calculation; 3.3 Per Protocol
+nejm++10.1056_NEJMoa2203315++nejmoa2203315_protocol.md	0.885	0.906	90	3	8	9	2.2 Stratification Factors; 2.3 Software Used; 5.3 Assumption Checks; 5.3 Alternative Methods
+nejm++10.1056_NEJMoa1709866++nejmoa1709866_protocol.md	0.884	0.917	108	6	7	19	2.3 Sample Size Re-Estimation; 5.3 Assumption Checks; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1407154++nejmoa1407154_protocol.md	0.883	0.947	71	3	4	2	2.3 Required Events; 2.3 Software; 2.5 Stopping Guidelines
+nejm++10.1056_NEJMoa2308695++nejmoa2308695_protocol.md	0.883	0.922	103	8	5	6	2.3 Dropout; 2.2 Blocking; 3.2 Protocol Deviation Definition; 3.3 Per Protocol
+jama++10.1001_jama.2023.1650++joi230017supp1_prod_1715808904.34709_protocol.md	0.883	0.918	83	1	7	2	2.3 Required Number of Events; 2.3 Dropout Inflation; 2.3 Software; 3.3 Intention-to-Treat; 3.3 Per Protocol
+nejm++10.1056_NEJMoa1505270++nejmoa1505270_protocol.md	0.883	0.894	96	3	10	7	2.3 Variability/Dropout/Re-estimation; 3.3 Per Protocol; 4.3 Recruitment
+nejm++10.1056_NEJMoa1804093++nejmoa1804093_protocol.md	0.881	0.916	86	2	7	7	2.3 Assumed Control/Treatment-Arm Values; 2.3 Dropout Inflation; 2.5 Stopping Guidelines; 3.3 Per Protocol
+jama++10.1001_jama.2023.2063++joi230021supp1_prod_1679593360.14663_protocol.md	0.881	0.907	71	5	5	7	2.3 Re-Estimation; 2.3 Software; 5.7 Statistical Software
+nejm++10.1056_NEJMoa1506930++nejmoa1506930_protocol.md	0.880	0.933	80	8	2	2	2.3 Variability Assumption; 3.3 Per Protocol; 5.3 Alternative Methods; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2025.20841++joi250096supp1_prod_1766440845.20166_protocol.md	0.880	0.923	70	4	4	3	2.3 Required Events; 2.3 Re-Estimation; 2.3 Software; 5.3 Subgroups
+lancet++10.1016_S0140-6736_23_00464-6++mmc1_protocol.md	0.880	0.909	71	7	4	2	2.2 Minimization or Blocking; 2.3 Dropout / Non-Adherence Inflation; 5.3 Assumption Checks; 5.3 Alternative Methods if Assumptions Fail; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa2202809++nejmoa2202809_protocol.md	0.880	0.907	95	4	8	13	2.3 Part 1 Dropout/Basis/Re-estimation/Software; 3.2 Protocol Deviation Definition; 3.3 Per Protocol
+nejm++10.1056_NEJMoa2118542++nejmoa2118542_protocol.md	0.880	0.900	62	2	6	2	2.3 Assumed Treatment-Arm Value; 2.3 Variability Assumption; 2.3 Required Number of Events; 5.3 Assumption Checks; 5.3 Alternative Methods if Assumptions Fail
+nejm++10.1056_NEJMoa1916374++nejmoa1916374_protocol.md	0.880	0.895	73	8	5	2	2.2 Stratification Factors; 2.3 Required Number of Events; 2.3 Software Used; 3.3 Per Protocol
+nejm++10.1056_NEJMoa1803760++nejmoa1803760_protocol.md	0.880	0.893	65	4	6	3	2.2 Stratification Factors; 2.3 Software; 5.3 Covariate Adjustment; 5.3 Alternative Methods
+nejm++10.1056_NEJMoa2208415++nejmoa2208415_protocol.md	0.880	0.857	55	10	5	2	2.2 Stratification Factors; 2.3 Assumed Treatment-Arm Value; 3.3 Per Protocol; 5.3 Assumption Checks
+nejm++10.1056_NEJMoa2400327++nejmoa2400327_protocol.md	0.879	0.910	83	5	6	4	2.3 Variability; 2.3 Re-Estimation; 2.3 Required Events; 2.3 Software; 5.4 Missing Data Assumptions
+lancet++10.1016_S0140-6736_15_60898-4++mmc1_protocol.md	0.879	0.894	81	6	7	4	2.2 Minimization or Blocking; 3.3 Per Protocol; 5.3 Assumption Checks; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1613849++nejmoa1613849_protocol.md	0.878	0.940	100	5	4	3	2.3 Re-Estimation; 2.3 Software; 3.2 Protocol Deviation Definition; 3.3 Per Protocol; 5.7 Statistical Software
+lancet++10.1016_S0140-6736_18_32483-8++mmc1_protocol.md	0.878	0.909	68	4	5	3	2.3 Re-Estimation; 2.3 Software; 2.5 Alpha Spending; 5.3 Assumption Checks
+nejm++10.1056_NEJMoa1800536++nejmoa1800536_protocol.md	0.878	0.906	127	7	10	8	2.3 Sample Size Re-Estimation; 3.3 Per Protocol; 5.3 Assumption Checks; 5.3 Alternative Methods; 5.7 Statistical Software
+nejm++10.1056_NEJMoa2308713++nejmoa2308713_protocol.md	0.878	0.906	58	9	2	3	2.3 Variability Assumption; 2.3 Dropout Inflation; 2.5 Alpha Spending; 3.3 Intention-to-Treat
+nejm++10.1056_NEJMoa1405044++nejmoa1405044_protocol.md	0.878	0.890	102	6	10	6	2.3 Software Used for Calculation; 5.3 Covariate Adjustment; 5.3 Assumption Checks; 5.3 Alternative Methods; 5.7 Statistical Software
+nejm++10.1056_NEJMoa1804980++nejmoa1804980_protocol.md	0.875	0.929	69	5	3	7	2.3 Software; 3.3 Intention-to-Treat; 5.3 Covariate Adjustment; 5.3 Assumption Checks; 5.4 Missing Data Assumptions
+lancet++10.1016_S0140-6736_25_01774-X++mmc1_protocol.md	0.875	0.901	66	5	5	4	2.2 Blocking; 2.3 Control-arm Value; 2.3 Dropout Inflation; 2.3 Software; 3.3 Per Protocol
+nejm++10.1056_NEJMoa1813049++nejmoa1813049_protocol.md	0.875	0.891	68	3	7	4	2.3 Variability Assumption; 2.3 Software Used; 3.3 Per Protocol; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2016.14799++joi160118supp2_prod_protocol.md	0.875	0.881	66	9	5	4	2.3 Sample Size Re-Estimation; 4.5 Summary Methods; 5.3 Sensitivity Analyses; 5.4 Missing Data
+nejm++10.1056_NEJMoa1105743++nejmoa1105743_protocol.md	0.872	0.930	97	5	5	4	2.3 Variability Assumption; 2.3 Statistical Test Assumed; 2.3 Dropout / Non-Adherence Inflation; 2.3 Software Used for Calculation
+nejm++10.1056_NEJMoa1602954++nejmoa1602954_protocol.md	0.872	0.899	68	6	5	1	2.3 Required Number of Events; 2.3 Dropout / Non-Adherence Inflation; 3.2 Adherence Definition; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1515724++nejmoa1515724_protocol.md	0.872	0.893	90	4	9	1	2.3 Dropout/Re-estimation/Software; 3.2 Deviation Reporting; 4.4 Withdrawal fields; 5.6 Grading/Causality
+jama++10.1001_jama.2019.10551++joi190080supp1_prod_protocol.md	0.871	0.873	85	8	9	4	2.1 Allocation Ratio; 2.2 Blocking; 2.3 Required Number of Events; 2.3 Software; 3.3 Per Protocol
+nejm++10.1056_NEJMoa1616011++nejmoa1616011_protocol.md	0.870	0.917	81	3	6	2	2.3 Software; 2.5 Alpha Spending; 5.3 Assumption Checks; 5.3 Alternative Methods; 5.7 Statistical Software
+jama++10.1001_jama.2022.18590++joi220112supp1_prod_1692105761.1007_protocol.md	0.870	0.907	77	2	7	2	2.3 Events; 2.3 Dropout; 2.3 Software; 3.3 Per Protocol; 5.7 Statistical Software
+nejm++10.1056_NEJMoa2200433++nejmoa2200433_protocol.md	0.870	0.901	66	5	5	2	2.3 Software; 2.5 Alpha Spending; 3.2 Protocol Deviation Definition; 5.4 Missing Data Assumptions; 5.7 Statistical Software
+nejm++10.1056_NEJMoa2403953++nejmoa2403953_protocol.md	0.870	0.892	64	4	6	2	2.3 Software; 2.5 Stopping Guidelines; 2.5 Alpha Spending; 3.3 Per Protocol; 4.3 Recruitment
+nejm++10.1056_NEJMoa1810865++nejmoa1810865_protocol.md	0.870	0.885	64	10	4	2	2.2 Minimization or Blocking; 2.3 Software Used; 3.3 Per Protocol; 5.7 Statistical Software
+nejm++10.1056_NEJMoa2103294++nejmoa2103294_protocol.md	0.870	0.849	68	10	8	2	2.2 Minimization or Blocking; 5.3 Assumption Checks; 5.3 Alternative Methods; 5.4 Missing Data Assumptions; 5.6 Grading Scales and Causality
+nejm++10.1056_NEJMoa2113708++nejmoa2113708_protocol.md	0.868	0.904	90	8	6	15	2.3 Dropout; 2.3 Re-Estimation; 2.3 Software; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1606910++nejmoa1606910_protocol.md	0.868	0.870	83	8	9	12	2.3 Dropout / Non-Adherence Inflation; 2.3 Software Used for Calculation; 4.3 Recruitment; 5.7 Statistical Software
+nejm++10.1056_NEJMoa1805374++nejmoa1805374_protocol.md	0.867	0.920	73	3	5	3	2.3 Required Number of Events; 2.3 Re-Estimation; 2.3 Software; 2.5 Alpha Spending; 3.1 Multiplicity
+nejm++10.1056_NEJMoa1811744++nejmoa1811744_protocol.md	0.867	0.918	66	2	5	3	2.3 Software; 3.2 Protocol Deviation Definition; 3.2 Protocol Deviation Reporting; 3.3 Per Protocol; 5.7 Statistical Software
+jama++10.1001_jama.2020.6940++joi200046supp1_prod_1603230586.1173_protocol.md	0.867	0.916	68	5	4	3	2.3 Control/Treatment Values; 2.3 Software; 2.5 Alpha Spending; 5.7 Statistical Software
+nejm++10.1056_NEJMoa2209421++nejmoa2209421_protocol.md	0.867	0.914	82	6	5	3	2.2 Stratification Factors; 2.3 Dropout / Non-Adherence Inflation; 2.3 Software Used for Calculation; 3.3 Per Protocol
+nejm++10.1056_NEJMoa1409860++nejmoa1409860_protocol.md	0.867	0.910	72	7	4	3	2.3 Required Number of Events; 2.3 Sample Size Re-Estimation / Amendments; 3.3 Per Protocol; 5.7 Statistical Software
+nejm++10.1056_NEJMoa1611977++nejmoa1611977_protocol.md	0.867	0.907	66	4	5	2	2.3 Variability Assumption; 2.3 Dropout / Non-Adherence Inflation; 2.3 Software Used for Calculation; 3.3 Per Protocol; 5.3 Alternative Methods if Assumptions Fail
+nejm++10.1056_NEJMoa1301092++nejmoa1301092_protocol.md	0.867	0.899	58	8	3	3	2.3 Required Number of Events; 2.3 Dropout / Non-Adherence Inflation; 2.3 Software Used for Calculation; 3.3 Per Protocol
+lancet++10.1016_S0140-6736_25_02155-5++mmc1_protocol.md	0.867	0.891	58	7	4	3	2.3 Dropout; 2.3 Software; 3.3 Per Protocol
+nejm++10.1056_NEJMoa2207940++nejmoa2207940_protocol.md	0.867	0.891	78	8	6	6	2.3 Required Number of Events; 2.3 Software Used for Calculation; 2.2 Minimization or Blocking; 4.3 Recruitment
+jama++10.1001_jama.2020.5230++joi200036supp1_prod_protocol.md	0.867	0.871	70	8	7	3	2.3 Software; 3.1 Confidence Intervals; 3.3 Per Protocol; 5.2 Quality-of-life measurement/scoring
+nejm++10.1056_NEJMoa2415820++nejmoa2415820_protocol.md	0.865	0.885	80	1	10	5	2.3 Control-Arm Value; 2.3 Statistical Test; 2.3 Software; 4.3 Recruitment
+nejm++10.1056_NEJMoa2017699++nejmoa2017699_protocol.md	0.864	0.900	94	1	10	7	2.3 Software; 3.2 Protocol Deviation Definition; 3.3 Per Protocol; 5.4 Missing Data Assumptions; 5.7 Statistical Software
+lancet++10.1016_S0140-6736_19_32597-8++mmc1_protocol.md	0.864	0.889	62	4	6	4	2.3 Assumed Control-Arm Value; 2.3 Assumed Treatment-Arm Value; 2.3 Software Used for Calculation; 3.3 Per Protocol
+nejm++10.1056_NEJMoa1911326++nejmoa1911326_protocol.md	0.864	0.882	58	4	6	8	2.3 Dropout/Software; 5.2 PK Units/Transformations; 5.3 Assumption Checks/Alternatives
+jama++10.1001_jama.2018.11597++joi180088supp1_prod_protocol.md	0.862	0.910	74	3	6	1	2.3 Required Number of Events; 2.3 Sample Size Re-Estimation; 2.3 Software; 2.5 Alpha Spending
+nejm++10.1056_NEJMoa1412096++nejmoa1412096_protocol.md	0.862	0.887	65	3	7	1	2.3 Variability Assumption; 2.3 Software Used; 3.2 Protocol Deviation Definition; 5.3 Assumption Checks; 5.3 Alternative Methods; 5.7 Statistical Software
+nejm++10.1056_NEJMoa1917346++nejmoa1917346_protocol.md	0.859	0.934	89	5	4	2	2.3 Assumed Treatment-Arm Value; 2.3 Software Used; 3.3 Per Protocol; 5.7 Statistical Software
+nejm++10.1056_NEJMoa1809615++nejmoa1809615_protocol.md	0.859	0.915	72	6	4	2	2.3 Software; 3.3 Per Protocol; 5.3 Alternative Methods; 5.7 Statistical Software
+nejm++10.1056_NEJMoa1715474++nejmoa1715474_protocol.md	0.859	0.900	59	8	3	2	2.3 Software; 3.1 Confidence Intervals; 3.2 Protocol Deviation Definition
+jama++10.1001_jama.2015.10529++joi150103supp1_prod_protocol.md	0.859	0.853	61	11	6	2	2.3 Dropout / Non-Adherence Inflation; 3.3 Per Protocol; 5.2 Measurement Units; 5.2 Transformations / Derived Variables
+lancet++10.1016_S0140-6736_21_01203-4++mmc1_protocol.md	0.859	0.850	56	7	7	2	2.3 Required Number of Events; 2.3 Dropout / Non-Adherence Inflation; 3.2 Protocol Deviation Definition; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa2023386++nejmoa2023386_protocol.md	0.858	0.915	99	7	6	6	2.3 Dropout / Non-Adherence Inflation; 2.3 Sample Size Re-Estimation / Amendments; 2.3 Software Used for Calculation
+nejm++10.1056_NEJMoa1414792++nejmoa1414792_protocol.md	0.858	0.902	89	6	7	6	2.3 Variability/Dropout/Software; 3.3 Per Protocol; 3.2 Adherence
+jama++10.1001_jama.2019.14735++joi190107supp2_prod_protocol.md	0.858	0.895	86	7	7	6	2.2 Minimization; 2.3 Re-Estimation; 2.3 Software; 2.5 Stopping Guidelines; 2.5 Alpha Spending
+nejm++10.1056_NEJMoa1905239++nejmoa1905239_protocol.md	0.858	0.871	81	7	9	6	2.2 Stratification Factors; 2.3 Dropout / Non-Adherence Inflation; 2.3 Software Used for Calculation; 4.3 Recruitment
+nejm++10.1056_NEJMoa1908892++nejmoa1908892_protocol.md	0.856	0.934	111	4	6	3	2.3 Software; 3.3 Per Protocol; 5.3 Assumption Checks; 5.3 Alternative Methods; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa2113514++nejmoa2113514_protocol.md	0.856	0.914	70	8	3	3	2.3 Required Number of Events; 2.3 Sample Size Re-Estimation; 2.3 Software; 3.1 Multiplicity Adjustment; 3.1 Confidence Intervals
+nejm++10.1056_NEJMoa1504370++nejmoa1504370_protocol.md	0.856	0.909	67	6	4	3	2.3 Variability; 2.3 Dropout; 2.3 Software; 2.5 Stopping Guidelines
+nejm++10.1056_NEJMoa2203094++nejmoa2203094_protocol.md	0.856	0.909	66	8	3	3	2.3 Variability Assumption; 2.3 Software Used for Calculation; 3.3 Per Protocol
+nejm++10.1056_NEJMoa2306263++nejmoa2306263_protocol.md	0.856	0.894	72	8	5	3	2.2 Minimization or Blocking; 2.3 Software Used; 2.5 Stopping Guidelines; 3.1 Multiplicity Adjustment; 3.2 Protocol Deviation Definition
+nejm++10.1056_NEJMoa1402355++nejmoa1402355_protocol.md	0.856	0.890	65	7	5	3	2.2 Minimization; 2.3 Dropout; 3.3 Per Protocol; 5.3 Assumption Checks; 5.3 Alternative Methods
+lancet++10.1016_S0140-6736_20_30931-4++mmc1_protocol.md	0.856	0.881	83	5	9	3	2.3 Control/Treatment Values; 2.3 Software; 3.1 Multiplicity Adjustment; 3.3 Per Protocol; 4.4 Withdrawal
+lancet++10.1016_S0140-6736_22_00622-5++mmc1_protocol.md	0.856	0.877	57	7	5	3	2.3 Sample Size Re-Estimation; 2.5 Stopping Guidelines; 5.3 Assumption Checks; 5.3 Alternative Methods if Assumptions Fail
+jama++10.1001_jama.2019.10517++joi190079supp1_prod_protocol.md	0.856	0.862	127	8	17	16	2.3 Required Number of Events; 2.3 Sample Size Re-Estimation; 3.1 Multiplicity Adjustment; 3.1 Confidence Intervals; 3.3 Per Protocol
+nejm++10.1056_NEJMoa1204133++nejmoa1204133_protocol.md	0.855	0.878	80	5	9	4	2.3 Software Used for Calculation; 3.1 Confidence Intervals; 3.2 Protocol Deviation Definition; 3.3 Per Protocol; 5.7 Statistical Software
+nejm++10.1056_NEJMoa2013615++nejmoa2013615_protocol.md	0.853	0.894	112	3	12	9	2.3 Software Used; 2.3 Sample Size Re-Estimation; 2.2 Stratification Factors; 5.3 Alternative Methods
+nejm++10.1056_NEJMoa1007125++nejmoa1007125_protocol.md	0.852	0.911	84	7	5	4	2.3 Sample Size Re-Estimation; 5.3 Assumption Checks; 5.3 Alternative Methods
+nejm++10.1056_NEJMoa2204462++nejmoa2204462_protocol.md	0.852	0.894	65	13	2	4	2.3 Assumed Treatment-Arm Value; 2.3 Dropout Inflation; 3.3 Per Protocol; 5.3 Assumption Checks; 5.3 Alternative Methods
+nejm++10.1056_NEJMoa2412006++nejmoa2412006_protocol.md	0.852	0.891	84	12	5	7	2.3 Software Used for Calculation; 3.2 Protocol Deviation Definition/Reporting; 5.7 Statistical Software
+nejm++10.1056_NEJMoa2002787++nejmoa2002787_protocol.md	0.852	0.883	53	7	4	8	2.3 Dropout / Software; 5.3 Assumption Checks / Alternatives
+nejm++10.1056_NEJMoa1906137++nejmoa1906137_protocol.md	0.852	0.876	134	7	16	15	2.3 Sample Size Re-Estimation; 3.1 Confidence Intervals; 3.2 Protocol Deviations; 5.2 Eosinophil Units/Transformations
+nejm++10.1056_NEJMoa1901713++nejmoa1901713_protocol.md	0.851	0.918	83	1	7	2	2.3 Control/Treatment Values; 2.3 Re-Estimation/Software; 2.5 Stopping/Alpha Spending; 3.1 Multiplicity
+nejm++10.1056_NEJMoa1500528++nejmoa1500528_protocol.md	0.851	0.874	83	7	9	3	2.3 Dropout; 2.3 Sample Size Re-Estimation; 2.3 Software; 3.2 Adherence Definition; 3.2 Protocol Deviation Definition; 3.3 Per Protocol; 5.7 Statistical Software
+nejm++10.1056_NEJMoa2022483++nejmoa2022483_protocol.md	0.850	0.917	65	2	5	8	2.3 Sample Size Re-Estimation; 2.3 Software; 3.1 Alpha Level; 5.3 Assumption Checks; 5.3 Alternative Methods
+nejm++10.1056_NEJMoa1705688++nejmoa1705688_protocol.md	0.850	0.897	59	4	5	8	2.3 Control/Treatment Values; 2.3 Effect Size/Variability/Dropout; 3.1 Multiplicity Adjustment
+nejm++10.1056_NEJMoa2203163++nejmoa2203163_protocol.md	0.848	0.927	73	6	5	2	2.2 Blocking; 2.3 Control-Arm Value; 2.3 Variability; 2.3 Dropout; 2.3 Software
+nejm++10.1056_NEJMoa1816594++nejmoa1816594_protocol.md	0.848	0.917	81	3	6	3	2.3 Control/Treatment Values; 2.3 Dropout; 2.3 Software; 2.5 Alpha Spending; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1510665++nejmoa1510665_protocol.md	0.848	0.913	77	3	6	2	2.3 Variability; 2.3 Dropout; 2.3 Software; 3.3 Per Protocol; 5.3 Alternative Methods
+nejm++10.1056_NEJMoa1500896++nejmoa1500896_protocol.md	0.848	0.906	78	7	5	2	2.3 Required Number of Events; 2.3 Re-Estimation; 2.3 Software; 3.3 Per Protocol; 5.7 Statistical Software
+nejm++10.1056_NEJMoa1509150++nejmoa1509150_protocol.md	0.848	0.904	92	4	8	2	2.3 Variability; 2.3 Required Events; 2.3 Software; 3.2 Protocol Deviations
+nejm++10.1056_NEJMoa1915315++nejmoa1915315_protocol.md	0.848	0.892	90	2	10	4	2.3 Variability; 2.3 Dropout; 2.3 Software; 3.2 Adherence Definition; 3.3 Per Protocol; 5.3 Assumption Checks
+nejm++10.1056_NEJMoa1503093++nejmoa1503093_protocol.md	0.848	0.889	78	4	8	2	1.1 Background and Rationale; 2.3 Dropout; 2.3 Software; 3.3 Per Protocol; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1506816++nejmoa1506816_protocol.md	0.848	0.885	62	7	5	2	2.3 Software; 3.3 Per Protocol; 5.3 Alternative Methods; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa2314620++nejmoa2314620_protocol.md	0.848	0.884	69	7	6	2	2.3 Treatment-Arm Value; 2.3 Software; 2.5 Alpha Spending; 3.3 Intention-to-Treat; 5.3 Alternative Methods
+nejm++10.1056_NEJMoa1911998++nejmoa1911998_protocol.md	0.848	0.883	75	9	6	2	2.3 Required Number of Events; 2.5 Alpha Spending or Adjustment; 3.2 Protocol Deviation Reporting; 4.4 Withdrawal Levels; 5.3 Alternative Methods
+nejm++10.1056_NEJMoa1816047++nejmoa1816047_protocol.md	0.847	0.892	91	7	8	4	2.3 Variability Assumption; 2.3 Software Used; 5.3 Assumption Checks; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa2029554++nejmoa2029554_protocol.md	0.847	0.884	82	11	6	7	2.3 Required Number of Events; 3.3 Per Protocol; 5.3 Covariate Adjustment; 5.3 Alternative Methods
+nejm++10.1056_NEJMoa1109071++nejmoa1109071_protocol.md	0.847	0.856	92	6	13	9	2.3 Dropout/Software; 2.2 Stratification/Blocking; 4.3 Recruitment
+nejm++10.1056_NEJMoa1313600++nejmoa1313600_protocol.md	0.846	0.911	80	4	6	2	2.3 Variability; 2.3 Dropout; 3.3 Per Protocol; 5.3 Assumption Checks; 5.4 Missing Data Assumptions
+lancet++10.1016_S0140-6736_23_01302-8++mmc1_protocol.md	0.844	0.906	75	4	6	3	2.3 Assumed control/treatment-arm values; 2.3 Re-estimation/Software; 3.3 Per Protocol
+nejm++10.1056_NEJMoa1609462++nejmoa1609462_protocol.md	0.844	0.904	64	4	5	3	2.3 Variability Assumption; 2.3 Software Used; 5.3 Covariate Adjustment; 5.3 Assumption Checks; 5.3 Alternative Methods
+lancet++10.1016_S0140-6736_25_02171-3++mmc1_protocol.md	0.844	0.903	97	10	6	3	2.3 Variability; 2.3 Statistical Test; 2.3 Software; 3.2 Protocol Deviations; 5.3 Assumption Checks
+nejm++10.1056_NEJMoa2313551++nejmoa2313551_protocol.md	0.844	0.893	77	5	7	3	2.3 Software; 2.5 Alpha Spending; 5.3 Assumption Checks; 5.3 Alternative Methods; 5.7 Statistical Software
+nejm++10.1056_NEJMoa1507574++nejmoa1507574_protocol.md	0.844	0.882	70	10	5	3	2.3 Required Number of Events; 2.3 Software; 2.5 Alpha Spending; 3.3 Per Protocol; 5.7 Statistical Software
+nejm++10.1056_NEJMoa1713973++nejmoa1713973_protocol.md	0.844	0.870	65	4	8	3	2.3 Dropout and Software; 3.2 Adherence; 3.3 Per Protocol; 4.4 Withdrawal; 5.3 Alternative Methods
+jama++10.1001_jama.2021.15703++joi210104supp1_prod_1633987816.98553_protocol.md	0.844	0.836	99	11	15	3	2.3 Required Number of Events; 2.3 Software; 3.1 Multiplicity Adjustment; 5.2 Transformations / Derived Variables
+nejm++10.1056_NEJMoa2211075++nejmoa2211075_protocol.md	0.842	0.902	106	8	8	12	2.3 Dropout; 2.3 Software; 3.2?
+nejm++10.1056_NEJMoa1208809++nejmoa1208809_protocol.md	0.841	0.900	83	5	7	4	2.3 Target Difference/Power/Dropout/Software; 2.6 Final Analysis Timing; 3.3 Per Protocol
+nejm++10.1056_NEJMoa2017015++nejmoa2017015_protocol.md	0.841	0.895	66	4	6	4	2.3 Control/Treatment Values; 2.3 Statistical Test; 2.3 Re-estimation/Software; 2.5 Stopping Guidelines; 5.5 Population PK
+nejm++10.1056_NEJMoa1511190++nejmoa1511190_protocol.md	0.840	0.918	87	4	6	1	2.3 Dropout/Re-estimation/Software; 3.3 Per Protocol; 5.3 Assumption Checks/Alternatives
+nejm++10.1056_NEJMoa1805762++nejmoa1805762_protocol.md	0.840	0.886	95	5	10	6	2.3 Variability Assumption; 2.3 Basis for Assumptions; 3.3 Per Protocol; 5.3 Alternative Methods if Assumptions Fail
+nejm++10.1056_NEJMoa2116154++nejmoa2116154_protocol.md	0.840	0.869	96	1	14	9	2.3 Control/Treatment Values; 2.3 Statistical Test; 2.3 Software; 5.3 Covariate Adjustment; 4.3 Recruitment
+nejm++10.1056_NEJMoa1113572++nejmoa1113572_protocol.md	0.840	0.864	96	5	13	3	2.3 Variability; 2.3 Software; 2.5 Alpha Spending; 2.1 Allocation Ratio; 2.2 Blocking
+jama++10.1001_jama.2018.0156++joi180004supp1_prod_protocol.md	0.840	0.798	95	16	18	1	2.3 Variability; 2.3 Required Number of Events; 2.3 Dropout; 5.2 Transformations
+lancet++10.1016_S0140-6736_18_31257-1++mmc1_protocol.md	0.839	0.906	93	6	7	4	2.2 Minimization or Blocking; 2.3 Software Used for Calculation; 3.2 Protocol Deviation Definition; 3.3 Per Protocol; 5.7 Statistical Software
+nejm++10.1056_NEJMoa1310480++nejmoa1310480_protocol.md	0.839	0.878	80	5	9	4	2.3 Variability; 2.3 Dropout; 2.3 Software; 2.5 Stopping Guidelines; 3.2 Protocol Deviation Definition; 4.3 Recruitment; 5.3 Alternative Methods
+nejm++10.1056_NEJMoa1901281++nejmoa1901281_protocol.md	0.839	0.862	76	10	8	4	2.3 Required Number of Events; 2.3 Software Used for Calculation; 3.3 Per Protocol; 5.3 Assumption Checks
+nejm++10.1056_NEJMoa1803164++nejmoa1803164_protocol.md	0.839	0.851	78	9	10	4	2.3 Dropout; 3.2 Protocol Deviations; 3.3 Per Protocol; 5.3 Alternative Methods
+nejm++10.1056_NEJMoa1810641++nejmoa1810641_protocol.md	0.837	0.915	94	6	6	2	2.3 Dropout / Non-Adherence Inflation; 3.1 Multiplicity Adjustment; 3.3 Per Protocol; 5.3 Assumption Checks
+lancet++10.1016_S0140-6736_23_01351-X++mmc1_protocol.md	0.837	0.872	67	3	9	2	2.3 Variability; 2.3 Software; 2.5 Alpha Spending; 3.1 Multiplicity Adjustment
+nejm++10.1056_NEJMoa1203858++nejmoa1203858_protocol.md	0.835	0.870	123	8	15	8	2.3 Assumed Treatment-Arm Value; 2.3 Variability Assumption; 2.3 Software Used for Calculation; 3.3 Per Protocol; 5.3 Alternative Methods if Assumptions Fail
+nejm++10.1056_NEJMoa1215372++nejmoa1215372_protocol.md	0.833	0.912	87	3	7	3	2.3 Sample Size Re-Estimation; 2.3 Software; 3.2 Protocol Deviation Definition; 3.3 Per Protocol; 5.3 Assumption Checks; 5.3 Alternative Methods; 5.7 Statistical Software
+nejm++10.1056_NEJMoa1908316++nejmoa1908316_protocol.md	0.833	0.896	89	3	9	3	2.3 Assumed Values; 2.3 Software; 5.3 Assumption Checks; 5.3 Alternative Methods
+jama++10.1001_jama.2021.21316++joi210131supp1_prod_1640024195.80126_protocol.md	0.833	0.890	64	9	4	3	2.2 Minimization or Blocking; 2.3 Required Number of Events; 2.3 Sample Size Re-Estimation / Amendments; 2.3 Software Used for Calculation; 5.3 Alternative Methods if Assumptions Fail
+nejm++10.1056_NEJMoa2214676++nejmoa2214676_protocol.md	0.831	0.894	102	7	9	4	2.3 Variability Assumption; 2.3 Dropout / Non-Adherence Inflation; 2.3 Software Used for Calculation; 3.3 Per Protocol; 5.3 Assumption Checks
+nejm++10.1056_NEJMoa1506027++nejmoa1506027_protocol.md	0.831	0.891	122	0	15	7	2.3 Variability/Software; 2.5 Alpha Spending; 5.7 Statistical Software
+nejm++10.1056_NEJMoa2306963++nejmoa2306963_protocol.md	0.830	0.930	115	8	5	4	2.3 Software Used for Calculation; 3.3 Per Protocol; 4.3 Recruitment; 5.3 Assumption Checks; 5.7 Statistical Software
+nejm++10.1056_NEJMoa2206834++nejmoa2206834_protocol.md	0.830	0.910	73	5	5	5	2.3 Software Used for Calculation; 3.1 Multiplicity Adjustment; 5.3 Covariate Adjustment; 5.3 Assumption Checks; 5.3 Alternative Methods if Assumptions Fail
+nejm++10.1056_NEJMoa1803675++nejmoa1803675_protocol.md	0.830	0.889	81	7	7	1	2.3 Variability; 2.3 Dropout; 2.3 Software; 5.3 Assumption Checks; 5.3 Subgroup Analyses
+nejm++10.1056_NEJMoa2109522++nejmoa2109522_protocol.md	0.830	0.879	115	2	15	14	2.3 Software Used for Calculation; 5.3 Assumption Checks; 5.3 Alternative Methods if Assumptions Fail; 5.3 Subgroup Analyses; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2025.7515++joi250032supp2_prod_1750275112.69991_protocol.md	0.830	0.867	101	6	13	18	2.3 Software; 3.2 Adherence; 5.3 Assumption Checks; 5.4 Missing Data Assumptions; 5.6 Adverse Event Definitions
+jama++10.1001_jama.2016.17615++joi160138supp1_prod_protocol.md	0.830	0.866	59	5	7	2	2.3 Re-Estimation; 2.3 Software; 3.3 Intention-to-Treat; 5.3 Assumption Checks; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1414264++nejmoa1414264_protocol.md	0.830	0.861	76	3	11	4	2.3 Sample Size Re-Estimation/Software; 2.5 Stopping Guidelines; 3.1 Confidence Intervals; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1611593++nejmoa1611593_protocol.md	0.830	0.855	66	10	7	1	2.3 Software; 2.5 Stopping Guidelines; 3.3 Per Protocol; 5.4 Missing Data Assumptions; 5.7 Statistical Software
+nejm++10.1056_NEJMoa2106062++nejmoa2106062_protocol.md	0.829	0.877	62	4	7	7	2.3 Control/Treatment Values; 2.3 Effect Size; 5.3 Assumption Checks; 5.3 Alternative Methods
+nejm++10.1056_NEJMoa1902678++nejmoa1902678_protocol.md	0.829	0.865	53	3	7	12	2.3 Dropout/Software; 3.3 Intention-to-Treat/Per Protocol; 5.3 Covariate Adjustment
+nejm++10.1056_NEJMoa2201048++nejmoa2201048_protocol.md	0.829	0.861	93	12	10	8	2.3 Software; 3.3 Per Protocol; 5.3 Assumption Checks; 5.3 Alternative Methods
+jama++10.1001_jama.2017.3417++joi170030supp1_prod_protocol.md	0.828	0.919	116	7	7	8	2.3 Statistical Test Assumed; 2.3 Software Used; 2.5 Alpha Spending; 3.3 Per Protocol
+nejm++10.1056_NEJMoa2213093++nejmoa2213093_protocol.md	0.828	0.865	73	1	11	5	2.3 Dropout / Non-Adherence Inflation; 2.3 Sample Size Re-Estimation / Amendments; 3.2 Protocol Deviation Definition; 3.2 Protocol Deviation Reporting; 3.3 Per Protocol; 5.3 Assumption Checks; 5.3 Alternative Methods if Assumptions Fail; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2022.25029++joi220153supp1_prod_1679951712.48376_protocol.md	0.826	0.889	92	8	8	2	2.3 Required Number of Events; 2.3 Software Used; 3.2 Protocol Deviation Definition; 5.4 Missing Data Assumptions; 5.7 Statistical Software
+nejm++10.1056_NEJMoa1310422++nejmoa1310422_protocol.md	0.826	0.887	93	2	11	4	2.3 Required Number of Events; 2.3 Software Used; 5.3 Covariate Adjustment; 5.3 Assumption Checks
+nejm++10.1056_NEJMoa1311274++nejmoa1311274_protocol.md	0.826	0.879	60	3	7	2	2.3 Re-Estimation; 2.3 Software; 3.2 Protocol Deviation Definition; 3.3 Per Protocol; 5.3 Assumption Checks; 5.3 Alternative Methods; 5.7 Statistical Software
+nejm++10.1056_NEJMoa1203165++nejmoa1203165_protocol.md	0.826	0.872	61	7	6	2	2.3 Dropout; 3.1 Multiplicity Adjustment; 3.2 Protocol Deviation Definition; 5.3 Assumption Checks
+jama++10.1001_jama.2020.23370++joi200127supp1_prod_1650566803.20576_protocol.md	0.826	0.866	65	12	5	2	2.3 Variability Assumption; 2.3 Software Used; 3.2 Protocol Deviation Reporting; 5.3 Alternative Methods; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1810527++nejmoa1810527_protocol.md	0.825	0.887	115	6	12	7	2.3 Variability Assumption; 2.3 Software Used for Calculation; 2.3 PK Alpha/Power; 3.3 Per Protocol
+jama++10.1001_jama.2020.12443++joi200080supp1_prod_1597950357.23208_protocol.md	0.825	0.874	79	8	8	3	2.3 Variability Assumption; 2.3 Required Number of Events; 2.3 Software Used; 5.3 Alternative Methods
+nejm++10.1056_NEJMoa1014164++nejmoa1014164_protocol.md	0.825	0.867	75	6	9	8	2.3 Variability Assumption; 2.3 Dropout / Non-Adherence Inflation; 2.3 Software Used for Calculation; 2.3 Required Number of Events
+nejm++10.1056_NEJMoa1812405++nejmoa1812405_protocol.md	0.825	0.867	73	10	7	6	2.3 Assumed arm values; 5.3 Assumption checks; 5.3 Alternative methods
+lancet++10.1016_S0140-6736_24_01203-0++mmc1_protocol.md	0.825	0.835	74	9	11	8	2.3 Software; 2.5 Stopping Guidelines; 3.3 Per Protocol; 5.3 Assumption Checks
+jama++10.1001_jama.2019.15468++joi190111supp1_prod_protocol.md	0.823	0.887	69	11	4	2	2.3 Software; 2.5 Alpha Spending; 5.3 Assumption Checks; 5.3 Alternative Methods; 3.3 Per Protocol
+nejm++10.1056_NEJMoa1811867++nejmoa1811867_protocol.md	0.823	0.877	106	9	11	4	2.3 Variability; 2.3 Re-estimation; 2.3 Software; 2.5 Stopping Guidelines; 5.7 Statistical Software
+jama++10.1001_jama.2024.9779++joi240070supp2_prod_1723741887.31473_protocol.md	0.822	0.889	69	6	6	3	2.3 Required Number of Events; 2.3 Software; 2.5 Alpha Spending; 5.3 Alternative Methods; 5.7 Statistical Software
+jama++10.1001_jama.2022.9792++joi220064supp1_prod_1657919742.47529_protocol.md	0.822	0.867	61	8	6	3	2.3 Statistical Test; 2.3 Software; 3.1 Confidence Intervals; 3.3 Per Protocol; 5.3 Alternative Methods
+nejm++10.1056_NEJMoa1208606++nejmoa1208606_protocol.md	0.822	0.862	98	4	14	8	2.2 Stratification Factors; 2.3 Assumed Control-Arm Value; 2.3 Dropout / Non-Adherence Inflation; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa2118828++nejmoa2118828_protocol.md	0.822	0.856	60	5	8	3	2.3 Required Number of Events; 2.3 Dropout Inflation; 2.3 Re-Estimation; 2.3 Software; 5.3 Assumption Checks; 5.3 Alternative Methods
+lancet++10.1016_S0140-6736_20_30230-0++mmc1_protocol.md	0.821	0.889	109	6	11	6	2.3 Variability Assumption; 2.3 Software Used for Calculation; 3.2 Adherence Definition; 3.3 Per Protocol; 5.3 Assumption Checks; 5.7 Statistical Software
+jama++10.1001_jama.2015.12++joi150002supp1_prod_protocol.md	0.821	0.859	88	13	9	6	2.3 Required Number of Events; 2.3 Software Used for Calculation; 3.3 Per Protocol
+nejm++10.1056_NEJMoa2100591++nejmoa2100591_protocol.md	0.820	0.876	86	5	10	5	2.3 Statistical Test; 2.3 Required Events; 2.3 Re-estimation; 2.3 Software; 3.2 Protocol Deviation Definition; 5.2 Ordinal mRS Transformations; 5.7 Statistical Software
+jama++10.1001_jama.2023.22114++joi230132supp1_prod_1701196133.46168_protocol.md	0.819	0.886	120	8	12	10	2.3 Re-Estimation; 2.3 Software; 3.3 Per Protocol; 3.3 Other Populations
+lancet++10.1016_S0140-6736_20_30417-7++mmc1_protocol.md	0.819	0.876	70	9	6	2	2.2 Minimization or Blocking; 2.3 Variability Assumption; 2.5 Alpha Spending or Adjustment; 5.3 Assumption Checks; 5.4 Missing Data Assumptions
+lancet++10.1016_S0140-6736_24_02808-3++mmc1_protocol.md	0.818	0.898	76	6	6	4	2.3 Control-/treatment-arm values; 2.3 Re-estimation/Software; 3.1 Multiplicity; 5.2 Timed-walk transformations
+nejm++10.1056_NEJMoa1705835++nejmoa1705835_protocol.md	0.818	0.885	88	8	8	3	2.3 Alpha; 2.3 Required Number of Events; 2.3 Software; 2.5 Alpha Spending; 3.3 Per Protocol
+nejm++10.1056_NEJMoa1705342++nejmoa1705342_protocol.md	0.818	0.856	59	7	7	7	2.3 Variability; 2.3 Software; 2.5 Alpha Spending; 3.3 Per Protocol; 5.3 Assumption Checks
+nejm++10.1056_NEJMoa2017815++nejmoa2017815_protocol.md	0.818	0.847	82	2	14	2	2.3 Variability/Events/Re-estimation/Software; 2.5 Alpha Spending; 3.2 Protocol Deviation Definition; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2022.1645++jpc220001supp1_prod_1645750100.37484_protocol.md	0.818	0.843	67	11	8	4	2.3 Variability/Re-Estimation/Software; 2.5 Stopping Guidelines; 3.2 Adherence Definition; 4.4 Withdrawal Data
+nejm++10.1056_NEJMoa1306220++nejmoa1306220_protocol.md	0.817	0.862	87	7	11	10	2.3 Dropout / Software; 2.5 Alpha Spending; 5.3 Assumption Checks / Alternative Methods
+lancet++10.1016_S0140-6736_24_02842-3++mmc1_protocol.md	0.816	0.847	88	12	11	5	2.3 Variability/Required Events/Software; 3.2 Protocol Deviation Definition; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2016.21044++joi160166supp1_prod_protocol.md	0.815	0.909	109	11	6	3	2.3 Software; 2.6 Final Analysis Timing; 3.2 Protocol Deviations; 3.3 Per Protocol
+lancet++10.1016_S0140-6736_23_00921-2++mmc1_protocol.md	0.815	0.898	108	3	11	6	2.3 Variability; 2.3 Required Events; 3.3 Per Protocol; 5.6 Causality
+nejm++10.1056_NEJMoa1607529++nejmoa1607529_protocol.md	0.815	0.893	83	9	6	2	2.3 Software; 3.3 Per Protocol; 5.3 Assumption Checks; 5.4 Missing Data Assumptions
+lancet++10.1016_S0140-6736_25_01198-5++mmc1_protocol.md	0.815	0.892	75	7	6	2	2.3 Variability Assumption; 2.3 Software Used for Calculation; 3.2 Protocol Deviation Definition; 3.3 Other Populations; 5.7 Statistical Software
+nejm++10.1056_NEJMoa1209124++nejmoa1209124_protocol.md	0.815	0.888	100	6	10	4	2.3 Variability; 2.3 Dropout; 3.3 Per Protocol; 5.3 Assumption Checks; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1908419++nejmoa1908419_protocol.md	0.815	0.855	77	5	11	3	2.1 Allocation Ratio; 2.3 Required Number of Events; 2.5 Alpha Spending; 5.3 Assumption Checks; 5.3 Alternative Methods
+jama++10.1001_jama.2024.8772++joi240067supp1_prod_1721921460.19257_protocol.md	0.811	0.903	131	7	11	3	2.3 Control/Treatment/Software; 3.3 Per Protocol; 5.3 Sensitivity Analyses; 5.7 Statistical Software
+nejm++10.1056_NEJMoa1910993++nejmoa1910993_protocol.md	0.811	0.887	65	3	7	3	2.3 Required Number of Events; 2.3 Dropout Inflation; 3.3 Per Protocol; 5.3 Alternative Methods; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1912387++nejmoa1912387_protocol.md	0.811	0.877	65	5	7	3	2.3 Software; 3.2 Adherence Definition; 3.3 Per Protocol; 5.3 Alternative Methods
+nejm++10.1056_NEJMoa1200435++nejmoa1200435_protocol.md	0.811	0.870	67	7	7	3	2.2 Stratification; 2.5 Alpha Spending; 3.2 Deviation Definition; 3.3 Per Protocol; 5.3 Assumption Checks
+jama++10.1001_jama.2018.22039++joi180160supp1_prod_protocol.md	0.811	0.847	82	7	12	5	2.3 Control/Treatment Values, Events, Re-estimation; 2.5 Interim Analyses/Stopping/Alpha Spending; 5.2 Transformations
+nejm++10.1056_NEJMoa1113538++nejmoa1113538_protocol.md	0.811	0.827	63	8	10	3	2.3 Software; 3.2 Protocol Deviation Definition; 5.3 Assumption Checks/Alternatives/Subgroups; 5.7 Statistical Software
+jama++10.1001_jama.2019.4973++joi190041supp2_prod_protocol.md	0.810	0.868	77	4	10	3	2.3 Re-Estimation/Software/Test; 2.5 Alpha Spending; 3.3 ITT/Per Protocol; 5.3 Subgroups; 5.4 Assumptions
+nejm++10.1056_NEJMoa1908973++nejmoa1908973_protocol.md	0.809	0.873	67	4	8	2	2.3 Required Number of Events; 2.5 Alpha Spending; 3.1 Confidence Intervals; 3.3 Per Protocol; 5.3 Assumption Checks; 5.4 Missing Data Assumptions
+lancet++10.1016_S0140-6736_22_00560-8++mmc2_protocol.md	0.809	0.835	81	10	12	2	2.3 Required Number of Events; 3.2 Protocol Deviations; 5.3 Subgroup Analyses
+nejm++10.1056_NEJMoa1813060++nejmoa1813060_protocol.md	0.808	0.868	96	6	12	6	2.3 Required Number of Events; 2.3 Software Used; 5.3 Alternative Methods; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2022.5218++joi220040supp3_prod_1651681377.11183_protocol.md	0.808	0.845	90	6	14	6	2.3 Assumed Control-/Treatment-Arm Values; 2.3 Software; 3.2 Protocol Deviation Definition/Reporting; 4.3 Recruitment
+nejm++10.1056_NEJMoa2108330++nejmoa2108330_protocol.md	0.806	0.882	90	7	11	4	2.3 Variability/Dropout/Software; 3.3 Per Protocol; 5.3 Assumption Checks; 5.4 Missing Data Assumptions; 5.7 Statistical Software
+nejm++10.1056_NEJMoa1103151++nejmoa1103151_protocol.md	0.806	0.867	77	9	8	4	2.3 Variability Assumption; 2.3 Required Number of Events; 2.3 Software Used; 5.3 Assumption Checks; 5.4 Missing Data Assumptions; 5.7 Statistical Software
+lancet++10.1016_S0140-6736_19_33008-9++mmc1_protocol.md	0.805	0.832	86	11	13	2	2.3 Variability; 2.3 Required Number of Events; 2.3 Software; 5.3 Assumption Checks; 5.7 Statistical Software
+jama++10.1001_jama.2021.18295++joi210115supp1_prod_1642098213.82143_protocol.md	0.804	0.872	71	8	7	2	2.3 Assumed Treatment-Arm Value; 2.3 Required Number of Events; 2.3 Dropout Inflation; 2.3 Software; 5.3 Alternative Methods; 5.7 Statistical Software
+jama++10.1001_jama.2021.22002++joi210133supp1_prod_1640292640.82584_protocol.md	0.804	0.857	55	10	5	2	2.3 Variability; 2.3 Required Number of Events; 2.3 Sample Size Re-Estimation; 5.3 Assumption Checks; 5.3 Alternative Methods
+jama++10.1001_jama.2016.1252++joi160014supp1_prod_protocol.md	0.804	0.853	64	5	9	2	2.3 Software Used for Calculation; 5.3 Assumption Checks; 5.3 Alternative Methods; 5.3 Subgroup Analyses; 5.7 Statistical Software
+nejm++10.1056_NEJMoa2302399++nejmoa2302399_protocol.md	0.804	0.845	59	7	8	2	2.3 Re-Estimation; 2.3 Software; 2.5 Stopping Guidelines; 3.2 Protocol Deviation Definition
+jama++10.1001_jama.2024.17888++joi240106supp2_prod_1726513510.95801_protocol.md	0.804	0.817	77	16	11	2	2.3 Variability; 2.3 Re-estimation; 2.3 Software; 2.5 Stopping Guidelines; 5.7 Statistical Software
+nejm++10.1056_NEJMoa2116414++nejmoa2116414_protocol.md	0.803	0.863	52	3	7	10	2.3 Software; 3.3 Intention-to-Treat; 5.3 Covariate Adjustment; 5.3 Assumption Checks; 5.3 Alternative Methods; 5.4 Missing Data Assumptions; 5.7 Statistical Software
+jama++10.1001_jama.2021.8844++joi210062supp1_prod_1627319252.94793_protocol.md	0.802	0.840	85	3	15	3	2.3 Statistical Test/Dropout/Software; 2.5 Interim Analyses/Stopping Guidelines; 3.3 Per Protocol
+jama++10.1001_jama.2014.6490++joi140073supp1_prod_protocol.md	0.802	0.786	68	18	12	8	2.3 Dropout; 2.3 Sample Size Re-Estimation; 3.2 Protocol Deviation Definition; 3.3 Per Protocol; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1316366++nejmoa1316366_protocol.md	0.800	0.870	64	6	7	3	2.2 Blocking; 2.3 Variability, Dropout, Software; 3.3 Per Protocol; 5.3 Assumption Checks, Alternative Methods
+jama++10.1001_jama.2018.3197++joi180032supp1_prod_protocol.md	0.800	0.864	68	4	9	3	2.3 Variability; 2.3 Dropout; 2.3 Software; 2.5 Stopping Guidelines; 5.3 Subgroup Analyses; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1516783++nejmoa1516783_protocol.md	0.800	0.856	57	11	5	3	2.3 Required Number of Events; 2.3 Software; 3.2 Protocol Deviation Definition; 3.3 Per Protocol; 5.3 Alternative Methods
+nejm++10.1056_NEJMoa1715971++nejmoa1715971_protocol.md	0.800	0.849	68	5	10	3	2.3 Assumed Control-Arm Value; 2.3 Assumed Treatment-Arm Value; 2.5 Stopping Guidelines; 3.1 Confidence Intervals; 5.3 Assumption Checks
+nejm++10.1056_NEJMoa1400283++nejmoa1400283_protocol.md	0.800	0.844	63	4	10	3	2.3 Statistical Test Assumed; 2.3 Software Used for Calculation; 3.1 Multiplicity Adjustment; 3.1 Confidence Intervals; 5.3 Covariate Adjustment; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1401602++nejmoa1401602_protocol.md	0.800	0.844	77	8	11	6	2.2 Stratification; 2.3 Required Events; 2.3 Dropout; 2.3 Software; 5.4 Missing Data Assumptions
+lancet++10.1016_S0140-6736_18_32488-7++mmc1_protocol.md	0.800	0.838	76	14	9	3	2.3 Dropout/Software; 2.5 Alpha Spending; 5.3 Assumption Checks/Alternatives; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1513614++nejmoa1513614_protocol.md	0.800	0.827	84	19	10	3	2.3 Required Number of Events; 2.3 Software Used; 2.5 Stopping Guidelines; 3.1 Multiplicity Adjustment; 4.4 Reasons for Withdrawal
+jama++10.1001_jama.2023.4080++joi230034supp1_prod_1681934420.5371_protocol.md	0.800	0.820	72	15	10	3	2.3 Variability; 3.1 Multiplicity; 3.2 Protocol Deviations; 5.4 Handling Methods; 5.6 Grading/Causality
+jama++10.1001_jama.2022.15613++joi220096supp2_prod_1664218840.20607_protocol.md	0.800	0.777	68	10	17	3	2.3 Variability; 2.3 Events; 2.3 Software; 3.3 Per Protocol; 5.4 Missing Data Assumptions; 5.6 Adverse Event Definitions
+jama++10.1001_jama.2021.8565++joi210057supp1_prod_1625172044.12449_protocol.md	0.799	0.827	85	12	13	7	2.3 Software Used for Calculation; 3.2 Protocol Deviation Reporting; 5.3 Covariate Adjustment; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1308789++nejmoa1308789_protocol.md	0.798	0.888	101	11	8	4	2.3 Variability Assumption; 2.3 Required Number of Events; 3.3 Per Protocol; 5.3 Assumption Checks; 5.3 Alternative Methods if Assumptions Fail
+nejm++10.1056_NEJMoa1901183++nejmoa1901183_protocol.md	0.798	0.864	67	6	8	17	2.3 Re-Estimation/Software; 3.2 Adherence/Deviation Definition; 5.7 Statistical Software
+nejm++10.1056_NEJMoa1801946++nejmoa1801946_protocol.md	0.798	0.861	79	9	9	9	2.2 Minimization or Blocking; 2.3 Variability Assumption; 2.3 Power; 3.2 Adherence Definition; 5.3 Assumption Checks
+nejm++10.1056_NEJMoa1903212++nejmoa1903212_protocol.md	0.796	0.857	93	6	13	8	2.3 Required Events and Software; 3.2 Protocol Deviation Definition; 3.3 Per Protocol; 5.3 Assumption Checks
+jama++10.1001_jama.2017.5705++joi170049supp1_prod_protocol.md	0.795	0.839	95	8	15	6	2.3 Re-Estimation; 2.3 Software; 3.1 Multiplicity Adjustment; 3.3 Per Protocol; 5.3 Assumption Checks; 5.3 Alternative Methods
+nejm++10.1056_NEJMoa1411366++nejmoa1411366_protocol.md	0.794	0.869	86	7	10	25	2.3 Dropout / Non-Adherence Inflation; 2.3 Software Used for Calculation; 3.3 Intention-to-Treat; 3.3 Per Protocol; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1509388++nejmoa1509388_protocol.md	0.793	0.883	77	5	8	2	2.3 Variability; 2.3 Dropout; 2.5 Stopping Guidelines; 3.3 Per Protocol; 5.3 Assumption Checks
+nejm++10.1056_NEJMoa1413275++nejmoa1413275_protocol.md	0.793	0.872	76	5	9	2	2.3 Control-Arm Value; 2.3 Alpha; 2.3 Statistical Test; 3.1 Alpha Level; 3.1 Multiplicity Adjustment
+jama++10.1001_jama.2023.2854++joi230026supp1_prod_1681230434.11006_protocol.md	0.793	0.860	66	9	7	2	2.3 Statistical Test; 2.3 Dropout; 2.5 Alpha Spending; 3.2 Adherence Definition; 3.3 Per Protocol
+nejm++10.1056_NEJMoa2313917++nejmoa2313917_protocol.md	0.793	0.854	68	4	10	2	2.3 Software; 3.2 Protocol deviations; 3.3 Per Protocol; 5.3 Assumption Checks/Alternatives; 5.7 Statistical Software
+nejm++10.1056_NEJMoa1610020++nejmoa1610020_protocol.md	0.793	0.850	73	7	10	8	2.3 Dropout Inflation; 2.3 Basis for Assumptions; 2.3 Sample Size Re-Estimation; 2.5 Stopping Guidelines; 5.3 Assumption Checks; 5.3 Alternative Methods
+lancet++10.1016_S0140-6736_21_02753-7++mmc1_protocol.md	0.793	0.840	64	3	11	2	2.3 Control-Arm Value; 2.3 Variability; 2.3 Software; 3.2 Adherence Assessment; 5.3 Assumption Checks; 5.4 Missing Data Assumptions; 5.7 Statistical Software
+jama++10.1001_jama.2025.3833++joi250017supp1_prod_1748540686.91174_protocol.md	0.793	0.820	61	19	6	2	2.3 Required Number of Events; 2.3 Software Used; 2.5 Alpha Spending or Adjustment; 3.3 Per Protocol; 5.3 Subgroup Analyses
+jama++10.1001_jama.2024.17123++joi240103supp1_prod_1726513515.41118_protocol.md	0.793	0.799	77	9	16	2	2.3 Software; 2.3 Dropout; 3.3 Per Protocol; 5.3 Alternative Methods; 5.4 Missing Data Assumptions; 5.7 Statistical Software
+nejm++10.1056_NEJMoa1201546++nejmoa1201546_protocol.md	0.790	0.863	89	5	12	4	2.3 Variability; 2.3 Software; 5.3 Assumption Checks; 5.3 Alternative Methods
+nejm++10.1056_NEJMoa2312775++nejmoa2312775_protocol.md	0.790	0.863	93	9	11	15	2.3 Required Number of Events; 2.3 Software Used for Calculation; 2.2 Minimization or Blocking
+nejm++10.1056_NEJMoa1606038++nejmoa1606038_protocol.md	0.790	0.862	99	2	15	4	2.3 OS assumptions; 2.3 Re-estimation/Software; 5.3 Assumption checks/alternatives; 5.7 Statistical Software
+nejm++10.1056_NEJMoa1907096++nejmoa1907096_protocol.md	0.790	0.849	69	8	9	4	2.2 Stratification Factors; 2.3 Required Number of Events; 2.3 Software Used for Calculation; 5.3 Assumption Checks; 5.3 Alternative Methods if Assumptions Fail
+nejm++10.1056_NEJMoa1901113++nejmoa1901113_protocol.md	0.789	0.868	78	9	8	3	2.3 Control/Treatment Values; 2.3 Re-Estimation/Software; 2.5 Alpha Spending; 5.3 Subgroup Analyses
+nejm++10.1056_NEJMoa1711460++nejmoa1711460_protocol.md	0.789	0.867	67	3	9	5	2.3 Dropout/Re-Estimation/Software; 2.5 Alpha Spending; 3.1 Multiplicity; 5.3 Covariate/Assumption Methods
+jama++10.1001_jama.2016.21048++joi160167supp1_prod_protocol.md	0.789	0.858	65	9	7	3	2.3 Re-Estimation/Software; 2.6 Final Analysis Timing; 3.1 Multiplicity/Confidence Intervals
+lancet++10.1016_S0140-6736_21_02225-X++mmc1_protocol.md	0.789	0.852	63	12	6	3	2.3 Software; 5.3 Covariate Adjustment; 5.3 Assumption Checks; 5.4 Handling Methods
+nejm++10.1056_NEJMsa1502403++nejmsa1502403_protocol.md	0.789	0.849	56	12	5	3	2.3 Control/Treatment Values; 2.3 Software; 3.3 Per Protocol; 5.6 Grading/Causality
+jama++10.1001_jama.2013.277169++joi130055supp1_prod_protocol.md	0.789	0.815	54	11	8	3	2.3 Control/Treatment Values; 3.2 Adherence; 4.2 Eligibility; 5.3 Alternative Methods
+nejm++10.1056_NEJMoa2416779++nejmoa2416779_protocol.md	0.787	0.861	68	7	8	1	2.3 Assumed control/treatment values; 2.3 Power; 2.3 Software; 5.3 Alternative methods
+nejm++10.1056_NEJMoa2310336++nejmoa2310336_protocol.md	0.784	0.878	70	4	8	2	2.3 Software; 2.5 Stopping Guidelines; 3.3 Intention-to-Treat; 5.3 Assumption Checks
+nejm++10.1056_NEJMoa1113713++nejmoa1113713_protocol.md	0.784	0.869	88	3	12	11	2.3 Dropout/Software; 2.5 Alpha Spending; 3.3 Intention-to-Treat/Per Protocol; 5.3 Assumption Checks/Alternative Methods
+nejm++10.1056_NEJMoa1409077++nejmoa1409077_protocol.md	0.784	0.824	116	7	22	11	2.3 Dropout / Non-Adherence Inflation; 2.3 Software Used for Calculation; 2.2 Stratification Factors
+nejm++10.1056_NEJMoa1613493++nejmoa1613493_protocol.md	0.783	0.872	68	7	7	2	2.3 Variability/Dropout; 2.5 Stopping Guidelines; 3.3 Per Protocol; 5.3 Assumption Checks; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1113162++nejmoa1113162_protocol.md	0.783	0.865	84	12	8	2	2.3 Software Used for Calculation; 3.3 Per Protocol; 5.3 Assumption Checks; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2018.0949++joi180016supp1_prod_protocol.md	0.783	0.862	76	10	8	2	2.3 Control/Treatment Values; 2.3 Re-estimation; 2.5 Alpha Spending; 2.6 Final Timing; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1200501++nejmoa1200501_protocol.md	0.783	0.858	85	17	7	2	2.3 Required Number of Events; 2.3 Software Used; 3.3 Per Protocol; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2024.10510++joi240073supp2_prod_1721921455.0278_protocol.md	0.783	0.849	79	5	12	2	2.3 Variability Assumption; 2.3 Software Used; 3.1 Multiplicity Adjustment; 3.3 Per Protocol; 5.3 Assumption Checks
+nejm++10.1056_NEJMoa1911124++nejmoa1911124_protocol.md	0.783	0.846	63	6	9	2	2.3 Required Events/Dropout/Software; 3.2 Protocol Deviation Definition; 3.3 Per Protocol; 5.3 Assumption Checks/Alternatives
+lancet++10.1016_S0140-6736_25_02069-0++mmc1_protocol.md	0.783	0.845	80	9	11	6	2.3 Treatment-Arm Value; 3.2 Adherence Definition; 3.2 Protocol Deviation Definition; 5.3 Covariate Adjustment; 5.3 Assumption Checks
+nejm++10.1056_NEJMoa1215555++nejmoa1215555_appendix_protocol.md	0.783	0.817	72	8	13	19	2.3 Re-Estimation/Software; 2.5 Alpha Spending; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1505241++nejmoa1505241_protocol.md	0.783	0.801	63	15	10	6	2.3 Variability and Software; 3.1 Confidence Intervals; 3.3 Per Protocol; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1714283++nejmoa1714283_protocol.md	0.780	0.863	117	11	14	2	2.3 Biomarker effect size/variability/alpha; 2.6 Final Analysis Timing; 3.2 Protocol Deviation Definition/Reporting; 5.7 Statistical Software
+jama++10.1001_jama.2015.5024++joi150050supp1_prod_protocol.md	0.780	0.829	92	10	15	9	2.3 Assumed Control/Treatment; 2.6 Final Analysis Timing; 3.2 Protocol Deviations; 3.3 Per Protocol; 5.3 Assumption Checks
+nejm++10.1056_NEJMoa2506295++nejmoa2506295_protocol.md	0.778	0.888	69	4	7	16	2.3 Dropout; 2.3 Software; 2.5 Alpha Spending; 3.1 Multiplicity; 3.3 Intention-to-Treat; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1313865++nejmoa1313865_protocol.md	0.778	0.862	71	8	8	3	2.3 Variability Assumption; 2.3 Dropout Inflation; 2.5 Alpha Spending; 5.3 Assumption Checks; 5.3 Alternative Methods; 5.7 Statistical Software
+jama++10.1001_jama.2020.8958++joi200057supp1_prod_1603742313.52228_protocol.md	0.778	0.840	62	12	7	3	2.3 Software; 3.3 Per Protocol; 5.3 Assumption Checks; 5.3 Alternative Methods
+nejm++10.1056_NEJMoa1514204++nejmoa1514204_protocol.md	0.778	0.829	57	7	9	3	2.3 Software; 3.3 Per Protocol; 5.3 Assumption Checks; 5.4 Missing Data Assumptions; 5.7 Statistical Software
+nejm++10.1056_NEJMoa2020198++nejmoa2020198_protocol.md	0.777	0.874	87	6	10	1	2.3 Variability/Test/Events/Dropout/Software; 2.5 Interim/Alpha Spending; 2.6 Final Timing; 5.3 Assumption Checks/Alternatives
+lancet++10.1016_S0140-6736_24_00686-X++mmc1_protocol.md	0.777	0.813	73	3	16	1	2.3 Assumed Treatment-Arm Value; 2.3 Software Used; 3.2 Protocol Deviation Reporting; 5.3 Assumption Checks; 5.4 Missing Data Assumptions
+lancet++10.1016_S0140-6736_18_31719-7++mmc1_protocol.md	0.777	0.802	65	16	10	1	5.3 Covariate Adjustment; 5.3 Assumption Checks; 5.3 Alternative Methods; 3.2 Protocol Deviation Definition; 5.4 Handling Methods
+lancet++10.1016_S0140-6736_26_00305-3++mmc1_protocol.md	0.775	0.830	70	6	12	6	2.3 Assumed arm values/effect/variability/alpha/test/software; 2.5 Stopping Guidelines; 3.3 Per Protocol
+nejm++10.1056_NEJMoa1602615++nejmoa1602615_protocol.md	0.774	0.842	78	9	11	4	2.3 Required Number of Events/Dropout/Software; 3.3 Intention-to-Treat; 5.3 Assumption Checks/Alternative Methods
+nejm++10.1056_NEJMoa1714284++nejmoa1714284_protocol.md	0.773	0.844	124	7	20	3	2.3 Required Number of Events; 2.3 Software Used for Calculation; 3.2 Protocol Deviations; 2.6 Final Analysis Timing; 5.7 Statistical Software
+jama++10.1001_jama.2019.7505++joi190055supp1_prod_16092_protocol.md	0.773	0.783	66	12	14	4	3.3 Per Protocol; 5.3 Sensitivity/Subgroup; 5.4 Missing Data; 5.2 Transformations
+nejm++10.1056_NEJMoa2200072++nejmoa2200072_protocol.md	0.772	0.872	72	6	8	2	2.3 Required Number of Events; 2.3 Software; 3.2 Protocol Deviations; 3.3 Per Protocol; 5.3 Assumption Checks; 5.7 Statistical Software
+lancet++10.1016_S0140-6736_14_60162-8++mmc1_protocol.md	0.772	0.860	66	9	7	2	3.1 Multiplicity Adjustment; 3.1 Confidence Intervals; 3.3 Per Protocol; 5.3 Assumption Checks; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1508502++nejmoa1508502_protocol.md	0.772	0.860	66	9	7	2	2.3 Required Number of Events; 2.3 Software Used; 3.2 Protocol Deviation Definition; 3.3 Per Protocol; 5.3 Alternative Methods
+jama++10.1001_jama.2021.1831++joi210014supp3_prod_1618250237.06296_protocol.md	0.772	0.798	61	12	11	3	2.3 Software; 2.5 Interim Analyses; 2.5 Stopping Guidelines; 3.3 Per Protocol; 5.3 Subgroup Analyses; 5.7 Statistical Software
+jama++10.1001_jama.2020.23523++joi200130supp2_prod_1611099220.15679_protocol.md	0.772	0.797	69	15	12	2	2.3 Variability/Re-estimation/Software; 3.1 Confidence Intervals; 3.2 Adherence Definition; 5.3 Assumption Checks/Alternative Methods
+jama++10.1001_jama.2025.5646++joi250026supp2_prod_1748540680.38736_protocol.md	0.770	0.823	91	9	16	8	2.3 Assumed Control-Arm Value; 2.3 Software Used; 3.2 Adherence Definition; 5.3 Assumption Checks
+jama++10.1001_jama.2019.12085++joi190090supp1_prod_protocol.md	0.770	0.822	81	14	12	3	2.3 Software; 3.1 Confidence Intervals; 3.3 Per Protocol; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa2209813++nejmoa2209813_protocol.md	0.767	0.868	65	2	9	8	2.3 Software; 3.2 Protocol Deviations; 3.3 Per Protocol; 5.3 Sensitivity Analyses
+jama++10.1001_jama.2025.7583++joi250033supp1_prod_1750956987.76581_protocol.md	0.767	0.853	70	5	10	3	2.3 Variability; 2.3 Re-Estimation; 2.3 Software; 3.1 Confidence Intervals; 3.2 Adherence Assessment; 3.3 Per Protocol; 5.4 Missing Data Assumptions; 5.7 Statistical Software
+nejm++10.1056_NEJMoa1811424++nejmoa1811424_protocol.md	0.767	0.797	53	4	12	3	2.3 Software; 3.1 Confidence Intervals; 3.3 Per Protocol; 5.3 Sensitivity Analyses; 5.4 Missing Data
+nejm++10.1056_NEJMoa2411721++nejmoa2411721_protocol.md	0.767	0.792	59	4	14	3	2.3 Variability/Re-estimation/Software; 2.5 Alpha Spending; 2.6 Final Analysis Timing; 3.1 Multiplicity; 3.3 Per Protocol; 5.3 Assumption Checks/Alternatives
+nejm++10.1056_NEJMoa1814556++nejmoa1814556_protocol.md	0.766	0.859	79	12	8	1	2.3 Alpha; 2.3 Software; 3.3 Per Protocol; 5.7 Statistical Software
+nejm++10.1056_NEJMoa2207419++nejmoa2207419_protocol.md	0.766	0.844	140	7	23	6	2.3 Required Events; 2.3 Dropout; 2.3 Software; 3.3 Per Protocol; 5.3 Assumption Checks; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa2602167++nejmoa2602167_protocol.md	0.766	0.819	87	16	13	2	2.3 Required Number of Events; 2.3 Software Used for Calculation; 3.1 Confidence Intervals; 3.3 Per Protocol; 5.4 Handling Methods
+jama++10.1001_jama.2021.2454++joi210017supp1_prod_1617663020.43146_protocol.md	0.766	0.785	53	18	8	1	2.3 Dropout; 2.3 Software; 3.3 Intention-to-Treat; 3.3 Per Protocol; 5.3 Primary Analysis
+jama++10.1001_jama.2020.23517++joi200128supp1_prod_1607962900.131_protocol.md	0.762	0.796	77	10	16	5	2.3 Software; 3.2 Protocol Deviations; 5.3 Covariate Adjustment; 5.4 Missing Data
+jama++10.1001_jama.2021.21187++joi210129supp1_prod_1640024204.10331_protocol.md	0.762	0.785	130	18	29	15	2.3 Required Number of Events; 2.3 Sample Size Re-Estimation; 3.2 Protocol Deviations; 5.3 Alternative Methods; 5.6 Grading Scales and Causality
+jama++10.1001_jama.2017.2692++joi170021supp1_prod_protocol.md	0.761	0.867	78	7	9	2	2.3 Variability; 2.3 Required Events; 2.3 Dropout; 2.3 Software; 3.3 Per Protocol; 5.3 Sensitivity Analyses; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1708618++nejmoa1708618_protocol.md	0.761	0.833	63	14	7	2	2.3 Dropout; 2.3 Software; 3.1 Confidence Intervals; 3.3 Per Protocol; 5.3 Alternative Methods; 5.3 Sensitivity Analyses
+nejm++10.1056_NEJMoa1305133++nejmoa1305133_protocol.md	0.761	0.830	109	11	18	16	2.3 Software; 3.2 Protocol Deviation Definition; 3.3 Per Protocol; 5.3 Assumption Checks; 5.7 Statistical Software
+jama++10.1001_jama.2018.6496++joi180054supp1_prod_protocol.md	0.761	0.825	63	6	11	5	2.3 Variability; 2.3 Dropout; 2.5 Alpha Spending; 3.1 Multiplicity; 3.3 Per Protocol; 5.3 Covariate Adjustment
+nejm++10.1056_NEJMoa1401105++nejmoa1401105_protocol.md	0.761	0.821	66	6	12	2	2.3 Variability/Events/Software; 3.2 Protocol Deviations; 5.3 Sensitivity Analyses; 5.4 Missing Data Assumptions; 5.7 Statistical Software
+jama++10.1001_jama.2022.13123++joi220085supp2_prod_1660585220.08168_protocol.md	0.761	0.819	72	10	12	2	2.3 Variability; 2.5 Interim Analyses; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1402582++nejmoa1402582_protocol.md	0.757	0.825	91	6	17	8	2.3 Assumed Control-Arm Value; 2.3 Dropout / Non-Adherence Inflation; 3.3 Per Protocol; 5.3 Alternative Methods; 5.3 Subgroup Analyses
+nejm++10.1056_NEJMoa1501824++nejmoa1501824_protocol.md	0.757	0.802	157	10	35	24	2.3 Dropout / Software; 3.3 Intention-to-Treat; 3.3 Per Protocol; 5.3 Assumption Checks
+nejm++10.1056_NEJMoa1103182++nejmoa1103182_protocol.md	0.756	0.871	86	11	8	3	2.3 Assumed Control/Treatment-Arm Values; 2.3 Re-Estimation/Software; 5.3 Subgroup Analyses; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2018.14618++joi180116supp1_prod_protocol.md	0.756	0.857	62	8	8	3	2.3 Power; 2.3 Software; 2.5 Stopping Guidelines; 5.3 Assumption Checks; 5.3 Alternative Methods; 5.3 Subgroup Analyses
+jama++10.1001_jama.2023.1084++joi230013supp1_prod_1677717761.40259_protocol.md	0.756	0.833	53	9	7	3	2.3 Variability; 2.3 Re-Estimation; 3.1 Multiplicity/Confidence Intervals; 5.3 Assumption Checks/Alternatives
+lancet++10.1016_S0140-6736_23_01520-9++mmc2_protocol.md	0.756	0.818	58	10	9	3	3.1 Confidence Intervals; 3.2 Adherence Definition; 5.3 Assumption Checks; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1509351++nejmoa1509351_protocol.md	0.756	0.813	57	8	10	3	2.3 Assumed Control/Treatment Values; 2.3 Statistical Test/Software; 3.1 Confidence Intervals; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa2600283++nejmoa2600283_protocol.md	0.756	0.813	55	12	8	3	2.3 Required Number of Events; 2.3 Software Used for Calculation; 5.3 Assumption Checks; 5.3 Alternative Methods if Assumptions Fail
+nejm++10.1056_NEJMoa1207363++nejmoa1207363_protocol.md	0.756	0.803	54	6	11	3	2.3 Dropout/Software; 3.1 Confidence Intervals; 3.3 Per Protocol; 5.3 Assumption Checks
+lancet++10.1016_S0140-6736_24_00549-X++mmc1_protocol.md	0.756	0.794	65	24	8	3	2.5 Alpha Spending; 3.1 Confidence Intervals; 3.3 Per Protocol; 5.3 Assumption Checks; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2022.20206++joi220121supp1_prod_1677095970.3402_protocol.md	0.756	0.792	62	17	10	3	2.3 Software; 3.1 Confidence Intervals; 3.2 Protocol Deviation Definition; 5.3 Assumption Checks; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2024.8531++joi240063supp2_prod_1723483065.98262_protocol.md	0.755	0.799	57	9	11	0	2.3 Variability Assumption; 2.3 Design Effect / Clustering; 2.5 Alpha Spending or Adjustment; 3.3 Per Protocol; 5.3 Alternative Methods if Assumptions Fail
+jama++10.1001_jama.2017.21904++joi170165supp1_prod_protocol.md	0.755	0.787	66	5	16	1	2.3 Required Number of Events; 2.3 Re-Estimation; 3.1 Multiplicity Adjustment; 5.3 Assumption Checks; 5.3 Alternative Methods; 5.3 Subgroup Analyses
+lancet++10.1016_S0140-6736_20_32173-5++mmc1_protocol.md	0.755	0.725	55	22	14	1	2.3 Required Events/Software; 3.2 Protocol Deviation Definition; 5.3 Covariate Adjustment/Assumption Checks/Alternative Methods; 5.7 Statistical Software
+jama++10.1001_jama.2023.12317++joi230080supp1_prod_1691609286.41114_protocol.md	0.754	0.809	125	12	25	16	2.3 Software Used for Calculation; 3.1 Confidence Intervals; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMc1901535++nejmc1901535_protocol.md	0.753	0.822	92	15	14	3	2.3 Required Number of Events; 2.3 Software Used; 3.2 Protocol Deviation Definition; 3.2 Protocol Deviation Reporting
+nejm++10.1056_NEJMoa2312928++nejmoa2312928_protocol.md	0.750	0.863	70	5	9	4	2.3 Treatment/Effect/Variability/Alpha/Power/Software; 2.5 Alpha Spending; 5.3 Subgroup Analyses
+nejm++10.1056_NEJMoa2028836++nejmoa2028836_protocol.md	0.750	0.833	60	10	8	2	2.3 Variability; 2.3 Events; 5.3 Assumption Checks; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1904351++nejmoa1904351_protocol.md	0.750	0.829	57	7	9	3	2.3 Variability Assumption; 2.3 Dropout; 2.5 Interim Analyses; 3.3 Per Protocol; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa2100596++nejmoa2100596_protocol.md	0.750	0.826	95	5	18	2	2.3 Alpha; 2.3 Required Number of Events; 3.3 Per Protocol; 5.3 Assumption Checks; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1411037++nejmoa1411037_protocol.md	0.750	0.824	80	8	14	4	2.3 Variability; 2.3 Re-Estimation; 2.3 Software; 3.1 Multiplicity; 5.3 Assumption Checks; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1510774++nejmoa1510774_protocol.md	0.750	0.810	95	14	17	10	2.3 Control/Treatment Values; 2.3 Re-Estimation/Software; 3.1 Multiplicity; 3.2 Protocol Deviations; 3.3 Per Protocol
+jama++10.1001_jama.2018.9128++joi180075supp1_prod_protocol.md	0.750	0.800	53	6	11	2	2.3 Control/Treatment Values/Design Effect; 2.5 Alpha Spending; 3.1 Multiplicity/Confidence Intervals; 3.2 Protocol Deviations; 3.3 Per Protocol
+lancet++10.1016_S0140-6736_21_00219-1++mmc1_protocol.md	0.746	0.816	75	5	15	3	2.3 Required Number of Events; 2.3 Dropout Inflation; 3.3 Per Protocol; 5.3 Assumption Checks; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2024.25845++joi240148supp1_prod_1741284936.24164_protocol.md	0.746	0.814	72	14	11	5	2.3 Re-Estimation; 2.3 ED Software/Variability/Events; 3.1 Confidence Intervals; 3.2 Protocol Deviations; 3.3 Per Protocol
+jama++10.1001_jama.2024.22362++joi240123supp1_prod_1734384547.46289_protocol.md	0.746	0.796	76	12	15	3	2.3 Software; 3.1 Multiplicity Adjustment; 3.3 Per Protocol; 5.3 Assumption Checks; 5.3 Sensitivity Analyses
+nejm++10.1056_NEJMoa1414827++nejmoa1414827_protocol.md	0.746	0.793	71	15	13	3	2.3 Required Events; 2.3 Software; 3.1 Confidence Intervals; 3.3 Per Protocol; 5.3 Sensitivity Analyses; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2017.2068++joi170017supp1_prod_protocol.md	0.745	0.835	71	10	10	1	2.3 Assumed Control-Arm Value; 2.3 Assumed Treatment-Arm Value; 3.2 Adherence Definition; 3.3 Per Protocol; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa2031304++nejmoa2031304_protocol.md	0.744	0.858	80	3	12	3	2.3 Variability; 2.3 Dropout; 2.3 Re-Estimation; 2.3 Software; 3.2 Protocol Deviations
+jama++10.1001_jama.2019.22450++joi190155supp2_prod_protocol.md	0.744	0.836	84	11	12	3	2.3 Software; 3.1 Multiplicity Adjustment; 5.3 Assumption Checks; 5.3 Alternative Methods; 5.3 Subgroup Analyses
+nejm++10.1056_NEJMoa1204242++nejmoa1204242_protocol.md	0.744	0.826	72	13	10	3	2.3 Required Number of Events; 2.3 Software Used; 3.1 Confidence Intervals; 5.3 Assumption Checks; 5.3 Alternative Methods
+nejm++10.1056_NEJMoa1404595++nejmoa1404595_protocol.md	0.744	0.781	51	12	10	3	2.3 Required Number of Events; 3.2 Protocol Deviation Definition; 3.3 Per Protocol; 5.3 Assumption Checks; 5.4 Missing Data Assumptions; 5.6 Grading Scales and Causality
+jama++10.1001_jama.2018.9592++jpc180005supp1_prod_protocol.md	0.744	0.748	73	11	21	3	2.3 Re-Estimation; 2.3 Software; 2.5 Interim Analyses; 3.2 Deviation Definition; 5.3 Covariate Adjustment; 5.4 Missing Data
+nejm++10.1056_NEJMoa1602044++nejmoa1602044_protocol.md	0.742	0.821	73	15	10	6	2.3 Required Number of Events; 2.3 Software Used; 3.2 Protocol Deviations; 3.3 Per Protocol; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2021.6470++joi210042supp1_prod_1621623382.93832_protocol.md	0.742	0.791	65	6	15	4	5.3 Covariate Adjustment; 5.3 Assumption Checks; 5.3 Alternative Methods; 3.1 Confidence Intervals; 3.3 Per Protocol
+nejm++10.1056_NEJMoa1810642++nejmoa1810642_protocol.md	0.740	0.830	124	11	21	6	2.3 Dropout / Non-Adherence Inflation; 2.3 Software Used for Calculation; 3.1 Multiplicity Adjustment; 3.2 Protocol Deviation Definition; 3.3 Per Protocol
+lancet++10.1016_S0140-6736_14_60222-1++mmc1_protocol.md	0.739	0.821	59	10	9	2	2.3 Control/Treatment Values; 2.3 Statistical Test/Software; 3.3 Per Protocol; 5.4 Missing Data Assumptions
+lancet++10.1016_S0140-6736_24_00921-8++mmc1_protocol.md	0.739	0.821	60	8	10	4	2.3 Statistical Test/Software; 3.2 Adherence; 5.3 Assumption Checks/Alternatives; 5.7 Statistical Software
+jama++10.1001_jama.2024.4183++joi240036supp1_prod_1716416466.00349_protocol.md	0.739	0.789	65	12	13	2	2.3 Required Number of Events; 2.3 Dropout / Non-Adherence Inflation; 2.5 Interim Analyses Planned; 3.3 Per Protocol; 5.3 Assumption Checks; 5.3 Alternative Methods
+nejm++10.1056_NEJMoa1515990++nejmoa1515990_protocol.md	0.739	0.780	58	12	12	2	2.3 Required Number of Events; 2.3 Software Used; 3.1 Multiplicity Adjustment; 3.3 Per Protocol; 5.7 Statistical Software
+nejm++10.1056_NEJMoa1400116++nejmoa1400116_protocol.md	0.738	0.829	52	12	6	10	2.3 Software Used for Calculation; 2.5 Stopping Guidelines; 3.1 Confidence Intervals; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1900669++nejmoa1900669_protocol.md	0.738	0.785	76	16	15	3	2.3 Required Events; 2.3 Dropout Inflation; 2.3 Software; 3.2 Protocol Deviations; 3.3 Per Protocol
+lancet++10.1016_S0140-6736_19_30368-X++mmc1_protocol.md	0.734	0.837	67	5	11	3	2.3 Control/Treatment Values; 2.3 Software; 2.5 Stopping Guidelines; 3.1 Multiplicity; 3.3 Per Protocol
+nejm++10.1056_NEJMoa2209051++nejmoa2209051_protocol.md	0.734	0.776	80	6	21	5	2.3 Control/Treatment Values; 2.3 Software; 3.2 Protocol Deviations; 3.3 Per Protocol; 5.7 Statistical Software
+jama++10.1001_jama.2014.7862++joi140093supp1_prod_protocol.md	0.733	0.846	67	3	11	3	2.3 Control/Treatment values; 2.3 Re-estimation/Software; 3.2 Adherence/Deviations; 3.3 Per Protocol; 5.6 Grading
+jama++10.1001_jama.2018.4853++joi180039supp1_prod_protocol.md	0.733	0.841	68	7	10	3	2.3 Assumed Control/Treatment Values; 2.3 Software; 5.3 Assumption Checks; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2016.21037++joi160161supp1_prod_protocol.md	0.733	0.782	122	14	29	3	2.3 Software; 3.1 Confidence Intervals; 3.2 Adherence; 3.3 Per Protocol; 5.3 Assumption Checks/Subgroups
+nejm++10.1056_NEJMoa1606220++nejmoa1606220_protocol.md	0.733	0.757	72	15	18	3	2.3 Required Number of Events; 2.3 Software; 3.2 Protocol Deviation Definition; 5.4 Missing Data Assumptions; 5.7 Statistical Software
+nejm++10.1056_NEJMoa1315788++nejmoa1315788_protocol.md	0.732	0.836	58	6	9	7	2.3 Statistical Test Assumed; 2.3 Dropout / Non-Adherence Inflation; 2.3 Software Used for Calculation; 3.3 Per Protocol; 5.3 Assumption Checks; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2024.6609++joi240052supp1_prod_1718902300.17885_protocol.md	0.731	0.758	67	7	19	1	2.3 Required Number of Events; 3.1 Confidence Intervals; 3.2 Protocol Deviations; 3.3 Per Protocol
+lancet++10.1016_S0140-6736_20_32466-1++mmc1_protocol.md	0.728	0.837	70	4	12	2	2.3 Control-Arm Value; 2.3 Required Events; 3.3 Intention-to-Treat; 3.3 Per Protocol; 5.3 Assumption Checks
+nejm++10.1056_NEJMoa2400409++nejmoa2400409_protocol.md	0.728	0.837	77	10	11	6	5.3 Covariate Adjustment; 5.3 Sensitivity Analyses; 5.3 Subgroup Analyses; 3.1 Multiplicity Adjustment; 2.5 Interim Analyses
+nejm++10.1056_NEJMoa1200966++nejmoa1200966_protocol.md	0.728	0.797	62	13	11	2	2.3 Software; 3.2 Adherence Assessment; 5.3 Covariate Adjustment; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1500858++nejmoa1500858_protocol.md	0.728	0.791	54	9	11	2	2.3 Target Difference; 2.3 Power; 3.1 Alpha; 3.1 Multiplicity; 3.3 Per Protocol; 5.3 Alternative Methods
+nejm++10.1056_NEJMoa1313122++nejmoa1313122_protocol.md	0.727	0.799	60	11	11	4	1.2 Exploratory Objectives; 2.3 Software; 3.1 Alpha Level; 3.2 Protocol Deviation Definition; 5.3 Covariate Adjustment; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2015.19284++joi150167supp1_prod_protocol.md	0.727	0.743	75	12	22	7	2.2 Method; 2.3 Software Used for Calculation; 3.1 Confidence Intervals; 3.2 Adherence Definition; 3.3 Per Protocol
+nejm++10.1056_NEJMoa1403291++nejmoa1403291_protocol.md	0.723	0.835	68	6	11	3	2.3 Assumed control/treatment values; 2.3 Effect size/power; 2.3 Software; 5.4 Missing-data assumptions
+jama++10.1001_jama.2016.2522++jpc160002supp1_prod_protocol.md	0.722	0.825	59	9	9	3	2.3 Control/variability/dropout/re-estimation/software; 3.3 ITT/Per Protocol; 5.3 Assumption checks/sensitivity; 5.4 Missing-data assumptions
+nejm++10.1056_NEJMoa1615758++nejmoa1615758_protocol.md	0.722	0.808	56	6	11	3	2.3 Control/Treatment Values; 2.3 Alpha; 2.3 Software; 3.1 Alpha; 5.3 Covariate Adjustment; 5.3 Assumption Checks; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2017.11389++joi170096supp1_prod_protocol.md	0.722	0.735	55	9	17	3	2.3 Re-Estimation; 2.3 Software; 3.3 Per Protocol; 5.3 Assumption Checks; 5.4 Missing Data
+nejm++10.1056_NEJMoa1214103++nejmoa1214103_protocol.md	0.721	0.798	63	16	10	5	2.3 Required Number of Events; 2.3 Software Used; 3.1 Confidence Intervals; 3.3 Per Protocol; 5.3 Sensitivity Analyses; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2018.0438++joi180010supp1_prod_protocol.md	0.719	0.810	76	10	14	4	2.3 Software; 5.3 Covariate Adjustment; 5.3 Assumption Checks; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa2013219++nejmoa2013219_protocol.md	0.718	0.786	74	3	19	4	2.3 Assumptions/Software; 3.2 Protocol Deviations; 5.3 Alternative Methods; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1301082++nejmoa1301082_protocol.md	0.717	0.817	61	12	9	2	2.3 Variability/Test/Events/Re-estimation/Software; 3.1 Confidence Intervals; 5.3 Assumption Checks/Subgroups; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2021.13355++joi210089supp1_prod_1631819002.34778_protocol.md	0.717	0.768	67	12	16	2	2.3 Software; 2.3 Sample Size Re-Estimation; 3.3 Per Protocol; 5.4 Handling Methods
+jama++10.1001_jama.2022.15599++joi220095supp1_prod_1663338147.80653_protocol.md	0.717	0.766	64	16	14	2	2.3 Variability Assumption; 2.3 Software Used; 3.2 Protocol Deviation Definition; 5.3 Covariate Adjustment; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2014.5305++joi140061supp1_prod_protocol.md	0.716	0.776	66	17	13	4	2.3 Re-Estimation; 3.3 Per Protocol; 5.4 Missing Data
+nejm++10.1056_NEJMoa1807838++nejmoa1807838_protocol.md	0.714	0.810	48	6	9	13	3.1 Multiplicity Adjustment; 3.3 Intention-to-Treat; 3.3 Per Protocol; 5.3 Assumption Checks; 5.3 Alternative Methods
+nejm++10.1056_NEJMoa1407963++nejmoa1407963_protocol.md	0.714	0.779	98	8	25	7	2.3 Software; 3.2 Adherence/Protocol Deviations; 3.3 Per Protocol; 5.3 Alternative Methods; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2020.23567++joi200132supp1_prod_1609784425.04877_protocol.md	0.713	0.814	64	12	10	16	2.3 Software; 2.5 Interim Analyses; 3.2 Adherence; 5.3 Assumption Checks
+nejm++10.1056_NEJMoa2207304++nejmoa2207304_protocol.md	0.713	0.753	60	11	16	1	2.3 Treatment value/events/dropout/software; 3.2 Adherence assessment/reporting; 5.3 Assumption checks/alternatives; 5.4 Missing-data assumptions; 5.6 Grading/causality
+lancet++10.1016_S0140-6736_25_01430-8++mmc1_protocol.md	0.711	0.849	77	4	12	3	2.3 Assumed Arm Values; 2.3 Dropout; 3.2 Protocol Deviations; 3.3 Per Protocol; 5.7 Statistical Software
+jama++10.1001_jama.2023.10042++joi230068supp1_prod_1688654415.03413_protocol.md	0.711	0.805	56	12	9	3	2.3 Software Used for Calculation; 3.2 Protocol Deviation Definition/Reporting; 3.3 Per Protocol; 5.3 Alternative Methods
+lancet++10.1016_S0140-6736_16_31474-X++mmc1_protocol.md	0.711	0.799	57	9	11	3	2.3 Alpha/Power/Software; 2.6 Final Analysis Timing; 3.1 Alpha/Multiplicity; 5.3 Assumption Checks/Alternatives; 5.4 Missing-Data Assumptions
+jama++10.1001_jama.2015.3860++joi150041supp1_prod_protocol.md	0.711	0.796	71	6	16	5	2.3 Power; 2.3 Dropout; 2.3 Software; 2.5 Stopping Guidelines; 3.3 Intention-to-Treat; 3.3 Per Protocol
+jama++10.1001_jama.2017.1224++joi170010supp1_prod_protocol.md	0.711	0.765	57	13	13	3	2.3 Software; 3.1 Multiplicity Adjustment; 5.3 Assumption Checks; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2017.2115++joi170019supp1_prod_protocol.md	0.710	0.842	104	11	15	4	2.3 Required Number of Events; 2.3 Sample Size Re-Estimation; 3.3 Intention-to-Treat; 3.3 Per Protocol; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1608889++nejmoa1608889_protocol.md	0.710	0.787	71	6	17	4	2.3 Variability; 2.3 Software; 3.2 Protocol Deviation Definition; 3.3 Per Protocol; 5.3 Alternative Methods; 5.7 Statistical Software
+jama++10.1001_jama.2018.5729++joi180047supp1_prod_protocol.md	0.709	0.761	83	15	21	5	2.3 Required Events; 2.3 Re-Estimation; 2.3 Software; 2.5 Stopping Guidelines; 3.3 Per Protocol
+nejm++10.1056_NEJMoa1204166++nejmoa1204166_protocol.md	0.708	0.819	84	9	15	6	2.3 Software; 2.5 Interim Analyses; 3.1 Confidence Intervals; 5.3 Assumption Checks
+nejm++10.1056_NEJMoa1612567++nejmoa1612567_protocol.md	0.708	0.804	51	9	9	15	2.3 Treatment-arm value/effect size/variability/dropout; 3.1 Confidence Intervals; 3.3 Intention-to-Treat; 5.3 Covariate Adjustment; 5.4 Missing Data
+lancet++10.1016_S0140-6736_21_01698-6++mmc1_protocol.md	0.707	0.850	87	13	10	2	2.2 Stratification; 2.3 Power; 2.3 Software; 2.5 Interim Analyses; 3.2 Protocol Deviations
+jama++10.1001_jama.2023.13390++joi230090supp1_prod_1692287097.84975_protocol.md	0.707	0.784	53	10	11	2	2.3 Variability; 2.3 Required Number of Events; 2.3 Software; 2.5 Interim Analyses; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1300955++nejmoa1300955_protocol.md	0.707	0.784	52	12	10	2	2.3 Variability; 2.3 Dropout; 2.3 Software; 3.2 Protocol Deviations; 3.3 Per Protocol; 5.3 Assumption Checks
+jama++10.1001_jama.2022.4404++joi220033supp2_prod_1680551274.00276_protocol.md	0.707	0.774	76	9	19	2	2.3 Design Effect; 3.1 Confidence Intervals; 3.3 Per Protocol; 5.3 Covariate Adjustment
+jama++10.1001_jama.2015.3780++joi150040supp1_prod_protocol.md	0.707	0.762	62	7	17	2	2.3 Variability/Events/Dropout/Software; 3.2 Adherence/Deviations; 3.3 Per Protocol; 5.3 Subgroups; 5.4 Missing Data
+nejm++10.1056_NEJMoa2208686++nejmoa2208686_protocol.md	0.707	0.750	66	15	17	2	2.3 Software; 2.5 Alpha Spending; 3.1 Confidence Intervals; 3.3 Per Protocol; 5.3 Assumption Checks
+jama++10.1001_jama.2018.19791++joi180147supp1_prod_protocol.md	0.706	0.763	67	11	17	3	2.3 Required Number of Events/Software; 3.1 Confidence Intervals; 5.3 Assumption Checks; 5.4 Missing Data Assumptions
+lancet++10.1016_S0140-6736_25_00197-7++mmc2_protocol.md	0.704	0.781	82	11	19	8	2.3 Statistical Test/Basis/Software; 3.2 Protocol Deviation Definition; 3.3 Per Protocol; 5.3 Assumption Checks
+lancet++10.1016_S0140-6736_18_30952-8++mmc1_protocol.md	0.700	0.847	77	17	7	3	2.3 Dropout; 2.3 Re-Estimation; 2.3 Software; 5.3 Assumption Checks; 5.3 Alternative Methods; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1311388++nejmoa1311388_protocol.md	0.700	0.794	58	19	8	3	2.3 Sample Size Re-Estimation; 2.3 Software; 3.1 Multiplicity Adjustment; 5.4 Missing Data
+jama++10.1001_jama.2016.12858++joi160104supp1_prod_protocol.md	0.700	0.778	56	14	11	3	2.5 Interim Analyses; 3.3 Intention-to-Treat; 3.3 Per Protocol; 2.3 Software
+jama++10.1001_jama.2020.10834++joi200069supp1_prod_1596830753.77069_protocol.md	0.699	0.762	72	16	17	11	3.3 Intention-to-Treat; 3.3 Per Protocol; 5.3 Assumption Checks; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa2027372++nejmoa2027372_protocol.md	0.696	0.800	65	6	14	5	5.3 Covariate Adjustment; 5.3 Sensitivity Analyses; 3.3 Intention-to-Treat; 2.3 Software; 5.7 Statistical Software
+jama++10.1001_jama.2024.20424++joi240114supp2_prod_1739374328.36079_protocol.md	0.696	0.761	65	13	16	2	2.3 Variability; 2.3 Events; 2.3 Software; 3.3 Per Protocol; 5.3 Sensitivity Analyses; 5.4 Handling Methods
+jama++10.1001_jama.2021.24776++joi210148supp1_prod_1681163963.12243_protocol.md	0.696	0.750	48	12	12	2	2.3 Variability/Events/Dropout; 3.2 Deviations; 3.3 Per Protocol
+lancet++10.1016_S0140-6736_19_32313-X++mmc1_protocol.md	0.696	0.615	36	24	18	2	2.3 Variability Assumption; 2.3 Software Used; 3.2 Adherence Definition; 3.3 Per Protocol; 5.1 Measurement Units; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa2206966++nejmoa2206966_protocol.md	0.693	0.789	53	14	9	4	2.3 Control/Treatment Values; 2.3 Effect Size/Variability; 2.3 Power; 2.3 Software; 2.2 Stratification/Blocking; 3.2 Adherence Definition
+jama++10.1001_jama.2025.1604++joi250008supp1_prod_1744313619.00952_protocol.md	0.693	0.779	51	4	13	4	2.3 Assumed Treatment-Arm Value; 2.3 Target Difference / Effect Size; 2.3 Power; 2.3 Statistical Test Assumed; 3.3 Per Protocol
+nejm++10.1056_NEJMoa1410863++nejmoa1410863_protocol.md	0.693	0.771	55	1	16	4	2.3 Target Difference, Alpha, Dropout, Re-Estimation, Software; 3.3 Per Protocol; 5.3 Covariate Adjustment, Subgroups; 5.4 Handling Methods
+jama++10.1001_jama.2019.16658++jpc190008supp1_prod_protocol.md	0.693	0.762	56	16	12	8	2.3 Software; 3.1 Multiplicity/Confidence Intervals; 3.3 Per Protocol; 5.3 Sensitivity Analyses
+nejm++10.1056_NEJMoa1614835++nejmoa1614835_protocol.md	0.692	0.741	78	16	22	6	2.3 Control-Arm Value; 2.3 Software; 3.1 Multiplicity; 5.4 Missing Data
+lancet++10.1016_S0140-6736_21_00943-0++mmc1_protocol.md	0.691	0.771	61	6	16	2	2.3 Control/Treatment Values; 2.3 Alpha; 3.1 Alpha; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2018.0948++joi180015supp1_prod_protocol.md	0.690	0.764	66	7	18	3	2.3 Required Events; 2.3 Re-Estimation; 2.3 Software; 3.3 Per Protocol; 5.4 Handling
+jama++10.1001_jama.2022.15632++joi220097supp1_prod_1663338138.99733_protocol.md	0.689	0.835	74	4	13	3	2.3 Variability; 2.3 Dropout; 2.3 Software; 3.1 Confidence Intervals; 3.3 Per Protocol; 5.3 Sensitivity Analyses
+jama++10.1001_jama.2017.9362++joi170078supp1_prod_protocol.md	0.689	0.812	63	12	10	3	3.1 Confidence Intervals; 3.3 Per Protocol; 5.3 Assumption Checks; 5.3 Sensitivity Analyses; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1813440++nejmoa1813440_protocol.md	0.689	0.805	58	8	11	3	2.3 Calculation inputs; 2.3 Software; 3.3 Per Protocol
+jama++10.1001_jama.2025.6681++joi250028supp1_prod_1750275121.49553_protocol.md	0.689	0.802	63	4	14	3	2.3 Control/Treatment Values; 2.3 Software; 3.3 Per Protocol; 5.3 Sensitivity Analyses; 5.4 Missing Data
+jama++10.1001_jama.2021.20714++supplement_protocol.md	0.689	0.763	62	24	11	5	2.3 Required Events/Software; 3.2 Deviations; 3.3 Per Protocol; 5.5 Additional Analyses
+nejm++10.1056_NEJMoa2200900++nejmoa2200900_protocol.md	0.686	0.759	59	14	14	11	2.3 Software Used for Calculation; 2.6 Final Analysis Timing; 3.3 Intention-to-Treat/Per Protocol; 5.3 Covariate Adjustment/Sensitivity Analyses; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1702079++nejmoa1702079_protocol.md	0.685	0.825	124	1	26	3	2.2 Minimization; 2.3 repeated blocks; 2.3 Variability; 2.3 Dropout; 2.3 Software; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1109333++nejmoa1109333_protocol.md	0.685	0.824	96	9	17	2	2.3 Variability Assumption; 2.3 Required Number of Events; 3.3 Per Protocol; 5.3 Sensitivity Analyses; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1405584++nejmoa1405584_protocol.md	0.685	0.824	73	9	12	2	3.2 Adherence; 3.2 Protocol Deviations; 5.3 Assumption Checks; 5.4 Missing Data
+nejm++10.1056_NEJMoa1608243++nejmoa1608243_protocol.md	0.685	0.799	59	5	13	3	2.3 Required Number of Events; 2.3 Re-Estimation; 2.3 Software; 3.1 Multiplicity; 3.3 Intention-to-Treat
+nejm++10.1056_NEJMoa1717250++nejmoa1717250_protocol.md	0.685	0.762	57	11	14	2	2.3 Software; 3.1 Multiplicity Adjustment; 3.3 Intention-to-Treat; 5.3 Alternative Methods
+nejm++10.1056_NEJMoa1208953++nejmoa1208953_protocol.md	0.679	0.659	26	6	12	6	2.3 Power; 3.3 ITT; 3.3 Per Protocol; 5.3 Covariate Adjustment; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2025.19843++joi250087supp1_prod_1766516490.96011_protocol.md	0.678	0.800	61	14	10	3	2.3 Treatment-Arm Value; 2.3 Software; 3.1 Multiplicity; 3.3 Per Protocol; 5.3 Sensitivity Analyses; 5.4 Missing Data Assumptions
+lancet++10.1016_S0140-6736_21_00535-3++mmc1_protocol.md	0.678	0.768	68	16	15	3	2.3 Software; 3.2 Adherence Definition; 5.3 Covariate Adjustment; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2023.27693++joi230169supp1_prod_1708371529.88713_protocol.md	0.678	0.765	57	10	14	3	2.3 Control/Treatment Values; 3.1 Confidence Intervals; 3.3 Per Protocol; 5.3 Assumption Checks/Sensitivity Analyses
+jama++10.1001_jama.2019.11642++joi190086supp1_prod_protocol.md	0.678	0.760	90	10	25	8	2.3 Variability Assumption; 2.3 Software Used; 3.3 Per Protocol; 5.3 Assumption Checks; 5.4 Missing Data
+jama++10.1001_jama.2017.19343++joi170149supp1_prod_protocol.md	0.678	0.759	56	20	11	3	2.3 Variability Assumption; 2.3 Software Used; 3.1 Multiplicity Adjustment; 3.2 Adherence Definition; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1807119++nejmoa1807119_protocol_1_protocol.md	0.677	0.783	50	8	11	17	2.3 Sample Size Re-Estimation; 3.1 Confidence Intervals; 3.3 Intention-to-Treat; 3.3 Per Protocol; 5.3 Covariate Adjustment; 5.3 Subgroup Analyses
+jama++10.1001_jama.2017.5103++joi170042supp3_prod_protocol.md	0.677	0.779	75	9	18	8	2.3 Alpha; 2.3 Software; 3.2 Adherence; 3.3 Per Protocol
+nejm++10.1056_NEJMoa1514209++nejmoa1514209_protocol.md	0.677	0.730	67	9	22	4	2.3 Statistical Test; 2.3 Software Used; 5.3 Covariate Adjustment; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1701329++nejmoa1701329_protocol.md	0.676	0.765	47	10	11	14	1.2 Secondary; 2.3 Dropout; 2.3 Software; 3.1 Multiplicity; 3.3 Intention-to-Treat; 3.3 Per Protocol
+jama++10.1001_jama.2023.22231++joi230133supp1_prod_1707333566.67103_protocol.md	0.674	0.831	65	8	10	9	2.3 Variability; 2.3 Dropout; 2.3 Software; 3.3 Intention-to-Treat; 3.3 Per Protocol; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1315860++nejmoa1315860_protocol.md	0.674	0.808	60	6	12	2	2.3 Alpha; 2.3 Software; 3.1 Multiplicity; 3.3 Per Protocol; 5.3 Covariate Adjustment
+jama++10.1001_jama.2017.9644++joi170084supp1_prod_protocol.md	0.674	0.769	65	13	15	5	2.3 Dropout/Re-estimation/Software; 3.2 Adherence/Deviation Definition; 3.1 Multiplicity; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2022.22625++joi220133supp1_prod_1670872548.56097_protocol.md	0.674	0.744	52	18	12	2	2.3 Control-Arm Value; 2.3 Statistical Test; 2.5 Interim Analyses; 3.2 Protocol Deviations; 3.3 Per Protocol; 5.3 Alternative Methods
+jama++10.1001_jama.2024.27643++joi240158supp1_prod_1742927563.7611_protocol.md	0.674	0.744	54	14	14	2	2.3 Arm values; 3.1 Confidence Intervals; 5.3 Assumption Checks; 5.7 Statistical Software
+nejm++10.1056_NEJMoa1708566++nejmoa1708566_protocol.md	0.672	0.786	81	11	18	8	2.3 Power; 2.3 Software; 3.1 Multiplicity Adjustment; 3.3 Intention-to-Treat; 5.3 Covariate Adjustment
+jama++10.1001_jama.2018.14282++joi180109supp1_prod_protocol.md	0.670	0.789	65	20	10	1	2.3 Variability; 2.3 Software; 3.2 Adherence Definition; 5.3 Assumption Checks; 5.3 Alternative Methods
+nejm++10.1056_NEJMx150025++nejmoa1414266_protocol.md	0.670	0.762	56	16	12	4	2.3 Variability; 2.3 Software; 3.2 Protocol Deviations; 3.3 Per Protocol
+jama++10.1001_jama.2017.11358++joi170094supp1_prod_protocol.md	0.670	0.732	62	15	18	2	2.5 Interim Analyses; 3.2 Protocol Deviation Definition; 3.3 Per Protocol; 5.4 Missing Data
+lancet++10.1016_S0140-6736_21_02348-5++mmc1_protocol.md	0.667	0.790	75	8	17	6	2.3 Calculation assumptions; 2.3 Software; 5.3 Assumption Checks
+jama++10.1001_jama.2020.23138++joi200126supp1_prod_1607962892.5372_protocol.md	0.667	0.758	59	17	13	3	2.3 Control/Treatment Values; 3.1 Multiplicity Adjustment; 5.3 Assumption Checks; 5.4 Missing Data Assumptions; 5.7 Statistical Software
+jama++10.1001_jama.2017.5427++joi170045supp1_prod_protocol.md	0.667	0.747	55	14	14	3	2.3 Control/Treatment Values; 3.1 Multiplicity; 3.3 Per Protocol; 5.4 Handling Methods
+nejm++10.1056_NEJMoa1200303++nejmoa1200303_protocol.md	0.667	0.705	45	13	15	3	2.3 Required Number of Events; 2.3 Software; 3.2 Protocol Deviations; 3.3 Per Protocol; 5.3 Assumption Checks; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1601202++nejmoa1601202_protocol.md	0.663	0.729	49	7	16	8	2.3 Alpha; 3.1 Multiplicity Adjustment; 3.3 Per Protocol; 5.3 Sensitivity Analyses; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2018.9396++joi180076supp1_prod_protocol.md	0.663	0.714	62	16	20	2	2.3 Variability Assumption; 2.3 Dropout / Non-Adherence Inflation; 2.3 Software Used for Calculation; 3.1 Multiplicity Adjustment; 3.3 Per Protocol; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1105575++nejmoa1105575_protocol.md	0.661	0.782	82	8	20	4	2.3 Variability; 2.3 Required Events; 2.3 Dropout Inflation; 2.3 Software; 3.2 Protocol Deviations; 3.3 Per Protocol; 5.3 Alternative Methods; 5.7 Statistical Software
+jama++10.1001_jama.2017.8708++joi170074supp1_prod_protocol.md	0.661	0.774	77	10	19	4	5.4 Missing Data; 3.1 Multiplicity Adjustment; 3.3 Per Protocol
+jama++10.1001_jama.2021.11684++joi210083supp1_prod_1630095299.70089_protocol.md	0.661	0.717	64	24	18	4	2.3 Assumed Treatment-Arm Value; 2.3 Variability Assumption; 2.3 Required Number of Events; 2.3 Software Used; 3.3 Per Protocol; 5.3 Covariate Adjustment; 5.4 Handling Methods
+nejm++10.1056_NEJMoa2033700++nejmoa2033700_protocol.md	0.660	0.808	78	4	17	2	2.3 Variability; 3.2 Adherence; 3.2 Protocol Deviations; 3.3 Per Protocol; 5.3 Assumption Checks; 5.4 Missing Data
+jama++10.1001_jama.2022.13997++joi220089supp2_prod_1660869435.893_protocol.md	0.660	0.782	64	8	15	1	2.3 Required Number of Events; 2.5 Interim Analyses Planned; 3.1 Multiplicity Adjustment; 5.4 Missing Data Assumptions; 5.7 Statistical Software
+nejm++10.1056_NEJMoa1900907++nejmoa1900907_protocol.md	0.659	0.757	50	9	13	4	2.3 Control/Treatment assumptions; 2.3 Alpha/Power; 2.3 Software; 3.1 Confidence Intervals; 3.3 Intention-to-Treat
+jama++10.1001_jama.2018.3708++joi180035supp1_prod_protocol.md	0.656	0.742	64	10	19	3	2.3 Variability Assumption; 2.3 Sample Size Re-Estimation / Amendments; 2.3 Software Used for Calculation; 3.1 Multiplicity Adjustment; 3.3 Per Protocol; 5.3 Sensitivity Analyses
+jama++10.1001_jama.2023.0675++jpc230001supp1_prod_1678493516.94701_protocol.md	0.656	0.712	53	15	17	4	2.3 Software; 3.3 Intention-to-Treat/Per Protocol; 5.3 Assumption Checks/Subgroup Analyses
+nejm++10.1056_NEJMoa1201622++nejmoa1201622_protocol.md	0.655	0.706	108	7	43	12	2.3 Dropout / Non-Adherence Inflation; 2.3 Software Used for Calculation; 3.1 Confidence Intervals; 3.3 Per Protocol; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2022.23924++joi220145supp1_prod_1673466194.44858_protocol.md	0.653	0.722	71	24	20	9	2.3 Assumed Control-Arm Value; 2.3 Software Used for Calculation; 3.2 Protocol Deviation Definition; 3.3 Per Protocol; 5.3 Assumption Checks; 5.4 Missing Data
+jama++10.1001_jama.2023.20820++joi230122supp2_prod_1699559708.09775_protocol.md	0.652	0.744	59	16	15	2	2.3 Treatment-Arm Value; 2.3 Software; 2.5 Interim Analyses; 3.1 Multiplicity; 3.3 Per Protocol; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa2212438++nejmoa2212438_protocol.md	0.652	0.731	53	8	17	2	2.3 Variability Assumption; 3.3 Intention-to-Treat; 3.3 Per Protocol; 5.3 Sensitivity Analyses; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa2314768++nejmoa2314768_protocol.md	0.650	0.815	70	10	12	8	2.3 Variability Assumption; 2.3 Power; 2.3 Software Used for Calculation; 3.2 Adherence Definition; 3.3 Per Protocol; 5.6 Grading Scales and Causality
+jama++10.1001_jama.2017.11470++joi170101supp1_prod_protocol.md	0.649	0.720	47	14	14	1	2.3 Dropout; 3.3 Intention-to-Treat/Per Protocol; 5.3 Sensitivity Analyses; 5.4 Missing Data
+jama++10.1001_jama.2014.12609++joi140121supp1_prod_protocol.md	0.648	0.763	54	14	12	4	3.3 Intention-to-Treat; 3.3 Per Protocol; 5.3 Covariate Adjustment; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa2100165++nejmoa2100165_protocol.md	0.648	0.750	60	15	15	6	2.3 Required Events; 2.3 Software; 2.5 Stopping Guidelines; 3.2 Adherence; 5.3 Assumption Checks
+nejm++10.1056_NEJMoa1701075++nejmoa1701075_protocol.md	0.648	0.695	67	12	26	3	2.3 Required Number of Events; 2.3 Dropout / Non-Adherence Inflation; 2.3 Software; 5.3 Sensitivity Analyses
+nejm++10.1056_NEJMoa1504542++nejmoa1504542_protocol.md	0.646	0.750	49	13	12	10	2.3 Software; 3.3 Per Protocol; 5.3 Covariate Adjustment
+jama++10.1001_jama.2019.11982++joi190089supp1_prod_protocol.md	0.645	0.741	69	19	18	4	2.3 Re-Estimation/Software; 2.5 Stopping/Alpha Spending; 3.3 Per Protocol; 5.3 Assumption Checks/Sensitivity/Subgroups; 5.4 Missing Data
+jama++10.1001_jama.2020.14581++joi200091supp1_prod_1602283788.98868_protocol.md	0.644	0.787	63	14	12	3	2.3 Variability Assumption; 2.3 Statistical Test Assumed; 3.1 Multiplicity Adjustment; 3.3 Per Protocol; 5.7 Statistical Software
+jama++10.1001_jama.2022.16844++joi220101supp1_prod_1670867012.7607_protocol.md	0.644	0.759	58	13	14	3	2.3 Software; 3.1 Multiplicity Adjustment; 3.3 Per Protocol; 5.3 Covariate Adjustment; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2018.20579++jpc180010supp1_prod_protocol.md	0.644	0.695	46	15	16	3	2.3 Software; 3.1 Multiplicity Adjustment; 3.3 Per Protocol; 5.3 Sensitivity Analyses
+jama++10.1001_jama.2023.21739++joi230130supp1_prod_1700158776.51918_protocol.md	0.644	0.682	48	20	17	3	2.3 Software; 3.3 Per Protocol; 5.4 Missing Data Assumptions; 3.1 Confidence Intervals
+nejm++10.1056_NEJMoa1603265++nejmoa1603265_protocol.md	0.643	0.719	39	14	11	10	2.3 Power/Dropout/Software; 3.1 Multiplicity; 3.3 Per Protocol; 5.3 Assumption Checks; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1703768++nejmoa1703768_protocol.md	0.641	0.750	74	14	20	2	2.3 Variability and Software; 3.2 Adherence; 5.3 Assumption Checks; 5.4 Missing Data
+nejm++10.1056_NEJMoa2000226++nejmoa2000226_protocol.md	0.640	0.777	61	7	15	5	2.3 Effect Size; 3.3 Intention-to-Treat; 5.3 Sensitivity Analyses
+lancet++10.1016_S0140-6736_24_01884-1++mmc1_protocol.md	0.636	0.771	52	7	13	8	2.3 Power; 2.3 Software; 3.1 Multiplicity Adjustment; 3.3 Per Protocol; 5.3 Covariate Adjustment; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa2503304++nejmoa2503304_protocol.md	0.635	0.732	68	9	22	3	2.3 Control-Arm Value; 2.3 Treatment-Arm Value; 2.3 Alpha; 3.1 Multiplicity Adjustment; 3.1 Confidence Intervals; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1413204++nejmoa1413204_protocol.md	0.633	0.740	50	14	13	3	2.3 Re-Estimation/Software; 2.6 Final Timing; 3.3 ITT/Per Protocol; 5.3 Sensitivity Analyses; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1508788++nejmoa1508788_protocol.md	0.633	0.656	54	14	25	3	2.3 Software; 3.2 Adherence; 3.3 Per Protocol; 5.3 Assumption Checks; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2024.25982++joi240149supp1_prod_1741036072.02343_protocol.md	0.628	0.690	53	14	20	1	2.3 Required Number of Events; 2.3 Dropout Inflation; 3.1 Multiplicity Adjustment; 3.2 Adherence Definition; 3.3 Per Protocol; 5.3 Sensitivity Analyses; 5.6 Safety Analysis Methods
+nejm++10.1056_NEJMc1411800++nejmc1411800_protocol.md	0.625	0.716	49	8	17	4	2.3 Alpha/Power/Software; 2.6 Final Analysis Timing; 3.1 Alpha Level; 5.3 Covariate/Subgroup Analyses
+jama++10.1001_jama.2016.5504++joi160049supp1_prod_protocol.md	0.622	0.733	48	11	14	3	2.3 Re-Estimation/Software; 3.2 Adherence; 3.3 ITT/Per Protocol; 5.3 Sensitivity/Subgroups; 5.4 Handling Methods; 5.7 Statistical Software
+nejm++10.1056_NEJMoa1200931++nejmoa1200931_protocol.md	0.622	0.724	51	11	16	6	2.3 Software; 3.2 Protocol Deviations; 3.3 Intention-to-Treat/Per Protocol; 5.3 Sensitivity/Subgroup Analyses
+jama++10.1001_jama.2015.8361++joi150079supp1_prod_protocol.md	0.622	0.715	84	18	28	6	2.3 Sample Size Re-Estimation; 3.1 Multiplicity Adjustment; 3.3 Per Protocol; 5.6 Safety Analysis Methods
+jama++10.1001_jama.2011.1918++jwe15175_01_04_2012_protocol.md	0.622	0.671	44	10	19	3	3.3 Intention-to-Treat; 3.3 Per Protocol; 5.3 Assumption Checks; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2014.11026++joi140113supp1_prod_protocol.md	0.622	0.627	47	10	26	3	2.3 Variability; 2.3 Dropout; 3.1 Multiplicity; 3.2 Protocol Deviation Definition; 3.3 Per Protocol; 5.3 Covariate Adjustment; 5.4 Handling Methods
+jama++10.1001_jama.2016.0019++joi160001supp1_prod_protocol.md	0.620	0.770	71	15	16	2	2.3 Required Events/Dropout/Re-estimation/Software; 3.1 Multiplicity/Confidence Intervals; 3.3 Per Protocol; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2017.2297++jpc170001supp1_prod_protocol.md	0.620	0.744	57	8	17	2	2.3 Software; 3.2 Adherence; 3.3 Per Protocol; 5.3 Covariate Adjustment; 5.4 Missing Data
+nejm++10.1056_NEJMoa1701380++nejmoa1701380_protocol.md	0.620	0.725	68	12	22	2	2.3 Treatment value/events/software; 2.5 Interim/stopping; 3.2 Adherence/deviations; 3.3 Per Protocol; 5.4 Missing-data assumptions; 5.6 Safety
+nejm++10.1056_NEJMoa2204253++nejmoa2204253_protocol.md	0.620	0.720	52	14	16	2	2.3 Required Number of Events; 2.3 Software Used for Calculation; 3.2 Protocol Deviations; 3.3 Intention-to-Treat; 5.3 Subgroup Analyses; 5.7 Statistical Software
+jama++10.1001_jama.2021.3839++joi210028supp1_prod_1620430674.02525_protocol.md	0.620	0.694	52	21	17	2	2.5 Interim/Stopping/Alpha Spending; 2.3 Control/Treatment Values and Software; 3.1 Multiplicity; 3.2 Protocol Deviation Definition; 3.3 Per Protocol; 5.3 Assumption Checks/Alternatives
+jama++10.1001_jama.2019.3211++joi190028supp1_prod_protocol.md	0.620	0.663	48	18	20	2	2.3 Software; 3.1 Multiplicity Adjustment; 3.2 Protocol Deviations; 5.3 Sensitivity/Subgroup Analyses; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa2000803++nejmoa2000803_protocol.md	0.613	0.723	44	6	15	13	2.3 Effect Size/Alpha/Power; 3.2 Deviations; 5.3 Assumption Checks
+nejm++10.1056_NEJMoa1905380++nejmoa1905380_protocol.md	0.611	0.681	53	22	19	4	2.3 Software Used for Calculation; 3.2 Adherence Definition; 3.2 Protocol Deviation Definition; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1501074++nejmoa1501074_protocol.md	0.609	0.708	46	10	16	2	2.3 Software; 2.5 Interim Analyses; 3.2 Protocol Deviation Definition; 5.3 Covariate Adjustment; 5.4 Handling Methods
+lancet++10.1016_S0140-6736_17_32714-9++mmc1_protocol.md	0.606	0.665	88	13	41	12	2.3 Control-arm values; 2.3 Software; 3.1 Multiplicity Adjustment; 3.3 Per Protocol; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa2212528++nejmoa2212528_protocol.md	0.604	0.704	49	16	16	2	2.3 Variability Assumption; 2.3 Required Number of Events; 3.3 Per Protocol; 5.3 Assumption Checks; 5.4 Missing Data Assumptions; 5.7 Statistical Software
+nejm++10.1056_NEJMoa2314885++nejmoa2314885_protocol.md	0.602	0.731	51	12	15	6	2.3 Variability Assumption; 2.3 Software Used for Calculation; 3.1 Multiplicity Adjustment; 3.2 Protocol Deviation Definition; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2014.8637++joi140098supp1_prod_protocol.md	0.600	0.719	60	8	21	3	2.3 Treatment-Arm Value; 2.3 Software; 3.2 Adherence; 3.3 Per Protocol; 5.3 Assumption Checks; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1807119++nejmoa1807119_protocol_2.md	0.599	0.699	81	3	34	8	2.3 calculation assumptions; 2.5 Alpha Spending; 3.3 Per Protocol; 5.2 PK units/derivations; 5.3 Subgroup Analyses
+jama++10.1001_jama.2025.17281++joi250077supp1_prod_1763752237.00547_protocol.md	0.598	0.733	59	8	19	2	2.3 Treatment-Arm Value; 2.3 Variability; 2.5 Interim Analyses; 3.2 Adherence; 3.3 Per Protocol; 5.3 Assumption Checks; 5.3 Sensitivity Analyses
+nejm++10.1056_NEJMoa1607991++nejmoa1607991_protocol.md	0.598	0.559	48	27	35	2	2.3 Assumed Treatment-Arm Value; 2.3 Required Number of Events; 3.3 Per Protocol; 5.3 Assumption Checks; 5.4 Missing Data Assumptions
+lancet++10.1016_S0140-6736_18_30984-X++mmc1_protocol.md	0.591	0.685	49	17	18	4	2.3 Control/Treatment Values; 2.3 Power; 3.2 Adherence; 5.3 Assumption Checks; 5.4 Missing Data Assumptions
+lancet++10.1016_S0140-6736_16_00380-9++mmc1_protocol.md	0.587	0.759	69	23	14	2	2.3 Alpha; 2.3 Dropout; 2.3 Software; 3.1 Multiplicity; 3.3 Per Protocol; 5.4 Missing Data
+jama++10.1001_jama.2024.6259++joi240050supp1_prod_1717690924.63596_protocol.md	0.587	0.649	42	12	20	2	2.3 Assumed Control-Arm Value; 2.3 Alpha; 2.5 Interim Analyses; 3.3 Per Protocol; 5.4 Missing Data
+nejm++10.1056_NEJMoa1205037++nejmoa1205037_protocol.md	0.581	0.612	53	14	31	4	3.2 Adherence; 3.3 Intention-to-Treat/Per Protocol; 5.3 Covariate Adjustment; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1203382++nejmoa1203382_protocol.md	0.580	0.706	53	7	20	8	2.5 Interim analyses/stopping/alpha spending; 3.3 Intention-to-Treat/Per Protocol; 5.3 Assumption checks/sensitivity analyses; 5.6 Safety methods/grading
+nejm++10.1056_NEJMoa1411481++nejmoa1411481_protocol.md	0.578	0.781	67	5	17	3	2.3 Control/Treatment Values; 2.3 Effect Size/Variability/Power; 2.5 Stopping/Alpha Spending; 5.3 Covariate/Assumption/Subgroup
+nejm++10.1056_NEJMoa2207576++nejmoa2207576_appendix_protocol.md	0.578	0.753	63	23	13	3	2.2 Method; 2.3 Control-Arm Value/Alpha/Power/Software; 3.1 Multiplicity Adjustment; 3.2 Adherence Definition
+nejm++10.1056_NEJMoa1203388++nejmoa1203388_protocol.md	0.578	0.716	61	14	20	3	2.3 Control/Treatment Values; 2.5 Stopping Guidelines; 3.1 Multiplicity/Confidence Intervals; 3.3 Per Protocol
+lancet++10.1016_S0140-6736_25_00859-1++mmc3_protocol.md	0.576	0.750	59	11	16	2	2.3 Control/Treatment/Variability/Re-estimation; 3.3 Analysis Populations; 5.3 Assumption Checks/Alternatives
+lancet++10.1016_S0140-6736_24_02575-3++mmc1_protocol.md	0.576	0.715	51	21	14	2	2.3 Effect Size; 2.3 Power; 3.1 Alpha Level; 3.3 Per Protocol; 5.3 Assumption Checks
+jama++10.1001_jama.2021.22596++joi210136supp1_prod_1640892455.07311_protocol.md	0.576	0.673	51	11	22	2	2.3 Control/Treatment Values; 2.3 Statistical Test; 3.1 Multiplicity; 3.3 Per Protocol
+nejm++10.1056_NEJMoa1112082++nejmoa1112082_protocol.md	0.576	0.667	44	16	18	2	2.3 Software; 3.3 Intention-to-Treat/Per Protocol; 5.3 Assumption Checks/Sensitivity Analyses; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2023.16503++jpc230005supp2_prod_1695054965.15293_protocol.md	0.568	0.654	39	11	18	5	2.3 Control-Arm Value; 2.3 Treatment-Arm Value; 2.3 Variability; 2.3 Alpha; 3.3 Intention-to-Treat; 3.3 Per Protocol; 5.3 Sensitivity Analyses; 5.3 Subgroup Analyses
+nejm++10.1056_NEJMoa1909159++nejmoa1909159_protocol.md	0.567	0.664	43	11	19	7	2.3 Required Number of Events; 2.3 Software Used; 3.2 Adherence Definition; 5.3 Covariate Adjustment; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2024.23696++joi240137supp2_prod_1738864641.93334_protocol.md	0.564	0.690	57	6	24	1	2.3 Treatment-Arm Value; 2.3 Alpha; 3.1 Alpha Level; 3.3 Per Protocol; 5.3 Sensitivity Analyses
+jama++10.1001_jama.2021.3645++joi210026supp1_prod_1618598242.42075_protocol.md	0.557	0.738	54	10	16	4	2.3 Assumed arm values/effect size/power; 3.3 Intention-to-Treat; 5.3 Covariate Adjustment/Assumption Checks; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1302854++nejmoa1302854_protocol.md	0.553	0.651	47	14	22	1	2.3 Control/Treatment values; 2.5 Interim analyses; 3.1 Multiplicity/CI; 3.2 Protocol deviations; 4.4 Withdrawal; 5.4 Missing data
+jama++10.1001_jama.2016.14194++joi160109supp1_prod_protocol.md	0.553	0.636	57	12	30	1	2.3 Variability/Software; 3.2 Adherence/Deviations; 5.3 Subgroups; 5.4 Missing Data
+nejm++10.1056_NEJMoa2001282++nejmoa2001282_protocol.md	0.543	0.727	54	17	15	2	2.3 Calculation assumptions; 3.1 Multiplicity Adjustment; 5.3 Assumption Checks; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2014.15192++joi140147supp1_prod_protocol.md	0.543	0.598	45	14	28	1	2.3 Outcome Used; 2.3 Power; 3.2 Adherence Definition; 5.2 Measurement Units; 5.7 Statistical Software
+nejm++10.1056_NEJMoa1709481++nejmoa1709481_protocol.md	0.538	0.642	37	3	20	14	2.3 Power/Alpha/Software; 3.2 Protocol deviations; 5.3 Sensitivity analyses; 5.4 Missing-data assumptions
+nejm++10.1056_NEJMoa2314598++nejmoa2314598_protocol.md	0.534	0.713	50	14	16	8	2.3 Alpha/Power/Statistical Test; 3.3 Intention-to-Treat/Per Protocol; 5.3 Covariate Adjustment/Sensitivity/Subgroup Analyses; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2016.6338++jpc160006supp1_prod_protocol.md	0.534	0.557	42	24	31	3	5.4 Missing Data; 3.3 Per Protocol; 3.1 Confidence Intervals; 5.3 Sensitivity Analyses
+jama++10.1001_jama.2016.13512++joi160105supp1_prod_protocol.md	0.533	0.730	57	13	17	3	2.3 Control/Treatment Values; 2.5 Interim Analyses; 3.1 Multiplicity/Confidence Intervals; 3.3 Per Protocol; 5.3 Assumption Checks
+jama++10.1001_jama.2016.8474++joi160070supp1_prod_protocol.md	0.533	0.686	50	13	15	2	2.3 Control/Treatment Values; 2.3 Variability; 2.5 Interim Analyses; 3.1 Multiplicity/Confidence Intervals; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2015.18098++joi150160supp1_prod_protocol.md	0.532	0.633	42	21	20	1	3.3 Intention-to-Treat; 3.3 Per Protocol; 3.1 Multiplicity Adjustment; 5.3 Assumption Checks; 5.7 Statistical Software
+nejm++10.1056_NEJMoa2117608++nejmoa2117608_protocol.md	0.522	0.740	151	9	50	11	2.3 Dropout; 2.3 additional-calculation assumptions; 5.3 Assumption Checks
+jama++10.1001_jama.2016.16786++joi160126supp1_prod_protocol.md	0.522	0.739	82	9	26	3	2.3 Assumptions/Software; 2.5 Interim Analyses; 3.1 Multiplicity/Confidence Intervals; 3.2 Protocol Deviations; 3.3 Per Protocol; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1214561++nejmoa1214561_protocol.md	0.516	0.644	53	10	27	8	2.3 Variability/Events/Dropout/Software; 3.1 Multiplicity/Confidence Intervals; 3.3 ITT/Per Protocol; 5.3 Covariate Adjustment/Assumption Checks; 5.4 Missing Data
+jama++10.1001_jama.2014.11479++joi140117supp2_prod_protocol.md	0.516	0.598	53	22	32	5	2.3 Variability Assumption; 2.3 Software Used for Calculation; 3.3 Intention-to-Treat; 5.6 Safety Analysis Methods
+nejm++10.1056_NEJMoa1611391++nejmoa1611391_protocol.md	0.512	0.646	36	12	17	11	2.3 Effect Size/Alpha/Power; 3.1 Confidence Intervals; 3.2 Adherence; 5.3 Subgroup Analyses; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2015.6755++jld150021supp1_prod_protocol.md	0.511	0.698	57	13	21	3	2.5 Interim analyses; 3.1 Multiplicity/CI; 3.3 ITT/Per Protocol; 5.4 Missing-data assumptions
+jama++10.1001_jama.2014.9237++joi140103supp1_prod_protocol.md	0.511	0.672	53	15	22	2	2.3 Variability/Dropout/Re-estimation/Software; 2.5 Stopping/Alpha Spending; 3.1 Multiplicity/Confidence Intervals; 3.3 Per Protocol; 5.3 Assumption Checks/Subgroups
+jama++10.1001_jama.2014.9087++joi140100supp1_prod_protocol.md	0.511	0.671	41	16	16	3	2.3 Alpha; 3.3 Intention-to-Treat/Per Protocol; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2015.2928++jpc150002supp1_prod_protocol.md	0.511	0.629	37	14	19	3	2.3 Assumed Treatment-Arm Value; 3.3 Intention-to-Treat; 5.3 Covariate Adjustment; 5.4 Handling Methods
+jama++10.1001_jama.2017.17077++joi170128supp1_prod_protocol.md	0.511	0.571	40	17	28	3	3.3 Intention-to-Treat; 5.3 Primary Analysis Methods; 5.4 Missing Data Handling; 2.3 Software Used
+nejm++10.1056_NEJMoa1706854++nejmoa1706854_protocol.md	0.508	0.631	55	20	28	3	2.3 Variability; 2.5 Interim Analyses; 3.3 Intention-to-Treat; 5.3 Covariate Adjustment; 5.4 Missing Data
+lancet++10.1016_S0140-6736_25_00979-1++mmc1_protocol.md	0.500	0.649	55	21	25	3	2.3 Planned Sample Size; 2.3 Alpha; 2.3 Power; 3.1 Alpha Level; 5.3 Assumption Checks
+nejm++10.1056_NEJMoa2203067++nejmoa2203067_protocol.md	0.489	0.654	45	12	21	2	2.3 calculation assumptions; 3.1 Multiplicity Adjustment; 5.3 Sensitivity Analyses; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1414838++nejmoa1414838_protocol.md	0.489	0.611	36	16	20	8	2.3 Alpha/Power; 3.1 Multiplicity/Confidence Intervals; 3.3 ITT/Per Protocol; 5.4 Missing Data
+jama++10.1001_jama.2024.20630++joi240115supp2_prod_1740071562.22186_protocol.md	0.489	0.598	39	20	23	2	2.5 Interim Analyses; 3.3 Analysis Populations; 5.3 Sensitivity Analyses; 5.4 Missing Data
+nejm++10.1056_NEJMoa1109034++nejmoa1109034_appendix_protocol.md	0.486	0.662	39	12	17	16	2.3 Outcome Used; 2.3 Power; 2.5 Interim Analyses; 3.2 Protocol Deviations; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2021.6128++joi210041supp2_prod_1621623395.39284_protocol.md	0.479	0.611	51	19	29	2	3.3 Intention-to-Treat; 3.3 Per Protocol; 5.3 Primary Analysis Methods; 5.4 Handling Methods
+lancet++10.1016_S0140-6736_25_00262-4++mmc1_protocol.md	0.478	0.622	41	15	22	2	2.3 Outcome/Power; 2.5 Interim Analyses; 5.4 Missing Data
+nejm++10.1056_NEJMoa1214969++nejmoa1214969_protocol.md	0.476	0.576	69	21	48	20	2.3 Assumed values/variability; 2.3 Re-estimation/Software; 3.2 Protocol deviations; 5.4 Missing data
+nejm++10.1056_NEJMoa1811687++nejmoa1811687_appendix_protocol.md	0.467	0.634	48	13	25	2	2.3 Sample Size Rationale; 2.5 Stopping Guidelines; 3.1 Alpha Level; 5.3 Alternative Methods; 5.6 Grading Scales and Causality
+lancet++10.1016_S0140-6736_22_00581-5++mmc1_protocol.md	0.467	0.583	35	21	22	3	2.3 Sample-size assumptions; 2.5 Interim analyses; 3.3 Per Protocol; 5.3 Assumption Checks; 5.6 Safety methods
+lancet++10.1016_S0140-6736_16_30961-8++mmc1_protocol.md	0.467	0.527	26	27	22	3	2.3 Planned Sample Size; 2.3 Power; 3.2 Adherence Definition; 5.3 Covariate Adjustment
+jama++10.1001_jama.2017.11387++joi170095supp1_prod_protocol.md	0.465	0.620	47	9	27	5	2.3 Assumed values; 3.2 Protocol deviations; 5.3 Sensitivity analyses; 5.4 Missing-data assumptions
+jama++10.1001_jama.2023.25092++joi230150supp1_prod_1704388751.17587_protocol.md	0.447	0.525	33	17	29	2	2.3 Calculation assumptions; 3.3 Per Protocol; 5.3 Covariate Adjustment; 5.4 Missing Data
+lancet++10.1016_S0140-6736_19_30195-3++mmc1_protocol.md	0.435	0.637	47	13	24	3	2.3 Sample Size; 2.5 Interim Analyses; 3.1 Multiplicity Adjustment; 3.3 Per Protocol; 5.7 Statistical Software
+lancet++10.1016_S0140-6736_14_61999-1++mmc1_protocol.md	0.426	0.465	35	24	42	1	2.3 Statistical Test; 3.3 Intention-to-Treat; 5.3 Primary Analysis Methods; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1706198++nejmoa1706198_protocol.md	0.409	0.589	42	9	28	5	2.3 Alpha; 3.1 Alpha Level; 3.3 Per Protocol; 5.3 Covariate Adjustment; 5.4 Handling Methods
+jama++10.1001_jama.2024.2452++joi240025supp2_prod_1712851952.75895_protocol.md	0.394	0.518	33	20	30	1	2.3 Sample Size; 2.5 Interim Analyses; 5.6 Safety Analysis
+lancet++10.1016_S0140-6736_19_32973-3++mmc1_protocol.md	0.391	0.684	88	21	35	2	2.3 Sample Size Rationale; 3.1 Alpha Level; 5.3 Assumption Checks
+lancet++10.1016_S0140-6736_13_62709-9++mmc1_protocol.md	0.391	0.408	27	21	44	2	2.3 Variability; 2.3 Statistical Test; 3.1 Multiplicity; 3.3 Per Protocol; 5.3 Covariate Adjustment; 5.4 Handling Methods
+jama++10.1001_jama.2014.13204++joi140128supp1_prod_protocol.md	0.389	0.510	41	17	39	3	5.3 Primary Analysis Methods; 5.4 Handling Methods; 3.3 Intention-to-Treat; 3.1 Multiplicity Adjustment
+nejm++10.1056_NEJMoa2031054++nejmoa2031054_protocol.md	0.386	0.643	45	9	23	7	2.3 Outcome/Power/Software; 3.3 Intention-to-Treat; 5.3 Covariate Adjustment; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2016.15588++jpc160010supp1_prod_protocol.md	0.386	0.617	49	23	26	8	2.3 Calculation outcome/effect/power/software; 3.1 Alpha/multiplicity/CIs; 3.3 ITT/Per Protocol; 5.3 Covariate adjustment/sensitivity/subgroups; 5.4 Missing-data assumptions
+nejm++10.1056_NEJMoa1300962++nejmoa1300962_protocol.md	0.386	0.548	35	10	28	7	2.3 Outcome Used; 3.1 Alpha; 3.3 Per Protocol; 5.3 Covariate Adjustment; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1508788++nejmoa1508788_appendix_protocol.md	0.348	0.487	24	28	26	3	2.3 Planned Sample Size; 2.3 Power; 3.3 Intention-to-Treat; 5.4 Handling Methods
+nejm++10.1056_NEJMoa1803396++nejmoa1803396_protocol.md	0.347	0.561	39	5	30	16	2.5 Interim Analyses; 3.1 Alpha Level; 5.3 Covariate Adjustment; 5.4 Handling Methods
+lancet++10.1016_S0140-6736_23_01200-X++mmc1_protocol.md	0.344	0.526	33	15	29	3	2.3 Sample Size Rationale; 2.5 Interim Analyses; 3.2 Protocol Deviations; 3.3 Per Protocol; 5.3 Assumption Checks; 5.7 Statistical Software
+jama++10.1001_jama.2019.1660++joi190020supp1_prod_protocol.md	0.344	0.513	30	18	28	2	2.3 Alpha/Power; 3.1 Alpha/Multiplicity/Confidence Intervals; 3.3 ITT/Per Protocol; 5.3 Primary Analysis Methods; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1300662++nejmoa1300662_appendix_protocol.md	0.337	0.537	34	20	28	7	2.3 Power; 2.5 Interim Analyses; 3.3 Intention-to-Treat; 5.4 Missing Data Assumptions
+nejm++10.1056_NEJMoa1701380++nejmoa1701380_appendix_protocol.md	0.333	0.531	37	11	32	1	2.3 Sample Size Rationale; 2.2 Method; 2.5 Interim Analyses Planned; 3.1 Alpha Level; 3.3 Per Protocol; 5.6 Safety Analysis Methods
+jama++10.1001_jama.2020.26848++joi200145supp1_prod_1615225415.22888_protocol.md	0.326	0.354	27	21	58	2	2.3 Power; 2.3 Effect Size; 2.5 Interim Analyses; 3.2 Protocol Deviations; 5.3 Sensitivity Analyses; 5.4 Missing Data Assumptions
+jama++10.1001_jama.2019.3307++joi190030supp1_prod_protocol.md	0.322	0.537	37	14	31	5	2.3 assumptions; 2.5 interim analyses; 3.1 Alpha; 5.4 missing-data assumptions; 5.6 safety analyses
+nejm++10.1056_NEJMoa1615869++nejmoa1615869_protocol.md	0.298	0.440	28	17	38	2	2.3 Sample Size Rationale; 3.1 Alpha Level; 5.4 Handling Methods; 3.3 Per Protocol
+nejm++10.1056_NEJMoa1207290++nejmoa1207290_protocol.md	0.298	0.380	19	19	37	1	2.3 Effect Size; 3.3 Intention-to-Treat; 5.3 Primary Analysis Methods; 5.4 Handling Methods
+nejm++10.1056_NEJMoa1407222++nejmoa1407222_appendix_protocol.md	0.261	0.400	20	16	34	8	2.3 sample-size inputs; 3.2 adherence/deviations; 3.3 ITT/Per Protocol; 5.3 covariate/sensitivity analyses
+jama++10.1001_jama.2024.8144++joi240057supp2_prod_1720019490.43781_protocol.md	0.233	0.488	31	17	33	3	2.3 calculation inputs; 3.1; 3.3 Per Protocol; 5.3 analysis methods
+lancet++10.1016_S0140-6736_12_62125-4++mmc1_protocol.md	0.202	0.331	11	29	37	1	2.3 Calculation assumptions; 3.1 Alpha/Multiplicity; 3.3 ITT/Per Protocol; 5.3 Primary analysis; 5.4 Missing data
+nejm++10.1056_NEJMoa2212528++nejmoa2212528_appendix_protocol.md	0.198	0.418	34	14	50	1	2.3 Sample Size; 3.2 Protocol Deviations; 5.1 Primary Outcomes; 5.3 Primary Analysis
+nejm++10.1056_NEJMoa1202290++nejmoa1202290_appendix_protocol.md	0.196	0.388	23	16	41	2	2.2 Method; 2.3 sample-size assumptions; 3.3 Intention-to-Treat; 3.3 Per Protocol; 5.3 Covariate Adjustment; 5.7 Statistical Software
+lancet++10.1016_S0140-6736_20_32649-0++mmc1_protocol.md	0.174	0.359	28	10	54	2	2.3 Sample Size Rationale; 3.2 Adherence Definition; 3.3 Intention-to-Treat; 5.4 Handling Methods
+lancet++10.1016_S0140-6736_25_00631-2++mmc1_protocol.md	0.159	0.151	6	11	59	2	2.3 Sample Size Rationale; 3.3 Intention-to-Treat; 5.1 Primary Outcome; 5.3 Primary Analysis Methods; 5.4 Handling Methods
+lancet++10.1016_S0140-6736_23_00048-X++mmc1_protocol.md	0.144	0.183	4	18	49	3	2.3 sample-size assumptions; 3.3 analysis populations; 5.1 primary outcomes; 5.4 missing data
+jama++10.1001_jama.2016.5352++joi160048supp1_prod_protocol.md	0.138	0.351	18	18	41	1	2.3 Sample Size; 3.3 Analysis Populations; 5.3 Primary Analysis; 5.4 Missing Data
+jama++10.1001_jama.2017.20313++joi170155supp1_prod_protocol.md	0.111	0.284	15	16	50	3	2.3 Sample Size Rationale; 3.3 Intention-to-Treat; 5.3 Primary Analysis Methods; 5.4 Handling Methods
+jama++10.1001_jama.2017.14171++joi170110supp3_prod_protocol.md	0.032	0.068	2	6	65	1	2.3 Planned Sample Size; 3.3 Intention-to-Treat; 5.1 Primary Outcome; 5.3 Primary Analysis Methods; 5.4 Handling Methods
+jama++10.1001_jama.2025.12543++joi250052supp1_prod_1756415903.05621.md	0.000	0.000	0	0	64	0	1.1 Background; 1.2 Objectives; 2.3 Sample Size; 5.3 Primary Analysis Methods
+jama++10.1001_jama.2025.19578++joi250085supp1_prod_1766440849.02089_protocol.md	0.000	0.000	0	0	74	0	1.2 Objectives; 2.3 Sample Size; 3.3 Analysis Populations; 5.1/5.2 Outcomes; 5.3 Primary Analysis; 5.4 Missing Data
+jama++10.1001_jama.2025.21990++joi250107supp2_prod_1770050845.53813_protocol.md	0.000	0.000	0	0	74	0	1.2 Objectives; 2.3 Sample Size; 3.3 Populations; 5.1/5.2 Outcomes; 5.3 Methods; 5.4 Missing Data
+jama++10.1001_jama.2025.24175++joi250116supp1_prod_1771885794.26255_protocol.md	0.000	0.000	0	0	75	0	2.3 Planned Sample Size; 5.1 Definition; 5.3 Primary Analysis Methods; 3.3 Intention-to-Treat
