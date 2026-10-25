@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAP Generation Pipeline</title>
+<style>
+  :root {
+    --bg: #f7f6f2;
+    --surface: #ffffff;
+    --surface-2: #f0eee8;
+    --text: #1f1e1b;
+    --muted: #6b6860;
+    --border: #dedad0;
+    --accent: #2f5fb3;
+    --accent-soft: #e4ecfa;
+    --loop: #8a4fbf;
+    --loop-soft: #f1e8fa;
+    --ok: #2e7d4f;
+    --ok-soft: #e3f3e9;
+    --warn: #b0671a;
+    --warn-soft: #fbeedd;
+    --bad: #b33a3a;
+    --bad-soft: #f9e3e3;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #161614;
+      --surface: #1f1f1c;
+      --surface-2: #282824;
+      --text: #ecebe6;
+      --muted: #a29f96;
+      --border: #3a3934;
+      --accent: #7fa6ec;
+      --accent-soft: #1f2b40;
+      --loop: #c39be6;
+      --loop-soft: #2d2238;
+      --ok: #6cc592;
+      --ok-soft: #1c2f24;
+      --warn: #e3a35c;
+      --warn-soft: #36291a;
+      --bad: #e88282;
+      --bad-soft: #3a2020;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #161614;
+    --surface: #1f1f1c;
+    --surface-2: #282824;
+    --text: #ecebe6;
+    --muted: #a29f96;
+    --border: #3a3934;
+    --accent: #7fa6ec;
+    --accent-soft: #1f2b40;
+    --loop: #c39be6;
+    --loop-soft: #2d2238;
+    --ok: #6cc592;
+    --ok-soft: #1c2f24;
+    --warn: #e3a35c;
+    --warn-soft: #36291a;
+    --bad: #e88282;
+    --bad-soft: #3a2020;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  main { max-width: 980px; margin: 0 auto; padding: 40px 16px 64px; }
+  h1 { font-size: 28px; margin: 0 0 6px; letter-spacing: -0.01em; }
+  h2 { font-size: 19px; margin: 44px 0 12px; }
+  h3 { font-size: 15px; margin: 0 0 6px; }
+  p { margin: 0 0 10px; }
+  .lede { color: var(--muted); max-width: 720px; }
+  code, .mono { font-family: var(--mono); font-size: 0.88em; }
+  code { background: var(--surface-2); padding: 1px 5px; border-radius: 4px; }
+
+  /* Overview strip */
+  .strip {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
+    margin: 24px 0 0; padding: 14px; background: var(--surface);
+    border: 1px solid var(--border); border-radius: 10px;
+  }
+  .chip {
+    padding: 5px 10px; border-radius: 999px; font-size: 13px; font-weight: 600;
+    background: var(--accent-soft); color: var(--accent); white-space: nowrap;
+  }
+  .chip.loop { background: var(--loop-soft); color: var(--loop); }
+  .chip.ok { background: var(--ok-soft); color: var(--ok); }
+  .arrow { color: var(--muted); font-size: 14px; }
+
+  /* Main flow */
+  .flow { display: grid; gap: 0; }
+  .stage {
+    display: grid; grid-template-columns: 44px 1fr minmax(0, 260px); gap: 14px;
+    align-items: start;
+  }
+  .rail { display: flex; flex-direction: column; align-items: center; height: 100%; }
+  .num {
+    width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center;
+    font-weight: 700; font-size: 14px; background: var(--accent); color: var(--surface);
+    flex: none;
+  }
+  .stage.loop .num { background: var(--loop); }
+  .stage.done .num { background: var(--ok); }
+  .line { width: 2px; flex: 1; background: var(--border); min-height: 18px; }
+  .card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 14px 16px; margin-bottom: 18px;
+  }
+  .stage.loop .card { border-color: var(--loop); }
+  .card .who { font-size: 12px; color: var(--muted); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .card ul { margin: 6px 0 0; padding-left: 18px; }
+  .card li { margin: 2px 0; }
+  .exits { display: flex; flex-direction: column; gap: 6px; padding-top: 2px; margin-bottom: 18px; }
+  .exit {
+    font-size: 12.5px; border-radius: 8px; padding: 7px 10px; border-left: 3px solid;
+  }
+  .exit b { font-family: var(--mono); font-size: 11.5px; }
+  .exit.warn { background: var(--warn-soft); border-color: var(--warn); }
+  .exit.bad { background: var(--bad-soft); border-color: var(--bad); }
+  .exit.ok { background: var(--ok-soft); border-color: var(--ok); }
+  .exit.loop { background: var(--loop-soft); border-color: var(--loop); }
+
+  /* Inner loop diagram */
+  .loopbox {
+    display: grid; grid-template-columns: 1fr 120px 1fr; gap: 0; align-items: stretch;
+    margin-top: 10px;
+  }
+  .agent {
+    border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px;
+    background: var(--surface-2);
+  }
+  .agent h3 { display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+  .agent .model { font-family: var(--mono); font-size: 11.5px; color: var(--muted); font-weight: 400; }
+  .agent ol { margin: 4px 0 0; padding-left: 18px; font-size: 13.5px; }
+  .handoff { display: flex; flex-direction: column; justify-content: center; gap: 14px; padding: 0 6px; }
+  .handoff div { font-size: 11.5px; text-align: center; color: var(--muted); }
+  .handoff svg { display: block; width: 100%; height: 14px; }
+  .handoff .l2r { color: var(--accent); }
+  .handoff .r2l { color: var(--loop); }
+
+  /* Tables / grids */
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  th, td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { font-size: 12px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+  .tablewrap { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; overflow-x: auto; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .stat { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
+  .stat .v { font-size: 24px; font-weight: 700; }
+  .stat .k { font-size: 12.5px; color: var(--muted); }
+  .note { font-size: 12.5px; color: var(--muted); margin-top: 8px; }
+
+  @media (max-width: 760px) {
+    .stage { grid-template-columns: 36px 1fr; }
+    .exits { grid-column: 2; margin-top: -10px; }
+    .loopbox { grid-template-columns: 1fr; }
+    .handoff { flex-direction: row; padding: 8px 0; }
+    .handoff svg { transform: rotate(90deg); width: 40px; }
+    .grid2 { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1>SAP Generation Pipeline</h1>
+  <p class="lede">How one protocol PDF becomes a Statistical Analysis Plan markdown. The batch
+  driver (<code>run_batch.sh</code>) gives each PDF its own Codex session. Inside it, a primary
+  agent writes the SAP and a separate reviewer agent checks it until the reviewer passes it.
+  The harness accepts the result only if it passes a set of deterministic checks.</p>
+
+  <div class="strip" aria-label="Pipeline at a glance">
+    <span class="chip">Protocol PDF</span><span class="arrow">→</span>
+    <span class="chip">Page-tagged text</span><span class="arrow">→</span>
+    <span class="chip">Evidence file</span><span class="arrow">→</span>
+    <span class="chip">SAP draft</span><span class="arrow">⇄</span>
+    <span class="chip loop">Reviewer cycles</span><span class="arrow">→</span>
+    <span class="chip">Lint</span><span class="arrow">→</span>
+    <span class="chip">Harness gates</span><span class="arrow">→</span>
+    <span class="chip ok">&lt;id&gt;.md</span>
+  </div>
+
+  <h2>One job, step by step</h2>
+  <div class="flow">
+
+    <div class="stage">
+      <div class="rail"><div class="num">1</div><div class="line"></div></div>
+      <div class="card">
+        <div class="who">Harness · run_batch.sh</div>
+        <h3>Pick the PDF and admit the job</h3>
+        <p>The driver finds every <code>*_protocol*.pdf</code> and turns its path into a job id,
+        <code>&lt;journal&gt;++&lt;article-id&gt;++&lt;file-id&gt;</code>.
+        <code>--assignment-label</code> can split the corpus across machines.
+        A job starts only when enough quota and session time remain to finish it, judged from
+        the p90 runtime of past jobs.</p>
+      </div>
+      <div class="exits">
+        <div class="exit ok"><b>SKIP</b> · <code>&lt;id&gt;.md</code> already exists</div>
+        <div class="exit warn"><b>DEFERRED</b> · not enough budget, or a <code>.stop</code> file exists from an earlier drain</div>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="rail"><div class="num">2</div><div class="line"></div></div>
+      <div class="card">
+        <div class="who">Harness · tools/extract_pdf.py</div>
+        <h3>Extract page-tagged text</h3>
+        <p>The PDF's text layer is written to <code>work/&lt;id&gt;.protocol.txt</code>, with
+        each page opened by a <code>===== PAGE N OF M =====</code> marker. Every SAP citation
+        must use these page numbers, and <code>M</code> becomes the linter's
+        <code>--max-page</code>.</p>
+      </div>
+      <div class="exits">
+        <div class="exit warn"><b>UNSUPPORTED_SCAN</b> · fewer than 20 characters per page on average. <code>ocr_run_batch.sh</code> adds an invisible text layer using Apple Vision OCR, and the PDF goes through the pipeline again.</div>
+      </div>
+    </div>
+
+    <div class="stage loop">
+      <div class="rail"><div class="num">3</div><div class="line"></div></div>
+      <div class="card">
+        <div class="who">Codex session · codex exec, multi-agent, workspace-write sandbox</div>
+        <h3>Codex-in-the-loop: write, review, revise</h3>
+        <p>The prompt gives the paths to the protocol text, evidence file, draft and review
+        file, plus the page count, the verbosity (<code>high</code>) and the required reviewer
+        model. <code>AGENTS.md</code> sets out the full workflow.</p>
+        <div class="loopbox">
+          <div class="agent">
+            <h3>Primary agent <span class="model">gpt-5.6-terra · effort medium</span></h3>
+            <ol>
+              <li>Read the protocol in fixed page ranges, from the first page to the last</li>
+              <li>Write the <b>evidence file</b>, with one entry for each SAP field: facts, sources, absence searches, where each fact appears in the draft</li>
+              <li>Write the <b>draft SAP</b> from the evidence file in the fixed 5-section template, with a citation on every block</li>
+              <li>Check the draft for fields marked absent that another field answers</li>
+              <li>Fix each finding in the evidence file and the draft</li>
+            </ol>
+          </div>
+          <div class="handoff" aria-hidden="true">
+            <div class="l2r">
+              <svg viewBox="0 0 100 14" preserveAspectRatio="none"><line x1="2" y1="7" x2="92" y2="7" stroke="currentColor" stroke-width="2"/><path d="M90 2 L98 7 L90 12 Z" fill="currentColor"/></svg>
+              evidence + draft
+            </div>
+            <div class="r2l">
+              <svg viewBox="0 0 100 14" preserveAspectRatio="none"><line x1="8" y1="7" x2="98" y2="7" stroke="currentColor" stroke-width="2"/><path d="M10 2 L2 7 L10 12 Z" fill="currentColor"/></svg>
+              findings (OPEN)
+            </div>
+          </div>
+          <div class="agent">
+            <h3>Reviewer subagent <span class="model">gpt-5.6-luna · fresh context</span></h3>
+            <ol>
+              <li>Read the protocol itself instead of trusting the draft</li>
+              <li><b>Cycle 1</b> lists every finding, each typed as OMISSION, CONTRADICTION, UNSUPPORTED, MISCLASSIFIED, CITATION, VERBOSITY or REGRESSION</li>
+              <li>Later cycles only mark those findings RESOLVED or OPEN. The only new findings allowed are regressions the revision introduced</li>
+              <li>Run a cross-field contradiction scan</li>
+              <li>Add the final field checklist, then the line <code>VERDICT: PASS</code></li>
+            </ol>
+          </div>
+        </div>
+        <p class="note">The reviewer only writes the review file and never edits the evidence or
+        draft. The primary agent never writes the review file. The cycle 1 scope rule keeps the
+        loop converging. Without it, each cycle could raise new findings, and the reviewer might
+        never reach a verdict.</p>
+      </div>
+      <div class="exits">
+        <div class="exit loop"><b>loop</b> · repeats until the reviewer writes <code>VERDICT: PASS</code></div>
+        <div class="exit warn"><b>LIMIT_HIT</b> · quota ran out partway. The other workers stop starting jobs, a progress snapshot is saved, and the retry count is unchanged</div>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="rail"><div class="num">4</div><div class="line"></div></div>
+      <div class="card">
+        <div class="who">Agent, then harness · tools/lint_sap.py</div>
+        <h3>Deterministic lint</h3>
+        <p>The agent runs the linter until it passes, and the harness runs it again on its own.</p>
+        <ul>
+          <li>Exactly the five <code>##</code> sections and every <code>###</code> section, in order</li>
+          <li>Every required bold field label is present</li>
+          <li>No banned hedges (<i>likely, implied, presumably, typically, would be, standard practice, governed by SOPs</i>) or placeholders</li>
+          <li>Every substantive block ends with <code>*(Source: …)*</code>, and every cited page is ≤ <code>M</code></li>
+          <li>No field called absent while another field covers the same topic (for example, multiplicity)</li>
+        </ul>
+      </div>
+      <div class="exits"></div>
+    </div>
+
+    <div class="stage done">
+      <div class="rail"><div class="num">5</div></div>
+      <div class="card">
+        <div class="who">Harness · acceptance gates</div>
+        <h3>Accept or retry</h3>
+        <p>The job is accepted only when all four checks pass. The draft is then moved to
+        <code>&lt;id&gt;.md</code> and an <code>OK</code> row is added to
+        <code>_ledger.tsv</code>.</p>
+      </div>
+      <div class="exits">
+        <div class="exit ok"><b>OK</b> · all gates pass</div>
+        <div class="exit bad"><b>retry</b> · the old review is archived as <code>.attempt&lt;n&gt;</code> and a fresh session starts. By default there is 1 retry, after which the job is marked <b>FAIL</b></div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Acceptance gates</h2>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Gate</th><th>Check</th><th>Why it exists</th></tr></thead>
+      <tbody>
+        <tr><td>Codex exit</td><td><code>codex exec</code> returns 0</td><td>The session finished instead of crashing or timing out</td></tr>
+        <tr><td>Evidence</td><td><code>work/&lt;id&gt;.evidence.md</code> is non-empty</td><td>The draft must rest on a field-by-field evidence record</td></tr>
+        <tr><td>Review</td><td>Has the standalone lines <code>Reviewer model: gpt-5.6-luna</code>, <code>## Final field checklist</code> and <code>VERDICT: PASS</code></td><td>Confirms that an independent reviewer on the right model finished and passed the draft</td></tr>
+        <tr><td>Lint</td><td><code>lint_sap.py DRAFT --max-page M</code> exits 0</td><td>Checks structure, citations and wording without relying on a model</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Files each job leaves behind</h2>
+  <div class="grid2">
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Path (under the output dir)</th><th>Role</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">&lt;id&gt;.md</td><td><b>Final SAP</b></td></tr>
+          <tr><td class="mono">work/&lt;id&gt;.protocol.txt</td><td>Page-tagged source text</td></tr>
+          <tr><td class="mono">work/&lt;id&gt;.evidence.md</td><td>Field-by-field evidence</td></tr>
+          <tr><td class="mono">work/&lt;id&gt;.review.md</td><td>Reviewer cycles, checklist, verdict</td></tr>
+          <tr><td class="mono">logs/&lt;id&gt;.log</td><td>Human-readable run log</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Batch-level file</th><th>Role</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">_ledger.tsv</td><td>Append-only record of every job outcome, kept across runs</td></tr>
+          <tr><td class="mono">_status.tsv</td><td>View of the current run, rebuilt from the ledger</td></tr>
+          <tr><td class="mono">_budget.tsv</td><td>Quota observations</td></tr>
+          <tr><td class="mono">.stop</td><td>Brake file. Its presence means the last run stopped on budget</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <h2>What runs have looked like</h2>
+  <div class="stats">
+    <div class="stat"><div class="v">411</div><div class="k">jobs accepted (<code>OK</code>)</div></div>
+    <div class="stat"><div class="v">97%</div><div class="k">accepted on the first attempt (397 of 411)</div></div>
+    <div class="stat"><div class="v">~11 min</div><div class="k">median time per accepted job</div></div>
+    <div class="stat"><div class="v">~2.8M</div><div class="k">median tokens per accepted job</div></div>
+  </div>
+  <p class="note">Taken from the <code>*_result/_ledger.tsv</code> files on this machine
+  (prod, BMJ, OCR batches and rerun). They do not cover runs on other machines.</p>
+</main>
+</body>
+</html>

@@ -1,0 +1,65 @@
+# SAP QC configuration. Values marked "P3" are provisional until the judge-validation gate.
+
+models:
+  # D6 says the judge must be a third model. On 2026-10-25 the judge was set to the
+  # reviewer model, gpt-5.6-luna, overriding D6 through allow_non_independent_judge.
+  # Every run then records judge_independent = false. To restore D6, choose a third
+  # model and set the flag to false.
+  judge: gpt-5.6-luna
+  atomizer: null          # defaults to the judge model when null
+  embedding: text-embedding-3-small
+  forbidden: [gpt-5.6-terra, gpt-5.6-luna]   # generator and reviewer (prefix match)
+  allow_non_independent_judge: true   # D6 override; false refuses a forbidden model
+  temperature: 0          # set to null for models that reject a temperature
+  max_output_tokens: 16000
+
+retrieval:
+  k: 5                    # P3: smallest k with Recall@k >= 0.95 on judge-confirmed facts
+  k_report: [1, 3, 5, 10]
+  rrf_k: 60
+  dense_chunk_words: 250
+  dense_chunk_stride: 200
+  stored_ranks: 20        # ranked pages kept per fact in retrieval.jsonl
+
+sampling:
+  pi: 0.3
+  seed: 2026
+
+packets:
+  passage_words: 150
+  passage_stride: 100
+  top_passages: 3
+  facts_per_call: 6       # facts sharing a section are judged together, 4-8 per call
+  max_facts_per_call: 8
+  coverage_miss_whole_pages: 3   # a coverage miss gets its whole cited pages, up to this many
+
+triggers:
+  low_overlap_quantile: 0.10
+  compound_facts: 3
+  critical_sections: ["2.2", "2.3", "2.5", "3.3", "5.1", "5.3", "5.4"]
+
+absence:
+  tau: null               # P3: BM25 threshold for recall ~0.99 on present, confirmed facts
+  dense_top: 5
+  dense_min: null        # similarity floor for dense candidates; null = plain top 5 (plan 4.10)
+  max_passages: 8
+
+judge:
+  min_quote_chars: 10     # whitespace-free characters a quote needs to count as verbatim
+
+jev:
+  # TypeSafe AI's decision model as the judge's front end (key: TYPESAFE_API_KEY in .env).
+  # cascade: accept a confident supported/consistent from JEV, escalate the rest to the
+  #          LLM judge, which must quote. JEV-accepted verdicts carry no quote (relaxes D9).
+  # shadow:  JEV answers every fact but the LLM decides all; for calibrating accept_confidence.
+  enabled: true
+  mode: cascade
+  model: jev-1.13.0       # pinned; jev-latest floats
+  accept_confidence: 0.9  # P3: `run_qc.py calibrate` on shadow-mode verdicts
+  # Absence facts always escalate: in the LACE probe JEV called both real absence errors
+  # (C96, 45.1) "consistent". Recognizing an unnamed instance of an item is a derived
+  # verdict, JEV's weak spot; absence facts are ~5% of facts, so escalating them is cheap.
+  accept_absent: false
+  orders: 2               # passages forward and reversed, probabilities averaged
+  max_disagreement: 0.03  # calibrate: largest acceptable 95% upper bound of JEV-vs-LLM disagreement
+  timeout: 30

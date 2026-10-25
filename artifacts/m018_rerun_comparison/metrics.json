@@ -1,0 +1,14 @@
+{
+  "original": {
+    "not_reported_phrase_count": 28,
+    "exact_not_reported_in_protocol_count": 28,
+    "not_applicable_phrase_count": 11,
+    "whitespace_delimited_word_count": 2537
+  },
+  "regenerated": {
+    "not_reported_phrase_count": 24,
+    "exact_not_reported_in_protocol_count": 22,
+    "not_applicable_phrase_count": 11,
+    "whitespace_delimited_word_count": 2977
+  }
+}

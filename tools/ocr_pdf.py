@@ -18,6 +18,7 @@ from __future__ import annotations
 import argparse
 import io
 import os
+import re
 import sys
 import tempfile
 import time
@@ -28,6 +29,7 @@ from ocrmac import ocrmac
 from pypdf import PdfReader, PdfWriter
 from pypdf.generic import (
     ArrayObject,
+    BooleanObject,
     DecodedStreamObject,
     DictionaryObject,
     FloatObject,
@@ -82,11 +84,75 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--all-pages", action="store_true", help="OCR every page, even ones with a text layer"
     )
+    parser.add_argument(
+        "--mute-garbled-fonts",
+        action="store_true",
+        help="give fonts that extract as glyph codes (no /ToUnicode, glyph names such as "
+        "/1 or /i255) a /ToUnicode that maps every code to a space, and OCR every page "
+        "that uses one; rendering is unchanged",
+    )
     return parser.parse_args()
 
 
 def nonspace(text: str) -> int:
     return sum(not char.isspace() for char in text)
+
+
+# A glyph name with no Unicode meaning ("/1", "/i255", "/g12"). A simple font that uses
+# such names and has no /ToUnicode extracts as the names themselves, a cipher of codes.
+GARBLED_GLYPH_RE = re.compile(r"^/[A-Za-z]?\d+$")
+
+
+def is_garbled_font(font) -> bool:
+    if "/ToUnicode" in font:
+        return False
+    encoding = font.get("/Encoding")
+    encoding = encoding.get_object() if encoding is not None else None
+    if not isinstance(encoding, DictionaryObject) or "/Differences" not in encoding:
+        return False
+    names = [str(item) for item in encoding["/Differences"] if not isinstance(item, int)]
+    return bool(names) and sum(bool(GARBLED_GLYPH_RE.match(n)) for n in names) >= len(names) / 2
+
+
+def space_cmap() -> bytes:
+    """A /ToUnicode CMap sending every one-byte code to U+0020. bfchar, not bfrange:
+    a bfrange increments its destination, so <00> <FF> <0020> would map 1 to '!'."""
+    blocks = []
+    for start in range(0, 256, 100):
+        codes = range(start, min(start + 100, 256))
+        entries = "".join(f"<{code:02X}> <0020>\n" for code in codes)
+        blocks.append(f"{len(codes)} beginbfchar\n{entries}endbfchar\n")
+    return (
+        "/CIDInit /ProcSet findresource begin 12 dict begin begincmap\n"
+        "/CMapName /OCRMuted def /CMapType 2 def\n"
+        "1 begincodespacerange <00> <FF> endcodespacerange\n"
+        + "".join(blocks)
+        + "endcmap CMapName currentdict /CMap defineresource pop end end\n"
+    ).encode()
+
+
+def mute_garbled_fonts(writer: PdfWriter) -> set[int]:
+    """Mute every garbled font in place; return the indices of pages that use one.
+
+    /ToUnicode only affects text extraction, so the pages render exactly as before.
+    Font objects are shared across pages, so each is changed once.
+    """
+    cmap = None
+    pages: set[int] = set()
+    for index, page in enumerate(writer.pages):
+        resources = page.get("/Resources")
+        fonts = resources.get_object().get("/Font") if resources is not None else None
+        for ref in (fonts.get_object().values() if fonts is not None else []):
+            font = ref.get_object()
+            if font.get("/ToUnicode") is not None and font.get("/OCRMuted"):
+                pages.add(index)
+            elif is_garbled_font(font):
+                if cmap is None:
+                    cmap = add_stream(writer, space_cmap())
+                font[NameObject("/ToUnicode")] = cmap
+                font[NameObject("/OCRMuted")] = BooleanObject(True)
+                pages.add(index)
+    return pages
 
 
 def group_lines(results) -> list[list[tuple[float, float, float, float, str]]]:
@@ -319,13 +385,14 @@ def main() -> int:
         total_chars = 0
         retries = 0
         todo: list[tuple[int, list]] = []
+        muted = mute_garbled_fonts(writer) if args.mute_garbled_fonts else set()
         for index, page in enumerate(writer.pages):
             try:
                 text = page.extract_text() or ""
             except Exception:
                 text = ""
             chars = nonspace(text)
-            if args.all_pages or chars < args.min_chars_per_page:
+            if args.all_pages or index in muted or chars < args.min_chars_per_page:
                 lines, page_retries = recognize_page(
                     rendered[index], args.level, args.lang, args.dpi
                 )
@@ -374,7 +441,7 @@ def main() -> int:
         print(
             f"ocr: {len(todo)} of {page_count} pages recognized in "
             f"{time.monotonic() - started:.0f}s ({total_chars} non-whitespace characters, "
-            f"{retries} low-confidence regions retried) "
+            f"{retries} low-confidence regions retried, {len(muted)} pages with garbled fonts muted) "
             f"-> {args.output}"
         )
         return 0

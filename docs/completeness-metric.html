@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAP Completeness Metric</title>
+<style>
+  :root {
+    --bg: #f7f6f2;
+    --surface: #ffffff;
+    --surface-2: #f0eee8;
+    --text: #1f1e1b;
+    --muted: #6b6860;
+    --border: #dedad0;
+    --accent: #2f5fb3;
+    --accent-soft: #e4ecfa;
+    --filled: #2e7d4f;
+    --partial: #7fb08f;
+    --nr: #c9c4b6;
+    --na: transparent;
+    --na-line: #9a958a;
+    --stat: #b0671a;
+    --stat-soft: #fbeedd;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #161614;
+      --surface: #1f1f1c;
+      --surface-2: #282824;
+      --text: #ecebe6;
+      --muted: #a29f96;
+      --border: #3a3934;
+      --accent: #7fa6ec;
+      --accent-soft: #1f2b40;
+      --filled: #5fbf87;
+      --partial: #3f7a56;
+      --nr: #4a4842;
+      --na-line: #7a766c;
+      --stat: #e3a35c;
+      --stat-soft: #36291a;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #161614;
+    --surface: #1f1f1c;
+    --surface-2: #282824;
+    --text: #ecebe6;
+    --muted: #a29f96;
+    --border: #3a3934;
+    --accent: #7fa6ec;
+    --accent-soft: #1f2b40;
+    --filled: #5fbf87;
+    --partial: #3f7a56;
+    --nr: #4a4842;
+    --na-line: #7a766c;
+    --stat: #e3a35c;
+    --stat-soft: #36291a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  main { max-width: 980px; margin: 0 auto; padding: 40px 16px 64px; }
+  h1 { font-size: 28px; margin: 0 0 6px; letter-spacing: -0.01em; }
+  h2 { font-size: 19px; margin: 44px 0 12px; }
+  h3 { font-size: 15px; margin: 0 0 6px; }
+  p { margin: 0 0 10px; }
+  .lede { color: var(--muted); max-width: 720px; }
+  code, .mono { font-family: var(--mono); font-size: 0.88em; }
+  code { background: var(--surface-2); padding: 1px 5px; border-radius: 4px; }
+  .panel { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+  .note { font-size: 12.5px; color: var(--muted); margin-top: 8px; }
+
+  /* Flow */
+  .flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; align-items: stretch; }
+  .step { position: relative; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px; margin-right: 22px; }
+  .step:last-child { margin-right: 0; }
+  .step:not(:last-child)::after {
+    content: "→"; position: absolute; right: -19px; top: 50%; transform: translateY(-50%);
+    color: var(--muted); font-size: 16px;
+  }
+  .step .n { font-size: 12px; color: var(--accent); font-weight: 700; letter-spacing: 0.05em; }
+  .step h3 { margin: 2px 0 4px; }
+  .step p { font-size: 13px; color: var(--muted); margin: 0; }
+
+  /* Field map */
+  .fieldmap { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 10px; }
+  .sec { border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; background: var(--surface); }
+  .sec.stat { border-color: var(--stat); background: var(--stat-soft); }
+  .sec .t { display: flex; justify-content: space-between; gap: 8px; font-weight: 600; font-size: 13.5px; }
+  .sec .c { font-family: var(--mono); font-size: 12px; color: var(--muted); white-space: nowrap; }
+  .sec .f { font-size: 12.5px; color: var(--muted); margin-top: 3px; }
+  .sec .rep { font-size: 11.5px; color: var(--accent); margin-top: 4px; font-weight: 600; }
+  .legend { display: flex; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--muted); margin: 0 0 10px; }
+  .sw { display: inline-block; width: 12px; height: 12px; border-radius: 3px; vertical-align: -1px; margin-right: 6px; border: 1px solid var(--border); }
+
+  /* Classes */
+  .classes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .cls { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px; border-top: 5px solid; }
+  .cls .w { font-family: var(--mono); font-size: 13px; font-weight: 700; margin: 2px 0 6px; }
+  .cls p { font-size: 13px; color: var(--muted); margin: 0; }
+  .cls.filled { border-top-color: var(--filled); }
+  .cls.partial { border-top-color: var(--partial); }
+  .cls.nr { border-top-color: var(--nr); }
+  .cls.na { border-top-color: var(--na-line); border-top-style: dashed; }
+
+  /* Formula */
+  .formula { text-align: center; font-size: 19px; padding: 18px 12px; }
+  .frac { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; margin: 0 6px; }
+  .frac .top { border-bottom: 2px solid var(--text); padding: 0 8px 4px; }
+  .frac .bot { padding: 4px 8px 0; }
+  .formula .eq { color: var(--muted); }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+
+  /* Bars */
+  .bar { display: flex; height: 30px; border-radius: 6px; overflow: hidden; border: 1px solid var(--border); }
+  .bar > div { display: grid; place-items: center; font-size: 12px; font-weight: 600; color: var(--surface); min-width: 0; overflow: hidden; white-space: nowrap; }
+  .bar .filled { background: var(--filled); }
+  .bar .partial { background: var(--partial); color: var(--text); }
+  .bar .nr { background: var(--nr); color: var(--text); }
+  .bar .na { background: repeating-linear-gradient(45deg, transparent 0 5px, var(--border) 5px 7px); color: var(--muted); }
+  .calc { font-family: var(--mono); font-size: 13.5px; line-height: 1.8; margin-top: 12px; }
+  .calc b { color: var(--filled); }
+
+  /* Histogram */
+  .tabs { display: inline-flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 12px; }
+  .tabs button { background: var(--surface); color: var(--text); border: 0; padding: 6px 14px; font: inherit; font-size: 13px; cursor: pointer; }
+  .tabs button[aria-pressed="true"] { background: var(--accent); color: var(--surface); }
+  .hist { display: grid; grid-template-columns: repeat(20, 1fr); align-items: end; gap: 3px; height: 200px; border-bottom: 1px solid var(--border); position: relative; }
+  .hist .b { background: var(--accent); border-radius: 3px 3px 0 0; position: relative; min-height: 1px; }
+  .hist .b.hi { background: var(--filled); }
+  .hist .b span { position: absolute; top: -17px; left: 50%; transform: translateX(-50%); font-size: 10.5px; color: var(--muted); }
+  .axis { display: grid; grid-template-columns: repeat(20, 1fr); gap: 3px; font-size: 10.5px; color: var(--muted); margin-top: 4px; }
+  .axis div { text-align: left; }
+  .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 16px; }
+  .kpi { background: var(--surface-2); border-radius: 8px; padding: 10px 12px; }
+  .kpi .v { font-size: 20px; font-weight: 700; }
+  .kpi .k { font-size: 12px; color: var(--muted); }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  th, td { text-align: left; padding: 6px 10px; border-bottom: 1px solid var(--border); }
+  th { font-size: 12px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; width: 70px; }
+  .gapbar { height: 8px; background: var(--accent); border-radius: 4px; }
+
+  ul.caveats { margin: 0; padding-left: 18px; }
+  ul.caveats li { margin: 4px 0; }
+
+  @media (max-width: 760px) {
+    .flow { grid-template-columns: 1fr; gap: 22px; }
+    .step { margin-right: 0; }
+    .step:not(:last-child)::after { content: "↓"; right: auto; left: 50%; top: auto; bottom: -21px; transform: translateX(-50%); }
+    .classes, .two, .kpis { grid-template-columns: 1fr 1fr; }
+    .hist .b span { display: none; }
+    .axis div:nth-child(odd) { visibility: hidden; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1>SAP Completeness Metric</h1>
+  <p class="lede">A score from 0 to 1 for how many SAP template fields a generated markdown
+  actually fills. An LLM judge reads one SAP, gives every field one of four classes, and the
+  score is the weighted share of fields that apply to the trial. The judge reads only the SAP.
+  It never sees the protocol, so the score measures completeness, not correctness.</p>
+
+  <h2>How a file gets scored</h2>
+  <div class="flow">
+    <div class="step"><div class="n">1 · INPUT</div><h3>One SAP markdown</h3><p>For example, a file from <code>Benchmark_merged/2/</code>. Files already in the output TSV are skipped.</p></div>
+    <div class="step"><div class="n">2 · JUDGE</div><h3>codex exec</h3><p><code>gpt-5.6-terra</code>, effort low, read-only sandbox. <code>AGENTS.md</code> is not loaded, so the SAP-writing workflow plays no part.</p></div>
+    <div class="step"><div class="n">3 · CLASSIFY</div><h3>Label every field</h3><p>filled, partial, not reported or not applicable. Citations are ignored.</p></div>
+    <div class="step"><div class="n">4 · SCORE</div><h3>Two ratios</h3><p><code>overall_score</code> over all fields, <code>stat_score</code> over the statistical sections only.</p></div>
+    <div class="step"><div class="n">5 · OUTPUT</div><h3>One TSV row</h3><p>The row is format-checked, with one retry. It is appended to <code>completeness_label2.tsv</code>, which is then sorted by score.</p></div>
+  </div>
+  <p class="note">Script: <code>tools/eval_completeness.sh</code> (currently checked in as <code>.disabled</code>). Each file runs in its own session. The judge's replies and logs are in <code>completeness_label2.logs/</code>.</p>
+
+  <h2>What gets counted: the field map</h2>
+  <div class="legend">
+    <span><span class="sw" style="background:var(--stat-soft);border-color:var(--stat)"></span>Counted in <code>stat_score</code> and <code>overall_score</code></span>
+    <span><span class="sw" style="background:var(--surface)"></span>Counted in <code>overall_score</code> only</span>
+  </div>
+  <div class="fieldmap" id="fieldmap"></div>
+  <p class="note">Narrative sections with no bullet fields (1.1, 2.4, 4.1, 4.2, 4.3, 5.5) count
+  as one field each. With one sample-size block and one primary and one secondary outcome, the
+  template has <b>74 fields, 48 of them statistical</b>. Each extra outcome adds 4 fields and
+  each extra sample-size block adds 18, so the denominator grows with the trial. Across label 2,
+  the judge counted between 50 and 226 fields per SAP, with a mean of 97.</p>
+
+  <h2>Four classes, three weights</h2>
+  <div class="classes">
+    <div class="cls filled"><h3>filled</h3><div class="w">weight 1</div><p>Has substantive content.</p></div>
+    <div class="cls partial"><h3>partial</h3><div class="w">weight 0.5</div><p>Has some content, but says part of the field is not reported.</p></div>
+    <div class="cls nr"><h3>not_reported</h3><div class="w">weight 0</div><p>Says "Not reported in protocol" or "Deferred to SAP" and nothing more. A field missing from the file also counts here.</p></div>
+    <div class="cls na"><h3>not_applicable</h3><div class="w">left out of the denominator</div><p>Cannot apply to this design, such as a non-inferiority margin in a superiority trial.</p></div>
+  </div>
+
+  <div class="panel" style="margin-top:14px">
+    <div class="formula">
+      score <span class="eq">=</span>
+      <span class="frac"><span class="top">filled + 0.5 × partial</span><span class="bot">fields − not_applicable</span></span>
+    </div>
+    <p class="note" style="text-align:center;margin:0">Rounded to 3 decimals. The same formula
+    gives <code>stat_score</code> when only the statistical fields are counted (2.3–2.6, 3.1–3.3,
+    5.3–5.7), and <code>overall_score</code> when every field is counted.</p>
+  </div>
+
+  <h2>Worked example</h2>
+  <div class="panel">
+    <h3 class="mono" style="font-size:13px">nejm++10.1056_NEJMoa1700518++nejmoa1700518_protocol.md</h3>
+    <p class="note" style="margin-top:0">The judge counted 71 fields: 66 filled, 1 partial, 1 not reported and 3 not applicable.</p>
+    <div class="bar" role="img" aria-label="66 filled, 1 partial, 1 not reported, 3 not applicable out of 71 fields">
+      <div class="filled" style="flex:66">66 filled</div>
+      <div class="partial" style="flex:1" title="1 partial"></div>
+      <div class="nr" style="flex:1" title="1 not reported"></div>
+      <div class="na" style="flex:3" title="3 not applicable">NA</div>
+    </div>
+    <div class="calc">
+      overall = (66 + 0.5 × 1) / (71 − 3)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 66.5 / 68 = <b>0.978</b><br>
+      stat&nbsp;&nbsp;&nbsp; = <b>0.989</b> &nbsp;<span style="color:var(--muted)">(same formula, statistical fields only)</span><br>
+      main_gaps: <span style="color:var(--muted)">2.2 Minimization or Blocking; 2.3 Variability Assumption</span>
+    </div>
+  </div>
+
+  <h2>Scores across label 2 (737 SAPs)</h2>
+  <div class="panel">
+    <div class="tabs" role="group" aria-label="Score">
+      <button type="button" data-k="overall" aria-pressed="true">overall_score</button>
+      <button type="button" data-k="stat" aria-pressed="false">stat_score</button>
+    </div>
+    <div class="hist" id="hist" role="img"></div>
+    <div class="axis" id="axis"></div>
+    <div class="kpis" id="kpis"></div>
+    <p class="note">Bins are 0.05 wide. The green bar is the 0.95–1.00 bin. The files that score strictly
+    above 0.95 are the pool for <code>high-quality-samples/</code>.</p>
+  </div>
+
+  <div class="two">
+    <div class="panel">
+      <h3>Share of all field labels</h3>
+      <p class="note" style="margin-top:0">71,538 field labels across the 737 files</p>
+      <div class="bar" role="img" aria-label="75% filled, 9% partial, 12% not reported, 4% not applicable">
+        <div class="filled" style="flex:53769">75%</div>
+        <div class="partial" style="flex:6118">9%</div>
+        <div class="nr" style="flex:8565">12%</div>
+        <div class="na" style="flex:3086">4%</div>
+      </div>
+      <div class="legend" style="margin:10px 0 0">
+        <span><span class="sw" style="background:var(--filled)"></span>filled</span>
+        <span><span class="sw" style="background:var(--partial)"></span>partial</span>
+        <span><span class="sw" style="background:var(--nr)"></span>not reported</span>
+        <span><span class="sw" style="background:repeating-linear-gradient(45deg, transparent 0 3px, var(--border) 3px 5px)"></span>not applicable</span>
+      </div>
+    </div>
+    <div class="panel">
+      <h3>Most common gaps</h3>
+      <p class="note" style="margin-top:0">Number of files whose <code>main_gaps</code> lists the field (near-duplicate names merged)</p>
+      <table id="gaps"><tbody></tbody></table>
+    </div>
+  </div>
+
+  <h2>Reading the score</h2>
+  <div class="panel">
+    <ul class="caveats">
+      <li><b>It measures completeness, not correctness.</b> The judge never opens the protocol. A filled field might be wrong, and a "Not reported" field might be accurate if the protocol really is silent. The lint and reviewer gates in the generation pipeline cover grounding.</li>
+      <li><b>Low scores often reflect the protocol.</b> The usual gaps (per-protocol set, sample-size software, missing-data assumptions) are things many protocols never state.</li>
+      <li><b>The counts come from the model.</b> The judge counts the fields itself, so the denominator can vary between runs and between files. A malformed reply is retried once and then dropped.</li>
+      <li><b>Not applicable leaves the denominator.</b> If the judge marks a field not applicable when it should be not reported, the score goes up.</li>
+    </ul>
+  </div>
+</main>
+
+<script>
+  const SECTIONS = [
+    ["1.1 Background", 1, false, "narrative"],
+    ["1.2 Objectives", 3, false, "primary · secondary · exploratory"],
+    ["2.1 Trial Design", 3, false, "design type · allocation · interventions"],
+    ["2.2 Randomization", 3, false, "method · stratification · blocking"],
+    ["2.3 Sample Size", 18, true, "N, outcome, arm values, effect, variability, alpha, power, test, events, margin, dropout, clustering, basis, re-estimation, software, rationale", "× per powered outcome"],
+    ["2.4 Hypothesis Framework", 1, true, "narrative"],
+    ["2.5 Interim Analyses", 3, true, "planned · stopping · alpha spending"],
+    ["2.6 Timing of Analyses", 2, true, "final timing · assessment schedule"],
+    ["3.1 Significance & CIs", 3, true, "alpha · multiplicity · CIs"],
+    ["3.2 Protocol Deviations", 4, true, "adherence def/assessment · deviation def/reporting"],
+    ["3.3 Analysis Populations", 3, true, "ITT · per protocol · other"],
+    ["4.1–4.3 Screening, Eligibility, Recruitment", 3, false, "narrative, 1 each"],
+    ["4.4 Withdrawal & Follow-up", 3, false, "levels · data collection · reasons"],
+    ["4.5 Baseline", 2, false, "variables · summary methods"],
+    ["5.1 Primary Outcomes", 4, false, "definition · units · timing · derivations", "× per outcome"],
+    ["5.2 Secondary Outcomes", 4, false, "definition · units · timing · derivations", "× per outcome"],
+    ["5.3 Analysis Methods", 6, true, "primary · covariates · assumptions · alternatives · sensitivity · subgroup"],
+    ["5.4 Missing Data", 2, true, "assumptions · handling"],
+    ["5.5 Additional Analyses", 1, true, "narrative"],
+    ["5.6 Harms", 3, true, "AE definitions · methods · grading/causality"],
+    ["5.7 Software & References", 2, true, "software · other documents"],
+  ];
+  const fm = document.getElementById("fieldmap");
+  for (const [t, c, stat, f, rep] of SECTIONS) {
+    const d = document.createElement("div");
+    d.className = "sec" + (stat ? " stat" : "");
+    d.innerHTML = `<div class="t"><span>${t}</span><span class="c">${c}</span></div><div class="f">${f}</div>` +
+      (rep ? `<div class="rep">${rep}</div>` : "");
+    fm.appendChild(d);
+  }
+
+  const DATA = {
+    overall: { bins: [4,1,0,2,0,1,1,5,4,3,10,10,20,26,47,94,107,159,181,62],
+               kpis: [["0.826","mean"],["0.862","median"],["59","files > 0.95"],["21","files < 0.50"]] },
+    stat:    { bins: [5,0,3,4,2,3,8,7,4,11,20,21,37,61,69,97,120,123,118,24],
+               kpis: [["0.767","mean"],["0.804","median"],["24","files > 0.95"],["47","files < 0.50"]] },
+  };
+  const hist = document.getElementById("hist"), axis = document.getElementById("axis"), kpis = document.getElementById("kpis");
+  for (let i = 0; i < 20; i++) {
+    const a = document.createElement("div");
+    a.textContent = i % 2 === 0 ? (i / 20).toFixed(1) : "";
+    axis.appendChild(a);
+  }
+  function render(k) {
+    const { bins, kpis: ks } = DATA[k];
+    const max = Math.max(...bins);
+    hist.innerHTML = "";
+    bins.forEach((n, i) => {
+      const b = document.createElement("div");
+      b.className = "b" + (i === 19 ? " hi" : "");
+      b.style.height = (n / max * 100) + "%";
+      b.title = `${(i / 20).toFixed(2)}–${((i + 1) / 20).toFixed(2)}: ${n} files`;
+      if (n) b.innerHTML = `<span>${n}</span>`;
+      hist.appendChild(b);
+    });
+    hist.setAttribute("aria-label", `Histogram of ${k}_score across 737 files`);
+    kpis.innerHTML = ks.map(([v, l]) => `<div class="kpi"><div class="v">${v}</div><div class="k">${l}</div></div>`).join("");
+    document.querySelectorAll(".tabs button").forEach(btn => btn.setAttribute("aria-pressed", btn.dataset.k === k));
+  }
+  document.querySelectorAll(".tabs button").forEach(btn => btn.addEventListener("click", () => render(btn.dataset.k)));
+  render("overall");
+
+  const GAPS = [
+    ["2.3 Software Used for Calculation", 330],
+    ["3.3 Per Protocol", 317],
+    ["5.4 Missing Data Assumptions", 211],
+    ["5.3 Assumption Checks", 174],
+    ["2.3 Required Number of Events", 108],
+    ["5.3 Alternative Methods", 101],
+    ["5.7 Statistical Software", 101],
+    ["2.3 Variability Assumption", 63],
+  ];
+  const tb = document.querySelector("#gaps tbody");
+  for (const [name, n] of GAPS) {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td>${name}<div class="gapbar" style="width:${n / 330 * 100}%"></div></td><td class="num">${n}</td>`;
+    tb.appendChild(tr);
+  }
+</script>
+</body>
+</html>

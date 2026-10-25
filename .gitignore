@@ -27,11 +27,13 @@ prod_result*/*
 resources/*
 
 bmj_result*
-ocr_pdfs/
-ocr_result*/*
+ocr*_pdfs/
+ocr*_result*/*
 Benchmark*
 data*
 
 *.logs*
 
 *.disabled
+# SAP QC outputs
+qc-pipeline/out*/

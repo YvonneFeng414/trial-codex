@@ -1,0 +1,102 @@
+{
+  "verdict": "Mixed result: useful recoveries, but the regenerated SAP is not ready to replace the original unchanged.",
+  "scope": "Both SAPs were compared in full against the supplied page-tagged source, read in bounded page order. Findings below distinguish newly recovered information, retained content, regressions and gaps shared by both versions. The batch review and structural lint are separate from this comparative assessment. Original files and CSV status were preserved. Run completed in 12m9s using gpt-5.6-terra with gpt-5.6-luna review at high verbosity. The reviewer issued PASS after two cycles and the final SAP passed the linter; the comparative checks nevertheless found the residual issues documented here.",
+  "findings": [
+    {
+      "assessment": "Improvement",
+      "field": "2.3 Planned Sample Size; 3.3 Other Populations; 4.3 Recruitment",
+      "original": "Reports five planned patients and all enrolled/treated subjects; says no separately defined evaluable population is reported.",
+      "regenerated": "Keeps five as the protocol target, separately reports nine observed enrollments, the Patient 5 efficacy exclusion following product contamination, and Patients 7–8 withdrawing before three years.",
+      "source_pages": "4, 28, 107, 118–119",
+      "conclusion": "A substantive recovery of supplementary cohort and evaluability information, with the planned-versus-observed distinction preserved. This is not evidence of a formal sample-size amendment to nine."
+    },
+    {
+      "assessment": "Improvement",
+      "field": "5.7 Statistical Software",
+      "original": "Marks software unreported even though 5.6 mentions custom R scripts and Excel and 5.1 names 7500 Software v2.0.6.",
+      "regenerated": "Binds 7500 Software v2.0.6 to qPCR VCN analysis and custom R scripts/Excel to integration-site analysis.",
+      "source_pages": "5–7",
+      "conclusion": "Resolves a misleading blanket absence statement and a cross-field inconsistency. FlowJo, also reported on page 5, is still omitted."
+    },
+    {
+      "assessment": "Improvement",
+      "field": "5.4 Handling Methods",
+      "original": "Includes monitoring visits to complete missing/queried data, with no imputation method specified.",
+      "regenerated": "Adds NA coding for unavailable data, illegible free responses treated as lost data, and correction documentation requirements.",
+      "source_pages": "118, 122–123; Spanish equivalents 170, 174–175",
+      "conclusion": "Adds source-supported operational missing-data rules without inventing an imputation method. NA is the English translation; the Spanish source uses ND (no disponible)."
+    },
+    {
+      "assessment": "Improvement",
+      "field": "5.2 Insertional-mutagenesis risk; 5.5 Additional Analyses",
+      "original": "Names Shannon, Gini and UC50 in safety methods but marks Additional Analyses wholly unreported.",
+      "regenerated": "Adds metric definitions and thresholds, VCN normalization when VCN <1, original/normalized contributions, integration-site mechanics and ISHAGE flow-cytometry details.",
+      "source_pages": "5–6, 112–115",
+      "conclusion": "More complete representation of the clonality analyses. The additional secondary safety outcome is supported by the protocol's own label."
+    },
+    {
+      "assessment": "Regression",
+      "field": "5.1 Engraftment — Transformations / Derived Variables",
+      "original": "Describes the Psi/hALBUMIN standard curve, positive control, untransduced/H2O negative controls, and triplicate/limited-DNA duplicate assays.",
+      "regenerated": "Retains Psi/hALBUMIN normalization and replicate rules, but omits the standard curve and positive/negative controls.",
+      "source_pages": "6–7",
+      "conclusion": "Distinct measurement details present in the original have been lost, despite the high-verbosity requirement."
+    },
+    {
+      "assessment": "Regression",
+      "field": "5.6 Grading Scales and Causality",
+      "original": "Distinguishes NCI-CTCAE v4.0 from the separately reproduced WHO acute/subacute toxicity table.",
+      "regenerated": "Says NCI-CTCAE v4.0 includes the protocol table thresholds, without identifying the table as WHO recommendations.",
+      "source_pages": "112, 114; Spanish equivalents 164, 166",
+      "conclusion": "The source explicitly labels the table WHO recommendations. Its thresholds must not be attributed to NCI-CTCAE. This is a substantive attribution error."
+    },
+    {
+      "assessment": "Regression",
+      "field": "5.6 Safety Analysis Methods",
+      "original": "States the AE restriction begins when conditioning for donor-cell rescue starts; explicitly includes conditioning-associated risks.",
+      "regenerated": "Says 'After donor rescue' and no longer explicitly includes conditioning-associated risk among safety parameters.",
+      "source_pages": "113, 115",
+      "conclusion": "The restriction's start point has become less precise. Restore 'from the start of conditioning' for donor rescue and the conditioning-risk parameter."
+    },
+    {
+      "assessment": "Remaining gap",
+      "field": "5.2 Clinical response — Measurement Units",
+      "original": "Says the specific haematological parameters and their units are not reported.",
+      "regenerated": "Replaces the absence phrase with 'does not specify a common unit' and a generic blood-count statement.",
+      "source_pages": "23 (Figure S6), 110",
+      "conclusion": "The supplement reports haemoglobin (g/dL), neutrophils and platelets (×1000/µL). The new wording still fails to recover those facts. The numerical threshold for a 'significant' clinical response remains undefined; measured variables must not be mistaken for a new response rule."
+    },
+    {
+      "assessment": "Remaining gap",
+      "field": "3.1 Confidence Intervals; 5.5 Additional Analyses",
+      "original": "Marks confidence intervals unreported and omits the supplementary correlation analyses.",
+      "regenerated": "Still marks confidence intervals unreported and omits these supplementary analyses.",
+      "source_pages": "18–19, 22–23",
+      "conclusion": "Figure S4 describes means and confidence intervals for clonality distributions, though no confidence level is specified. Figures S3/S5 describe correlation analyses, and S6 excludes counts during/immediately after mobilization. These should be scoped as supplementary reported analyses rather than silently promoted to prospective protocol plans."
+    },
+    {
+      "assessment": "Remaining gap",
+      "field": "4.1 Screening Data; 4.2 Eligibility Criteria Summary",
+      "original": "Includes the one-month screening window and names mosaicism tests, but merges enumerated eligibility criteria into prose.",
+      "regenerated": "Keeps a generic mosaicism test and two-month retest exception, but loses the one-month window and test alternatives; eligibility remains a merged paragraph.",
+      "source_pages": "102, 107–108, 154, 159–160",
+      "conclusion": "Some screening details regress, and both outputs violate the requested preservation of enumerated criteria. The original Spanish clarifies evaluation within one month relative to infusion, before treatment."
+    },
+    {
+      "assessment": "Retained",
+      "field": "1.2 Exploratory Objectives; 2.3/3.1 significance level",
+      "original": "Exploratory Objectives is unreported; the study is described as exploratory phase I/II and significance level is not applicable.",
+      "regenerated": "Keeps these distinctions.",
+      "source_pages": "Whole document 1–182; objectives 54–55, 101, 153; significance level 69, 118, 170; supplementary exploratory studies 24",
+      "conclusion": "Calling the trial exploratory does not define an additional objective tier. The missing exploratory-objectives heading was not the main defect in M018. Supplementary exploratory studies can be described in Additional Analyses without inventing objectives."
+    },
+    {
+      "assessment": "Count interpretation",
+      "field": "Exact 'Not reported in protocol' occurrences",
+      "original": "28 exact occurrences; 28 occurrences of the shorter 'Not reported' phrase.",
+      "regenerated": "The exact phrase falls partly because ITT/PP, sample-size re-estimation, secondary measurement units and response derivation are reworded; alpha spending becomes not applicable. New exact occurrences appear for stratification and stopping guidelines.",
+      "source_pages": "Both SAPs; 83, 103, 110, 118",
+      "conclusion": "A lower phrase count does not mean that the same number of missing fields was recovered. Additional Analyses and Software contain substantive recovered information; several other reductions are wording or applicability changes. Randomization stratification would be better marked not applicable in this single-arm study."
+    }
+  ]
+}

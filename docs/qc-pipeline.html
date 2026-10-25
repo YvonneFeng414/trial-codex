@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAP QC Pipeline</title>
+<style>
+  :root {
+    --bg: #f7f6f2;
+    --surface: #ffffff;
+    --surface-2: #f0eee8;
+    --text: #1f1e1b;
+    --muted: #6b6860;
+    --border: #dedad0;
+    --accent: #2f5fb3;
+    --accent-soft: #e4ecfa;
+    --loop: #8a4fbf;
+    --loop-soft: #f1e8fa;
+    --ok: #2e7d4f;
+    --ok-soft: #e3f3e9;
+    --warn: #b0671a;
+    --warn-soft: #fbeedd;
+    --bad: #b33a3a;
+    --bad-soft: #f9e3e3;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #161614;
+      --surface: #1f1f1c;
+      --surface-2: #282824;
+      --text: #ecebe6;
+      --muted: #a29f96;
+      --border: #3a3934;
+      --accent: #7fa6ec;
+      --accent-soft: #1f2b40;
+      --loop: #c39be6;
+      --loop-soft: #2d2238;
+      --ok: #6cc592;
+      --ok-soft: #1c2f24;
+      --warn: #e3a35c;
+      --warn-soft: #36291a;
+      --bad: #e88282;
+      --bad-soft: #3a2020;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #161614;
+    --surface: #1f1f1c;
+    --surface-2: #282824;
+    --text: #ecebe6;
+    --muted: #a29f96;
+    --border: #3a3934;
+    --accent: #7fa6ec;
+    --accent-soft: #1f2b40;
+    --loop: #c39be6;
+    --loop-soft: #2d2238;
+    --ok: #6cc592;
+    --ok-soft: #1c2f24;
+    --warn: #e3a35c;
+    --warn-soft: #36291a;
+    --bad: #e88282;
+    --bad-soft: #3a2020;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  main { max-width: 980px; margin: 0 auto; padding: 40px 16px 64px; }
+  h1 { font-size: 28px; margin: 0 0 6px; letter-spacing: -0.01em; }
+  h2 { font-size: 19px; margin: 44px 0 12px; }
+  h3 { font-size: 15px; margin: 0 0 6px; }
+  p { margin: 0 0 10px; }
+  .lede { color: var(--muted); max-width: 720px; }
+  code, .mono { font-family: var(--mono); font-size: 0.88em; }
+  code { background: var(--surface-2); padding: 1px 5px; border-radius: 4px; }
+  .math { font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; font-size: 1.04em; }
+  .math i { font-style: italic; }
+
+  /* Overview strip */
+  .strip {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
+    margin: 24px 0 0; padding: 14px; background: var(--surface);
+    border: 1px solid var(--border); border-radius: 10px;
+  }
+  .chip {
+    padding: 5px 10px; border-radius: 999px; font-size: 13px; font-weight: 600;
+    background: var(--accent-soft); color: var(--accent); white-space: nowrap;
+  }
+  .chip.loop { background: var(--loop-soft); color: var(--loop); }
+  .chip.ok { background: var(--ok-soft); color: var(--ok); }
+  .chip.warn { background: var(--warn-soft); color: var(--warn); }
+  .arrow { color: var(--muted); font-size: 14px; }
+
+  /* Main flow */
+  .flow { display: grid; gap: 0; }
+  .stage {
+    display: grid; grid-template-columns: 44px 1fr minmax(0, 260px); gap: 14px;
+    align-items: start;
+  }
+  .rail { display: flex; flex-direction: column; align-items: center; height: 100%; }
+  .num {
+    width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center;
+    font-weight: 700; font-size: 14px; background: var(--accent); color: var(--surface);
+    flex: none;
+  }
+  .stage.loop .num { background: var(--loop); }
+  .stage.done .num { background: var(--ok); }
+  .stage.warn .num { background: var(--warn); }
+  .line { width: 2px; flex: 1; background: var(--border); min-height: 18px; }
+  .card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 14px 16px; margin-bottom: 18px; min-width: 0;
+  }
+  .stage.loop .card { border-color: var(--loop); }
+  .stage.warn .card { border-color: var(--warn); }
+  .card .who { font-size: 12px; color: var(--muted); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .card ul, .card ol { margin: 6px 0 0; padding-left: 18px; }
+  .card li { margin: 2px 0; }
+  .exits { display: flex; flex-direction: column; gap: 6px; padding-top: 2px; margin-bottom: 18px; }
+  .exit {
+    font-size: 12.5px; border-radius: 8px; padding: 7px 10px; border-left: 3px solid;
+  }
+  .exit b { font-family: var(--mono); font-size: 11.5px; }
+  .exit.warn { background: var(--warn-soft); border-color: var(--warn); }
+  .exit.bad { background: var(--bad-soft); border-color: var(--bad); }
+  .exit.ok { background: var(--ok-soft); border-color: var(--ok); }
+  .exit.loop { background: var(--loop-soft); border-color: var(--loop); }
+  .exit.acc { background: var(--accent-soft); border-color: var(--accent); }
+
+  /* Two-lane split */
+  .lanes { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .lane { border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; background: var(--surface-2); min-width: 0; }
+  .lane.t { border-top: 3px solid var(--warn); }
+  .lane.r { border-top: 3px solid var(--ok); }
+  .lane h3 { display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+  .lane .tag { font-family: var(--mono); font-size: 11.5px; color: var(--muted); font-weight: 400; }
+  .lane ul { font-size: 13.5px; }
+
+  /* Metric cards */
+  .metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .metric { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; border-top: 3px solid var(--accent); min-width: 0; }
+  .metric.t { border-top-color: var(--warn); }
+  .metric.r { border-top-color: var(--ok); }
+  .metric .q { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+  .formula {
+    background: var(--surface-2); border-radius: 6px; padding: 8px 10px; margin: 8px 0;
+    overflow-x: auto; white-space: nowrap;
+  }
+  .says { font-size: 13.5px; }
+  .says b { font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .says .no { color: var(--bad); }
+  .says .yes { color: var(--ok); }
+
+  /* Tables / grids */
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  th, td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tbody tr:last-child td { border-bottom: 0; }
+  th { font-size: 12px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+  td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; }
+  .tablewrap { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; overflow-x: auto; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .stat { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
+  .stat .v { font-size: 24px; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .stat .k { font-size: 12.5px; color: var(--muted); }
+  .stat.t { border-left: 3px solid var(--warn); }
+  .stat.r { border-left: 3px solid var(--ok); }
+  .note { font-size: 12.5px; color: var(--muted); margin-top: 8px; }
+  .pill { display: inline-block; font-size: 11.5px; font-weight: 600; padding: 1px 7px; border-radius: 999px; }
+  .pill.bad { background: var(--bad-soft); color: var(--bad); }
+  .pill.warn { background: var(--warn-soft); color: var(--warn); }
+  .pill.ok { background: var(--ok-soft); color: var(--ok); }
+  .pill.muted { background: var(--surface-2); color: var(--muted); }
+
+  /* Recall chart */
+  .chart { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; }
+  .chart svg { display: block; width: 100%; height: auto; }
+  .chart .ax { stroke: var(--border); }
+  .chart .lbl { fill: var(--muted); font-size: 11px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  .chart .val { fill: var(--text); font-size: 11px; font-weight: 600; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-variant-numeric: tabular-nums; }
+  .legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 12.5px; color: var(--muted); margin-top: 6px; }
+  .legend span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; background: var(--c); }
+
+  @media (max-width: 760px) {
+    .stage { grid-template-columns: 36px 1fr; }
+    .exits { grid-column: 2; margin-top: -10px; }
+    .lanes, .grid2, .metrics { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1>SAP QC Pipeline</h1>
+  <p class="lede">How a generated SAP markdown is checked against its protocol PDF without
+  sending whole PDFs to a judge. Every SAP field cites its source pages, so the check works
+  claim by claim. It asks two questions. <b>Coverage:</b> does retrieval reach the cited
+  source pages? <b>Accuracy:</b> are the claims right? Accuracy is measured two ways: on
+  every claim a set of risk checks flags, and on a random 30% of all claims.</p>
+
+  <div class="strip" aria-label="Pipeline at a glance">
+    <span class="chip">Protocol PDF + SAP .md</span><span class="arrow">→</span>
+    <span class="chip">Page text</span><span class="arrow">→</span>
+    <span class="chip">Atomic facts</span><span class="arrow">→</span>
+    <span class="chip">Top-k retrieval</span><span class="arrow">→</span>
+    <span class="chip loop">Coverage · Recall@k</span><span class="arrow">→</span>
+    <span class="chip">Triggers</span><span class="arrow">→</span>
+    <span class="chip warn">Judge every flagged fact</span><span class="arrow">+</span>
+    <span class="chip ok">Judge a random 30%</span><span class="arrow">→</span>
+    <span class="chip">Finding-error acc · Random acc</span>
+  </div>
+
+  <h2>One document, step by step</h2>
+  <div class="flow">
+
+    <div class="stage">
+      <div class="rail"><div class="num">1</div><div class="line"></div></div>
+      <div class="card">
+        <div class="who">Deterministic · tools/extract_pdf.py</div>
+        <h3>Page text that matches the citations</h3>
+        <p>Reuse the generator's page-tagged text (<code>===== PAGE N OF M =====</code>), so
+        a citation's "page N" and the PDF page index are the same number by construction.
+        If text from another extractor is used, estimate the offset δ first: the most common
+        value of (top-1 retrieved page − cited page) over claims that contain numbers.</p>
+        <ul>
+          <li>OCR any page with too little text (the same rule as <code>UNSUPPORTED_SCAN</code>)</li>
+          <li>Mark table-of-contents pages. They are left out of retrieval and keyword search</li>
+        </ul>
+      </div>
+      <div class="exits">
+        <div class="exit warn"><b>UNSEARCHABLE</b> · pages with no text even after OCR. A "not reported" fact that depends on them becomes <i>unverifiable</i>, not consistent</div>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="rail"><div class="num">2</div><div class="line"></div></div>
+      <div class="card">
+        <div class="who">Deterministic, plus one cheap model call per SAP</div>
+        <h3>Parse citations, split into atomic facts</h3>
+        <ul>
+          <li>For each block, <code>*(Source: …)*</code> gives the cited pages <span class="math"><i>S</i>(<i>c</i>)</span>. Section numbers like "1.1–1.3" are not read as pages, and sweeps like "pages 1–96 reviewed" are kept apart from the specific pages</li>
+          <li>Split compound claims into atomic facts (<i>item, value, status</i>). An eligibility block, for example, becomes one fact per criterion</li>
+          <li>A fact is an absence claim when its <i>status</i> is absent, however it is worded ("Not reported", "no other …", "not applicable")</li>
+        </ul>
+      </div>
+      <div class="exits"></div>
+    </div>
+
+    <div class="stage">
+      <div class="rail"><div class="num">3</div><div class="line"></div></div>
+      <div class="card">
+        <div class="who">Deterministic · no model tokens</div>
+        <h3>Rank pages: Top<sub>k</sub>(<i>c</i>)</h3>
+        <p>The query is the SAP heading plus the fact text. All pages are ranked by three
+        scores, combined by reciprocal rank fusion. The cited pages are not used in the
+        ranking.</p>
+        <ul>
+          <li><b>BM25</b> over whole pages: exact terms, drug names, method names</li>
+          <li><b>Dense</b>: 250-word chunks, page score = best chunk</li>
+          <li><b>Number match</b>: <span class="math">|<i>N</i>(<i>c</i>) ∩ <i>N</i>(<i>t<sub>i</sub></i>)| / |<i>N</i>(<i>c</i>)|</span>, numbers normalized (0.05 = 5%)</li>
+          <li><span class="math">RRF(<i>i</i>) = Σ<sub><i>r</i></sub> 1/(60 + rank<sub><i>r</i></sub>(<i>i</i>))</span>. Tied pages get their average rank, and IDF is fitted on PDF text only</li>
+        </ul>
+        <p class="note">Evidence packet for the judge = at least one passage from every cited
+        page, plus the Top<sub>k</sub> passages, with duplicate passages removed across the
+        document.</p>
+      </div>
+      <div class="exits">
+        <div class="exit warn"><b>route</b> · for PDFs of about 100 pages or fewer, one long-context call with the whole PDF and every fact can cost the same as retrieval. In that case judge every fact and skip sampling</div>
+      </div>
+    </div>
+
+    <div class="stage loop">
+      <div class="rail"><div class="num">4</div><div class="line"></div></div>
+      <div class="card">
+        <div class="who">Metric 1 · coverage</div>
+        <h3>Source Recall@k: does retrieval reach the cited source?</h3>
+        <div class="formula math">Recall@<i>k</i> = (1/|𝒞|) Σ<sub><i>c</i>∈𝒞</sub> 𝟙[ <i>S</i>(<i>c</i>) ∩ Top<sub><i>k</i></sub>(<i>c</i>) ≠ ∅ ]</div>
+        <ul>
+          <li><b>Chooses k:</b> the smallest k with Recall@k ≥ 0.95, computed on facts whose page the judge confirmed. Then P(flagged unsupported | actually supported) ≤ 1 − Recall@k</li>
+          <li><b>Flags per fact:</b> no cited page in Top<sub>k</sub> → a <i>coverage miss</i>, which becomes a trigger</li>
+          <li>Report it next to the random-pick baseline <span class="math">1 − C(<i>n</i>−|<i>S</i>|, <i>k</i>)/C(<i>n</i>, <i>k</i>)</span> and split by |<i>S</i>|, because a citation of many pages hits easily</li>
+        </ul>
+        <p class="note">It measures topic, not correctness. With 58 claims corrupted (numbers
+        scaled, TLH↔TAH, ≥↔≤), Recall@5 only fell from 0.97 to 0.91.</p>
+      </div>
+      <div class="exits">
+        <div class="exit loop"><b>coverage miss</b> · sent to the judge with the whole cited page added</div>
+      </div>
+    </div>
+
+    <div class="stage warn">
+      <div class="rail"><div class="num">5</div><div class="line"></div></div>
+      <div class="card">
+        <div class="who">Routing · two independent selections, each fact judged at most once</div>
+        <h3>Flagged by triggers, plus a random 30%</h3>
+        <div class="lanes">
+          <div class="lane t">
+            <h3>Flagged <span class="tag">T · every fact judged</span></h3>
+            <ul>
+              <li>A number is missing from the cited page, or the comparison (≥/≤), one- vs two-sided, or arm (TLH/TAH) disagrees</li>
+              <li>Coverage miss, or the only citation is a page sweep</li>
+              <li>Absence fact with candidate pages</li>
+              <li>The summary contradicts itself: a field says absent, but the same outcome block states it</li>
+              <li>Low word overlap with the best passage from its cited pages</li>
+              <li>Compound fact (more than 3 items), or a critical section: randomization, sample size, interim analyses, analysis populations, primary outcome, primary analysis, missing data</li>
+            </ul>
+          </div>
+          <div class="lane r">
+            <h3>Random 30% <span class="tag">R · drawn from all facts</span></h3>
+            <ul>
+              <li>Systematic sample over facts in section order: a random start <i>u</i>, then every 1/0.3 positions. Every fact has inclusion probability 0.3, and sections are covered in proportion to their size</li>
+              <li>Don't draw ⌈0.3·<i>N<sub>h</sub></i>⌉ per section. With 23 sections of 1–30 claims, that takes 39%, not 30%</li>
+              <li>The draw doesn't depend on the triggers, so it estimates the whole document's accuracy</li>
+              <li>A fact in both T and R is judged once, and its verdict counts in both</li>
+              <li>Sampled facts that aren't flagged (R ∩ U) measure what the triggers miss</li>
+              <li>Fix the seed and record it with the results</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="exits">
+        <div class="exit warn"><b>T</b> · finding-error accuracy</div>
+        <div class="exit ok"><b>R (30%)</b> · random accuracy</div>
+        <div class="exit acc"><b>cost</b> · facts judged = |T ∪ R|, roughly 0.3·N + 0.7·|T|</div>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="rail"><div class="num">6</div><div class="line"></div></div>
+      <div class="card">
+        <div class="who">Judge model · a different model from the generator and the reviewer</div>
+        <h3>Verdict with a quote that a script checks</h3>
+        <ul>
+          <li>Verdict: <span class="pill ok">supported</span> <span class="pill bad">contradicted</span> <span class="pill muted">not found</span>. A supported or contradicted verdict must include a <b>verbatim quote</b></li>
+          <li>A script confirms that the quote appears on a page the judge was shown. A quote that isn't there means the verdict is rejected</li>
+          <li>Fixed checks on numbers, comparison direction, negation and arm can overrule the judge, or send the fact to human review</li>
+          <li><b>Absence facts:</b> the candidates are pages matching a fixed term list for that heading, plus pages with BM25 above a calibrated threshold, plus the top-k pages by embedding similarity. The judge is asked "Does any passage specify ⟨item⟩? Quote it." With no candidates, the fact counts as consistent without a judge call</li>
+        </ul>
+      </div>
+      <div class="exits">
+        <div class="exit bad"><b>contradicted</b> · counted as an error, with the quote attached</div>
+        <div class="exit warn"><b>not found</b> · an error, at most 1 − Recall@k of which are retrieval misses</div>
+      </div>
+    </div>
+
+    <div class="stage done">
+      <div class="rail"><div class="num">7</div></div>
+      <div class="card">
+        <div class="who">Report, per document and pooled</div>
+        <h3>Two accuracies, plus the trigger miss rate</h3>
+        <p>See the definitions below. Report them by section as well, because an error in the
+        sample size or primary analysis matters more than one in the background section. Pool
+        across documents with a random effect for document.</p>
+      </div>
+      <div class="exits">
+        <div class="exit ok"><b>output</b> · <code>&lt;id&gt;.qc.csv</code> with one row per fact: verdict, quote, cited pages, Top<sub>k</sub>, trigger(s), stratum</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>The metrics</h2>
+  <div class="metrics">
+    <div class="metric">
+      <div class="q">Coverage</div>
+      <h3>Source Recall@k</h3>
+      <div class="formula math">P̂( rank<sub><i>c</i></sub>(<i>S</i>) ≤ <i>k</i> )</div>
+      <p class="says"><b class="yes">Says</b> whether retrieval reaches the cited pages, and how large k must be.</p>
+      <p class="says"><b class="no">Doesn't say</b> whether a claim or its citation is correct.</p>
+    </div>
+    <div class="metric t">
+      <div class="q">Accuracy on flagged facts</div>
+      <h3>Finding-error accuracy</h3>
+      <div class="formula math">acc<sub>T</sub> = #supported<sub>T</sub> / |<i>T</i>|</div>
+      <p class="says"><b class="yes">Says</b> how accurate the flagged facts are. Every flagged fact is judged, so acc<sub>T</sub> has no sampling error. Error yield <span class="math">= 1 − acc<sub>T</sub></span> shows whether the triggers find errors efficiently.</p>
+      <p class="says"><b class="no">Doesn't say</b> how accurate the document is. Flagged facts are risky by design.</p>
+    </div>
+    <div class="metric r">
+      <div class="q">Accuracy on a random 30% of all facts</div>
+      <h3>Random accuracy</h3>
+      <div class="formula math">acc<sub>R</sub> = #supported<sub>R</sub> / |<i>R</i>|,&nbsp; π<sub><i>i</i></sub> = 0.3</div>
+      <p class="says"><b class="yes">Says</b> how accurate the whole document is, without bias. Every inclusion probability is equal, so it's a plain proportion. The errors in R ∩ U give the <b>trigger miss rate</b>.</p>
+      <p class="says"><b class="no">Doesn't say</b> much for one document on its own: about 33 facts per SAP gives a wide interval, so pool across documents.</p>
+    </div>
+  </div>
+  <div class="tablewrap" style="margin-top:12px">
+    <table>
+      <thead><tr><th>Quantity</th><th>Estimate</th><th>Uncertainty</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Document accuracy</td>
+          <td class="math">acc<sub>R</sub> (no combination needed)</td>
+          <td>Clopper–Pearson interval, by section if needed. With <i>n</i> ≈ 0.3·<i>N</i> ≈ 33 facts and 0 errors, the one-sided 95% error bound is <span class="math">1 − 0.05<sup>1/<i>n</i></sup> ≈ 8.7%</span>. Pooled over 100 SAPs (about 3,300 facts), a document random effect gives a much tighter interval</td>
+        </tr>
+        <tr>
+          <td>Lower-variance option</td>
+          <td class="math" style="white-space:nowrap">( |<i>T</i>|·acc<sub>T</sub> + |<i>U</i>|·acc<sub>R∩U</sub> ) / <i>N</i></td>
+          <td>Same data, split by flagged vs unflagged. T is a census, so all of the variance comes from R ∩ U</td>
+        </tr>
+        <tr>
+          <td>Trigger miss rate</td>
+          <td class="math">#errors(R∩U) / |R∩U|</td>
+          <td>Small counts per document, so read it pooled. Showing it is below 2% takes about 150 unflagged facts with no errors (≈ 3/<i>n</i>)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Validating the judge (before the full run)</h2>
+  <div class="grid2">
+    <div class="card" style="margin:0">
+      <h3>Planted errors give labels for free</h3>
+      <p>Corrupt about 100 facts: scale the numbers, swap TLH↔TAH, flip ≥↔≤, change ITT to
+      per-protocol, and relabel a reported item "Not reported". Judge them blind, mixed with
+      the originals.</p>
+      <ul>
+        <li>Detection rate = P(judge says not supported | corrupted)</li>
+        <li>False-alarm rate = P(judge says not supported | original, correct)</li>
+      </ul>
+    </div>
+    <div class="card" style="margin:0">
+      <h3>Human gold labels</h3>
+      <p>About 100 facts labeled by hand across documents and sections. Report agreement
+      with the judge (Cohen's κ). Planted errors don't look like real ones (C96 below is a
+      real one), so they don't replace this.</p>
+    </div>
+  </div>
+
+  <h2>Pilot · 10.1001_jama.2017.2068 (LACE)</h2>
+  <p class="lede">One document, 111 claims, 96 PDF pages. The pilot's triggers were the six
+  critical sections, coverage misses and absence claims, so T has 37 claims. R is a
+  systematic 30% draw over the claims in section order (seed 2026), so R has 33 claims across
+  16 of 23 sections. 54 claims were judged (|T ∪ R|). The verdicts came from Claude in the same
+  session, with no measured judge error rate, so they show how the pipeline works rather than
+  giving reliable numbers.</p>
+  <div class="stats">
+    <div class="stat"><div class="v">0.97</div><div class="k">Recall@5 (98 / 101 cited claims). Random-pick baseline 0.16</div></div>
+    <div class="stat t"><div class="v">94.6%</div><div class="k">finding-error acc, 35 / 37 flagged. 95% CI 81.8–99.3%</div></div>
+    <div class="stat r"><div class="v">93.9%</div><div class="k">random acc, 31 / 33 in the 30% draw. 95% CI 79.8–99.3%</div></div>
+    <div class="stat"><div class="v">0 / 17</div><div class="k">trigger misses in R ∩ U. One-sided 95% bound 16.2%</div></div>
+  </div>
+  <p class="note">The draw happened to include both errors (C56 and C96), so acc<sub>R</sub> =
+  93.9% sits below the lower-variance estimate of 98.2% (lower bound 85.2%). Both estimate the
+  same thing; with n = 33 per document, the gap is sampling noise. That is why accuracy should
+  be pooled across documents.</p>
+
+  <div class="grid2" style="margin-top:14px">
+    <div class="chart">
+      <h3>Source Recall@k vs a random pick</h3>
+      <svg viewBox="0 0 420 210" role="img" aria-label="Recall at k of 1, 3, 5, 10: 0.76, 0.92, 0.97, 0.99. Random baseline 0.04, 0.10, 0.16, 0.28. Corrupted claims at k=5: 0.91.">
+        <line class="ax" x1="40" y1="20" x2="410" y2="20"/>
+        <line class="ax" x1="40" y1="95" x2="410" y2="95"/>
+        <line class="ax" x1="40" y1="170" x2="410" y2="170"/>
+        <text class="lbl" x="32" y="24" text-anchor="end">1.0</text>
+        <text class="lbl" x="32" y="99" text-anchor="end">0.5</text>
+        <text class="lbl" x="32" y="174" text-anchor="end">0</text>
+        <!-- k=1 -->
+        <rect x="62" y="56" width="30" height="114" rx="2" fill="var(--accent)"/>
+        <rect x="94" y="164" width="30" height="6" rx="2" fill="var(--border)"/>
+        <text class="val" x="77" y="51" text-anchor="middle">0.76</text>
+        <text class="val" x="109" y="159" text-anchor="middle">0.04</text>
+        <text class="lbl" x="93" y="188" text-anchor="middle">k = 1</text>
+        <!-- k=3 -->
+        <rect x="152" y="32" width="30" height="138" rx="2" fill="var(--accent)"/>
+        <rect x="184" y="155" width="30" height="15" rx="2" fill="var(--border)"/>
+        <text class="val" x="167" y="27" text-anchor="middle">0.92</text>
+        <text class="val" x="199" y="150" text-anchor="middle">0.10</text>
+        <text class="lbl" x="183" y="188" text-anchor="middle">k = 3</text>
+        <!-- k=5 -->
+        <rect x="242" y="24.5" width="30" height="145.5" rx="2" fill="var(--accent)"/>
+        <rect x="274" y="146" width="30" height="24" rx="2" fill="var(--border)"/>
+        <rect x="306" y="33.5" width="30" height="136.5" rx="2" fill="var(--bad)"/>
+        <text class="val" x="257" y="19" text-anchor="middle">0.97</text>
+        <text class="val" x="289" y="141" text-anchor="middle">0.16</text>
+        <text class="val" x="321" y="29" text-anchor="middle">0.91</text>
+        <text class="lbl" x="289" y="188" text-anchor="middle">k = 5</text>
+        <!-- k=10 -->
+        <rect x="350" y="21.5" width="26" height="148.5" rx="2" fill="var(--accent)"/>
+        <rect x="378" y="128" width="26" height="42" rx="2" fill="var(--border)"/>
+        <text class="val" x="363" y="16" text-anchor="middle">0.99</text>
+        <text class="val" x="391" y="123" text-anchor="middle">0.28</text>
+        <text class="lbl" x="377" y="188" text-anchor="middle">k = 10</text>
+      </svg>
+      <div class="legend">
+        <span style="--c: var(--accent)">cited claims</span>
+        <span style="--c: var(--border)">random pick</span>
+        <span style="--c: var(--bad)">58 corrupted claims (k = 5)</span>
+      </div>
+      <p class="note">The corrupted bar is close to the real one: Recall@k tracks topic, not
+      correctness. These numbers come from an unfixed ranker (ties broken by page order,
+      TF-IDF standing in for dense, IDF fitted on claims too), so they are slightly biased.</p>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Group</th><th class="n">Facts</th><th>Verdicts</th></tr></thead>
+        <tbody>
+          <tr><td>T ∩ R · flagged and drawn</td><td class="n">16</td><td><span class="pill ok">14 supported / consistent</span> <span class="pill warn">1 minor</span> <span class="pill bad">1 contradicted</span></td></tr>
+          <tr><td>T only · flagged, not drawn</td><td class="n">21</td><td><span class="pill ok">21 supported / consistent</span></td></tr>
+          <tr><td>R ∩ U · drawn, not flagged</td><td class="n">17</td><td><span class="pill ok">17 supported</span> no trigger misses</td></tr>
+          <tr><td>U only · neither</td><td class="n">57</td><td><span class="pill muted">not judged</span> (9 were judged in an earlier sample and are left out of the metrics)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <h3 style="margin-top:18px">What the pilot found</h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Claim</th><th>Verdict</th><th>Evidence</th><th>Trigger that should catch it</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="mono">C96 · 5.2</td>
+          <td><span class="pill bad">contradicted</span></td>
+          <td>"Transformations / Derived Variables: Not reported". But the Stage 1 QoL outcome is the change in FACT-En from baseline to 6 months (p56), and the SAP says so three lines earlier. Costs are resource use × unit cost (p19).</td>
+          <td>Self-contradiction in the summary. It needs no PDF, and <code>lint_sap.py</code>'s absent-vs-covered rule doesn't handle this field yet</td>
+        </tr>
+        <tr>
+          <td class="mono">C56 · 4.3</td>
+          <td><span class="pill warn">minor</span></td>
+          <td>Says the recruitment rate is not reported. The 60-month accrual is stated on p18 and p64 and appears in SAP 2.3.</td>
+          <td>Absence fact with candidate pages</td>
+        </tr>
+        <tr>
+          <td class="mono">C37, C63</td>
+          <td><span class="pill ok">supported</span></td>
+          <td>Correctly flag contradictions inside the protocol: equivalence at 4 y (p18) vs non-inferiority at 4.5 y (p64), and two DFS definitions (p16 vs p62).</td>
+          <td>Not an error</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="margin-top:18px">Approximate token cost (about 1.35 tokens per word)</h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Route</th><th class="n">Tokens</th></tr></thead>
+      <tbody>
+        <tr><td>Whole PDF + SAP in one call</td><td class="n">~36k</td></tr>
+        <tr><td>Passages for every one of the 111 claims, no deduplication</td><td class="n">~63k</td></tr>
+        <tr><td>Passages for every one of the 111 claims, deduplicated</td><td class="n">~32k</td></tr>
+        <tr><td>Pilot: 37 flagged + 33 drawn (54 unique claims), passages deduplicated, keyword search for absence claims</td><td class="n">~16k</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">Retrieval cost grows with the number of facts; whole-PDF cost grows with
+  pages. Across the 100-pair sample the PDFs run 16–1,228 pages (median 158), so the route
+  is chosen per document by page count.</p>
+</main>
+</body>
+</html>
