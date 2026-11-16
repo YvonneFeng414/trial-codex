@@ -43,6 +43,29 @@ def require_api_key() -> str:
     return key
 
 
+# OpenAI caps an embeddings request at 300k tokens and each input at 8,192. Garbled or
+# unspaced text can cost one token per character, so batches are sized in characters.
+EMBED_MAX_INPUT_CHARS = 8000
+EMBED_MAX_BATCH_CHARS = 250_000
+EMBED_MAX_BATCH_INPUTS = 256
+
+
+def embedding_batches(texts: list[str]) -> list[list[str]]:
+    batches: list[list[str]] = []
+    current: list[str] = []
+    size = 0
+    for text in texts:
+        text = text[:EMBED_MAX_INPUT_CHARS] or " "
+        if current and (size + len(text) > EMBED_MAX_BATCH_CHARS or len(current) >= EMBED_MAX_BATCH_INPUTS):
+            batches.append(current)
+            current, size = [], 0
+        current.append(text)
+        size += len(text)
+    if current:
+        batches.append(current)
+    return batches
+
+
 class CostLog:
     def __init__(self, path: Path | None):
         self.path = path
@@ -129,8 +152,7 @@ class OpenAIBackend:
         model = self.config["models"]["embedding"]
         vectors: list[list[float]] = []
         tokens = 0
-        for start in range(0, len(texts), 256):
-            batch = texts[start : start + 256]
+        for batch in embedding_batches(texts):
             response = self.client.embeddings.create(model=model, input=batch)
             vectors.extend(item.embedding for item in response.data)
             tokens += getattr(response.usage, "prompt_tokens", 0)

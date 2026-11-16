@@ -135,6 +135,7 @@ class Judge:
                  front=None):
         self.backend = backend
         self.front = front  # JEV front end (qc.jev), or None for the LLM alone
+        self.front_errors: list[str] = []
         self.index = index
         self.config = config
         self.arms = arms
@@ -181,7 +182,11 @@ class Judge:
 
         codes = codes or {}
         settings = self.config["jev"]
-        decisions = self.front.decide(facts, self.index, passage_ids)
+        try:
+            decisions = self.front.decide(facts, self.index, passage_ids)
+        except Exception as exc:  # e.g. a packet over JEV's context: the LLM judges these facts
+            self.front_errors.append(f"{type(exc).__name__}: {str(exc)[:200]}")
+            decisions = {}
         shown = sorted({self.index.passages[i]["page"] for i in passage_ids})
         out: dict[str, dict] = {}
         escalate = []

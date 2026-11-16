@@ -158,3 +158,40 @@ def test_temperature_dropped_when_model_rejects_it(monkeypatch):
     for _ in range(2):
         backend.parse(role="judge", instructions="i", payload="p", schema=Atomization, doc_id="d", stage="s", n_items=0)
     assert seen == [True, False, False]  # dropped once, then remembered
+
+
+def test_atomizer_batches_and_splits_on_truncated_output(tmp_path):
+    from pydantic import ValidationError
+
+    from qc.atomize import Atomization
+
+    claims = [{"claim_id": i, "doc_id": "d", "section": "2.3 Sample Size", "field": "Power", "outcome_block": None,
+               "text": f"Power: {80 + i}%.", "lines": [f"Power: {80 + i}%."], "cited_pages": [18], "sweep": [],
+               "md_line": i, "absence": False} for i in range(7)]
+
+    class Truncating:
+        config = {"models": {"atomizer": "fake", "judge": "fake", "atomize_batch_claims": 4}}
+
+        def __init__(self):
+            self.sizes = []
+
+        def parse(self, *, role, instructions, payload, schema, doc_id, stage, n_items):
+            import json
+
+            rows = json.loads(payload)
+            self.sizes.append(len(rows))
+            if len(rows) > 2 or any(r["claim_id"] == 5 for r in rows):  # too long, or always broken
+                Atomization.model_validate_json('{"claims":[{"claim_id":0,"facts":[{"text":"cut')  # raises
+            return Atomization.model_validate({"claims": [
+                {"claim_id": r["claim_id"], "facts": [{"text": r["text"].split(": ")[1], "item": "power",
+                                                       "value": None, "status": "present"}]} for r in rows]})
+
+    backend = Truncating()
+    facts = atomize.atomize(claims, backend, "d", tmp_path, "sha")
+    assert backend.sizes[:3] == [4, 2, 2]  # first batch of 4 cut off, split in halves
+    sources = {f["claim_id"]: f["source"] for f in facts}
+    assert sources[5] == "rule_fallback" and all(sources[i] == "model" for i in range(7) if i != 5)
+    try:
+        Atomization.model_validate_json('{"claims":[')
+    except ValidationError:
+        pass

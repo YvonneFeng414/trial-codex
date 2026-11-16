@@ -10,8 +10,8 @@ models:
   embedding: text-embedding-3-small
   forbidden: [gpt-5.6-terra, gpt-5.6-luna]   # generator and reviewer (prefix match)
   allow_non_independent_judge: true   # D6 override; false refuses a forbidden model
-  temperature: 0          # set to null for models that reject a temperature
   max_output_tokens: 16000
+  atomize_batch_claims: 20  # claims per atomizer call; one call per SAP hit the output cap
 
 retrieval:
   k: 5                    # P3: smallest k with Recall@k >= 0.95 on judge-confirmed facts

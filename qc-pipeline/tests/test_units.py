@@ -241,3 +241,21 @@ def test_plant_corruptions():
     scaled = plant.corrupt(fact, "scale", rng, [])["text"]
     assert scaled != fact["text"] and text.numbers(scaled) != text.numbers(fact["text"])
     assert plant.corrupt(fact, "to_absent", rng, [])["status"] == "absent"
+
+
+# --- garbled text layers and embedding batches -------------------------------------------
+
+def test_garbled_text_layer_detected():
+    garbled = "6WDWLVWLFDO\x03$QDO\\VLV\x033ODQ\x03$)7\x10\x16 3DJH \x03\x15 RI\x03\x03\x14\x1a " * 5
+    assert pages.control_share(garbled) > pages.GARBLED_SHARE
+    assert pages.control_share("Statistical Analysis Plan, page 2 of 17.\n\tTable 1") == 0
+
+
+def test_embedding_batches_respect_request_limits():
+    from qc.llm import EMBED_MAX_BATCH_CHARS, EMBED_MAX_INPUT_CHARS, embedding_batches
+
+    texts = ["x" * 5000] * 130 + ["y" * 20000] + [""]
+    batches = embedding_batches(texts)
+    assert sum(len(b) for b in batches) == len(texts)
+    assert all(sum(map(len, b)) <= EMBED_MAX_BATCH_CHARS and len(b) <= 256 for b in batches)
+    assert max(len(t) for b in batches for t in b) == EMBED_MAX_INPUT_CHARS and batches[-1][-1] == " "

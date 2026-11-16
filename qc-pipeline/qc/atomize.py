@@ -10,10 +10,11 @@ from __future__ import annotations
 
 import json
 import re
+import sys
 from pathlib import Path
 from typing import Literal
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ValidationError
 
 import qc  # noqa: F401
 from lint_sap import ABSENCE_RE  # type: ignore[import-not-found]
@@ -153,12 +154,22 @@ def _payload(claims: list[dict]) -> str:
     return json.dumps(rows, ensure_ascii=False)
 
 
-def _model_atomize(claims: list[dict], backend, doc_id: str) -> dict[int, list[dict]]:
+def _atomize_batch(claims: list[dict], backend, doc_id: str) -> dict[int, list[dict]]:
+    """One call; on output that does not parse (e.g. cut off at the token cap), split in half
+    and retry. A single claim that still fails is left out, so the caller's fallback applies."""
     by_id = {c["claim_id"]: c for c in claims}
-    result = backend.parse(
-        role="atomizer", instructions=INSTRUCTIONS, payload=_payload(claims), schema=Atomization,
-        doc_id=doc_id, stage="atomize", n_items=len(claims),
-    )
+    try:
+        result = backend.parse(
+            role="atomizer", instructions=INSTRUCTIONS, payload=_payload(claims), schema=Atomization,
+            doc_id=doc_id, stage="atomize", n_items=len(claims),
+        )
+    except (ValidationError, RuntimeError) as exc:
+        if len(claims) == 1:
+            print(f"warning: atomizer failed on claim {claims[0]['claim_id']} ({type(exc).__name__}); "
+                  "using the rule atomizer for it", file=sys.stderr)
+            return {}
+        middle = len(claims) // 2
+        return {**_atomize_batch(claims[:middle], backend, doc_id), **_atomize_batch(claims[middle:], backend, doc_id)}
     out: dict[int, list[dict]] = {}
     for entry in result.claims:
         if entry.claim_id in by_id and entry.facts:
@@ -166,10 +177,21 @@ def _model_atomize(claims: list[dict], backend, doc_id: str) -> dict[int, list[d
     return out
 
 
+def _model_atomize(claims: list[dict], backend, doc_id: str) -> dict[int, list[dict]]:
+    """Atomize in batches of models.atomize_batch_claims, keeping each call's output well
+    under max_output_tokens: a whole SAP in one call was cut off on 11 of 18 documents."""
+    size = backend.config["models"].get("atomize_batch_claims") or 20
+    out: dict[int, list[dict]] = {}
+    for start in range(0, len(claims), size):
+        out.update(_atomize_batch(claims[start : start + size], backend, doc_id))
+    return out
+
+
 def atomize(claims: list[dict], backend, doc_id: str, cache_dir: Path, md_sha: str) -> list[dict]:
     """Return fact records in claim order; `backend=None` uses the rule atomizer."""
     model = (backend.config["models"].get("atomizer") or backend.config["models"]["judge"]) if backend else "rule"
-    cache = cache_dir / f"atoms.{sha([md_sha, model, sha(INSTRUCTIONS)])}.json"
+    batch = backend.config["models"].get("atomize_batch_claims") if backend else None
+    cache = cache_dir / f"atoms.{sha([md_sha, model, sha(INSTRUCTIONS), batch])}.json"
     if cache.is_file():
         produced = {int(k): v for k, v in json.loads(cache.read_text(encoding="utf-8")).items()}
     else:

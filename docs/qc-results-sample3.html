@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAP QC Results · Sample 3</title>
+<style>
+  :root {
+    --bg: #f7f6f2;
+    --surface: #ffffff;
+    --surface-2: #f0eee8;
+    --text: #1f1e1b;
+    --muted: #6b6860;
+    --border: #dedad0;
+    --accent: #2f5fb3;
+    --accent-soft: #e4ecfa;
+    --loop: #8a4fbf;
+    --loop-soft: #f1e8fa;
+    --ok: #2e7d4f;
+    --ok-soft: #e3f3e9;
+    --warn: #b0671a;
+    --warn-soft: #fbeedd;
+    --bad: #b33a3a;
+    --bad-soft: #f9e3e3;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #161614;
+      --surface: #1f1f1c;
+      --surface-2: #282824;
+      --text: #ecebe6;
+      --muted: #a29f96;
+      --border: #3a3934;
+      --accent: #7fa6ec;
+      --accent-soft: #1f2b40;
+      --loop: #c39be6;
+      --loop-soft: #2d2238;
+      --ok: #6cc592;
+      --ok-soft: #1c2f24;
+      --warn: #e3a35c;
+      --warn-soft: #36291a;
+      --bad: #e88282;
+      --bad-soft: #3a2020;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #161614;
+    --surface: #1f1f1c;
+    --surface-2: #282824;
+    --text: #ecebe6;
+    --muted: #a29f96;
+    --border: #3a3934;
+    --accent: #7fa6ec;
+    --accent-soft: #1f2b40;
+    --loop: #c39be6;
+    --loop-soft: #2d2238;
+    --ok: #6cc592;
+    --ok-soft: #1c2f24;
+    --warn: #e3a35c;
+    --warn-soft: #36291a;
+    --bad: #e88282;
+    --bad-soft: #3a2020;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 15px/1.55 var(--sans);
+  }
+  main { max-width: 1000px; margin: 0 auto; padding: 40px 16px 64px; }
+  h1 { font-size: 28px; margin: 0 0 6px; letter-spacing: -0.01em; }
+  h2 { font-size: 19px; margin: 48px 0 12px; }
+  h2 .step { display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--accent); color: var(--surface); font-size: 13px; margin-right: 8px; vertical-align: 2px; }
+  h3 { font-size: 15px; margin: 0 0 6px; }
+  p { margin: 0 0 10px; }
+  .lede { color: var(--muted); max-width: 760px; }
+  code, .mono { font-family: var(--mono); font-size: 0.88em; }
+  code { background: var(--surface-2); padding: 1px 5px; border-radius: 4px; }
+  .math { font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; font-size: 1.04em; }
+  .math i { font-style: italic; }
+
+  /* Banner */
+  .banner { margin: 20px 0 0; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--warn); background: var(--warn-soft); font-size: 13.5px; }
+  .banner ul { margin: 4px 0 0; padding-left: 18px; }
+  .banner b { font-weight: 600; }
+
+  /* Cards, grids */
+  .card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 14px 16px; min-width: 0;
+  }
+  .card .who { font-size: 12px; color: var(--muted); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .card ul, .card ol { margin: 6px 0 0; padding-left: 18px; }
+  .card li { margin: 2px 0; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .stack { display: grid; gap: 14px; }
+
+  /* Figures */
+  figure { margin: 0; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; min-width: 0; }
+  figure svg { display: block; width: 100%; height: auto; }
+  figcaption { font-size: 13px; color: var(--muted); margin-top: 10px; }
+  figcaption b { color: var(--text); font-weight: 600; }
+  .fig-title { font-size: 14px; font-weight: 600; margin: 0 0 10px; }
+
+  /* Diagram marks */
+  .dg { color: var(--muted); font-family: var(--sans); }
+  .dg .box { fill: var(--surface); stroke: var(--border); stroke-width: 1.5; }
+  .dg .box.in { stroke: var(--muted); stroke-dasharray: 5 4; fill: var(--surface-2); }
+  .dg .box.model { stroke: var(--accent); fill: var(--accent-soft); }
+  .dg .box.t { stroke: var(--warn); fill: var(--warn-soft); }
+  .dg .box.r { stroke: var(--ok); fill: var(--ok-soft); }
+  .dg .box.u { fill: var(--surface-2); }
+  .dg .box.loop { stroke: var(--loop); fill: var(--loop-soft); }
+  .dg .box.bad { stroke: var(--bad); fill: var(--bad-soft); }
+  .dg .nm { fill: var(--text); font-size: 13px; font-weight: 600; font-family: var(--mono); }
+  .dg .sb { fill: var(--muted); font-size: 11px; }
+  .dg .al { fill: var(--muted); font-size: 11px; }
+  .dg .al.strong { fill: var(--text); font-weight: 600; }
+  .dg .ln { stroke: currentColor; stroke-width: 1.5; fill: none; }
+  .dg .ln.dash { stroke-dasharray: 5 4; }
+  .dg .dot { fill: currentColor; }
+  .dg .tick { fill: var(--muted); font-size: 10px; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12.5px; color: var(--muted); margin-top: 10px; }
+  .legend span::before { content: ""; display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 6px; vertical-align: -2px; background: var(--c); border: 1.5px solid var(--s, transparent); }
+  .legend span.dashed::before { border-style: dashed; }
+
+  /* Charts */
+  .chart .ax { stroke: var(--border); }
+  .chart .lbl { fill: var(--muted); font-size: 11px; font-family: var(--sans); }
+  .chart .val { fill: var(--text); font-size: 11px; font-weight: 600; font-family: var(--sans); font-variant-numeric: tabular-nums; }
+  .chart .hit:hover { opacity: 0.8; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  th, td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tbody tr:last-child td { border-bottom: 0; }
+  th { font-size: 12px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+  td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .tablewrap { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; overflow-x: auto; }
+
+  /* Stats */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .stat { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px; min-width: 0; }
+  .stat .v { font-size: 24px; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .stat .k { font-size: 12.5px; color: var(--muted); }
+  .stat.t { border-left: 3px solid var(--warn); }
+  .stat.r { border-left: 3px solid var(--ok); }
+  .stat.a { border-left: 3px solid var(--accent); }
+  .stat.l { border-left: 3px solid var(--loop); }
+  .note { font-size: 12.5px; color: var(--muted); margin-top: 8px; }
+  .pill { display: inline-block; font-size: 11.5px; font-weight: 600; padding: 1px 7px; border-radius: 999px; white-space: nowrap; }
+  .pill.bad { background: var(--bad-soft); color: var(--bad); }
+  .pill.warn { background: var(--warn-soft); color: var(--warn); }
+  .pill.ok { background: var(--ok-soft); color: var(--ok); }
+  .pill.acc { background: var(--accent-soft); color: var(--accent); }
+  .pill.loop { background: var(--loop-soft); color: var(--loop); }
+  .pill.muted { background: var(--surface-2); color: var(--muted); }
+
+  /* Metric cards */
+  .metric { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; border-top: 3px solid var(--loop); min-width: 0; }
+  .metric.t { border-top-color: var(--warn); }
+  .metric.r { border-top-color: var(--ok); }
+  .metric .q { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+  .formula { background: var(--surface-2); border-radius: 6px; padding: 8px 10px; margin: 8px 0; overflow-x: auto; white-space: nowrap; }
+  .says { font-size: 13.5px; }
+  .says b { font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .says .no { color: var(--bad); }
+  .says .yes { color: var(--ok); }
+
+  /* Phase track */
+  .phases { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
+  .phase { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; border-top: 4px solid var(--border); min-width: 0; font-size: 13px; }
+  .phase.done { border-top-color: var(--ok); }
+  .phase.built { border-top-color: var(--accent); }
+  .phase.run { border-top-color: var(--warn); }
+  .phase .id { font-family: var(--mono); font-weight: 700; font-size: 13px; }
+  .phase .nm2 { font-weight: 600; margin: 2px 0 6px; }
+  .phase p { color: var(--muted); font-size: 12.5px; margin: 6px 0 0; }
+
+  /* File tree */
+  .tree { font-family: var(--mono); font-size: 12.5px; line-height: 1.7; margin: 0; white-space: pre; overflow-x: auto; }
+  .tree .c { color: var(--muted); }
+
+  /* High-level flow */
+  .flow { display: grid; grid-template-columns: 104px repeat(5, minmax(0, 1fr)); column-gap: 22px; row-gap: 26px; align-items: stretch; }
+  .flow > * { position: relative; min-width: 0; }
+  .flow .fin { grid-row: 1; grid-column: 1; display: flex; flex-direction: column; justify-content: center; gap: 8px; }
+  .flow .chip { border: 1.5px dashed var(--muted); background: var(--surface-2); border-radius: 8px; padding: 6px 8px; font-family: var(--mono); font-size: 12px; font-weight: 600; text-align: center; }
+  .flow .stg { grid-row: 1; display: flex; flex-direction: column; gap: 4px; background: var(--surface); border: 1.5px solid var(--border); border-radius: 10px; padding: 10px 12px 12px; color: inherit; text-decoration: none; font-size: 12.5px; }
+  .flow a.stg:hover, .flow a.stg:focus-visible { border-color: var(--accent); outline: none; }
+  .flow .stg .n { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--accent); color: var(--surface); font-size: 12px; font-weight: 700; }
+  .flow .stg b { font-size: 14px; }
+  .flow .stg .d { color: var(--muted); flex: 1; }
+  .flow .stg .pill { align-self: flex-start; }
+  .flow .stg::before { content: "→"; position: absolute; left: -18px; top: 50%; transform: translateY(-50%); color: var(--muted); font-size: 15px; }
+  .flow .out { grid-row: 2; border-radius: 10px; padding: 10px 12px; font-size: 12.5px; border: 1.5px solid var(--border); }
+  .flow .out::before { content: "↓"; position: absolute; top: -22px; left: 50%; transform: translateX(-50%); color: var(--muted); font-size: 15px; }
+  .flow .out .q { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+  .flow .out b { display: block; font-size: 13.5px; margin: 1px 0 3px; }
+  .flow .out.cov { grid-column: 3; border-color: var(--loop); background: var(--loop-soft); }
+  .flow .out.skip { grid-column: 4; border-style: dashed; background: var(--surface-2); color: var(--muted); }
+  .flow .out.skip b { color: var(--text); }
+  .flow .out.acc { grid-column: 6; border-color: var(--ok); background: var(--ok-soft); }
+
+  @media (max-width: 760px) {
+    .flow { grid-template-columns: 1fr; row-gap: 22px; }
+    .flow > * { grid-row: auto !important; grid-column: auto !important; }
+    .flow .fin { flex-direction: row; order: 1; }
+    .flow .fin .chip { flex: 1; }
+    .flow .s1 { order: 2; } .flow .s2 { order: 3; } .flow .cov { order: 4; }
+    .flow .s3 { order: 5; } .flow .skip { order: 6; } .flow .s4 { order: 7; }
+    .flow .s5 { order: 8; } .flow .out.acc { order: 9; }
+    .flow .stg::before { content: "↓"; left: 50%; top: -20px; transform: translateX(-50%); }
+    .flow .out { margin-left: 28px; }
+    .flow .out::before { content: "↳"; top: 8px; left: -20px; transform: none; }
+    .grid2, .grid3 { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .phases { grid-template-columns: repeat(2, 1fr); }
+    figure { padding: 10px; }
+  }
+</style>
+<style>
+  .bar { display: flex; align-items: center; gap: 8px; }
+  .bar .track { flex: 1; height: 8px; background: var(--surface-2); border-radius: 4px; position: relative; min-width: 60px; }
+  .bar .fill { position: absolute; left: 0; top: 0; bottom: 0; background: var(--accent); border-radius: 4px; }
+  .split { display: flex; height: 14px; border-radius: 4px; overflow: hidden; gap: 2px; margin: 8px 0 4px; }
+  .split span { display: block; height: 100%; }
+  .muted { color: var(--muted); }
+  td.mono, .mono { font-family: var(--mono); font-size: 12.5px; }
+  section h3 { margin-top: 22px; }
+  section > p { max-width: 820px; }
+</style>
+<style>
+  :root { --chart-base: #a8a397; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --chart-base: #6b6860; } }
+  :root[data-theme="dark"] { --chart-base: #6b6860; }
+</style>
+</head>
+<body>
+<main>
+<header>
+  <h1>SAP QC Results · pair-sample-3</h1>
+  <p class="lede">Faithfulness check of 72 generated SAPs (<span class="mono">pair-sample-3</span>) against their protocol PDFs,
+  run on 28 October 2026 with the pipeline in <span class="mono">qc-pipeline/</span> (design: <a href="qc-pipeline.html">SAP QC Pipeline</a>;
+  earlier samples: <a href="qc-results.html">pair-sample-1</a> and <a href="qc-results-sample2.html">pair-sample-2</a>).
+  11 of the 72 protocols also appear in an earlier sample (6 in pair-sample-1, 5 in pair-sample-2), with newly generated SAPs; the other 61 are new.
+  This page reports token consumption, retrieval coverage (Recall@k) and accuracy, then compares the three samples.</p>
+</header>
+
+<div class="banner">
+  <b>Read the accuracy numbers as provisional.</b>
+  <ul>
+    <li><b>Judge not independent.</b> The LLM judge is gpt-5.6-luna, the generator's reviewer model (plan decision D6 overridden), so it may share the reviewer's blind spots.</li>
+    <li><b>55% of judged facts were settled by JEV alone</b>, without a verbatim quote (D9 relaxed). Those count as correct; their error rate is not yet measured.</li>
+    <li><b>The judge has not been validated.</b> Phase P3 (planted errors, ~100 human gold labels, thresholds for k, τ and JEV's acceptance) has not run.</li>
+  </ul>
+</div>
+
+<section>
+<h2>1. The run</h2>
+<div class="grid2">
+  <div class="card"><div class="who">Input</div>
+    <ul>
+      <li>72 SAP / protocol pairs. Three more were run and then removed from the sample (below)</li>
+      <li>9,535 PDF pages (median 118 per protocol, 7–455); 356 pages with no text, left unsearchable. 155 of them are in one scanned NEJM protocol (NEJMoa1207290, 155 of 203 pages)</li>
+      <li>397 pages in 9 protocols with a garbled text layer (glyph codes), all recovered page by page with image OCR. Most are in four protocols: S0140-6736(17)32365-6 (125 of 145 pages), jama.2018.0438 (87 of 93), jama.2023.13390 (86 of 91) and jama.2018.9432 (74 of 78)</li>
+      <li>8,090 SAP claims → 36,264 atomic facts (model atomizer)</li>
+    </ul></div>
+  <div class="card"><div class="who">Execution</div>
+    <ul>
+      <li>8 parallel workers, 20:17–22:01: 1.7 h wall clock</li>
+      <li>9.5 min median per SAP, 22.0 min longest</li>
+      <li>34,476 facts judged (|T ∪ R|): 18,976 by JEV, 15,500 by the LLM</li>
+      <li>No JEV failures; 400 facts queued for manual review</li>
+    </ul></div>
+</div>
+<div class="tablewrap" style="margin-top:14px"><table><thead><tr><th class="mono">Removed SAP</th><th>Stage</th><th>Error</th><th class="n">Cost</th></tr></thead><tbody>
+<tr><td class="mono">10.1001_jama.2020.0592/jpc200001supp1_prod_protocol</td><td>Page index</td><td>A 50-page scanned PDF with no text layer: every page was unsearchable, so the BM25 index had no documents (<span class="mono">ZeroDivisionError</span> in <span class="mono">rank_bm25</span>). No model calls were made</td><td class="n">$0.00</td></tr>
+<tr><td class="mono">10.1056_NEJMoa1805762/nejmoa1805762_protocol</td><td>Page extraction</td><td><span class="mono">extract_pdf.py</span> stopped on page 70: "Reached maximum array element count" (27.4 MB PDF). No model calls were made</td><td class="n">$0.00</td></tr>
+<tr><td class="mono">10.1001_jama.2025.21738/joi250106supp1_prod_1770050849.50764_protocol</td><td>Text layer</td><td>All 158 pages extracted as glyph codes (<span class="mono">/0/1/2…/i255</span>) that the garbled-text check did not flag, so none were OCR'd and the SAP was checked against unreadable text. Its QC results are not reported</td><td class="n">–</td></tr>
+</tbody></table></div>
+<p class="note">All three were taken out of <span class="mono">pair-sample-3</span> (folders and <span class="mono">pairs.csv</span> rows) after the run, so every figure on this page covers the 72 remaining SAPs, cost included; the third's results are left out entirely.
+The first needs image-only PDFs to be OCR'd or skipped rather than crashing the index; the second needs the same extractor fallback as pair-sample-2's NEJMoa1809697; the third needs the garbled-text check to recognise this glyph-code form.</p>
+</section>
+
+<section>
+<h2>2. Token consumption</h2>
+<p>18,934 API calls used 96.1M input and 7.4M output tokens, for $13.20 in total.
+As in the earlier samples, JEV takes most of the tokens but little of the cost; the LLM judge is most of the cost.</p>
+<h3>By model</h3>
+<div class="tablewrap"><table><thead><tr><th>Model</th><th class="n">Calls</th><th class="n">Input tokens</th><th class="n">Output tokens</th><th class="n">Cost</th><th class="n">Share</th></tr></thead><tbody><tr><td>gpt-5.6-luna (atomizer + LLM judge)</td><td class="n">5,860</td><td class="n">23.7M</td><td class="n">4.6M</td><td class="n">$10.30</td><td class="n">78%</td></tr><tr><td>JEV 1.13 (judge front end)</td><td class="n">12,798</td><td class="n">66.0M</td><td class="n">2.8M</td><td class="n">$2.77</td><td class="n">21%</td></tr><tr><td>text-embedding-3-small (retrieval)</td><td class="n">276</td><td class="n">6.3M</td><td class="n">0.0M</td><td class="n">$0.13</td><td class="n">1%</td></tr><tr><td><b>Total</b></td><td class="n"><b>18,934</b></td><td class="n"><b>96.1M</b></td><td class="n"><b>7.4M</b></td><td class="n"><b>$13.20</b></td><td class="n"></td></tr></tbody></table></div>
+<h3>By stage</h3>
+<div class="tablewrap"><table><thead><tr><th>Stage</th><th class="n">Calls</th><th class="n">Input</th><th class="n">Output</th><th class="n">Cost</th></tr></thead><tbody><tr><td>Atomizer (claims → facts)</td><td class="n">492</td><td class="n">0.8M</td><td class="n">1.5M</td><td class="n">$1.94</td></tr><tr><td>JEV front end (2 passage orders)</td><td class="n">12,798</td><td class="n">66.0M</td><td class="n">2.8M</td><td class="n">$2.77</td></tr><tr><td>LLM judge, present facts</td><td class="n">4,375</td><td class="n">19.4M</td><td class="n">2.8M</td><td class="n">$7.23</td></tr><tr><td>LLM judge, absence facts</td><td class="n">993</td><td class="n">3.5M</td><td class="n">0.4M</td><td class="n">$1.13</td></tr><tr><td>Embeddings, PDF chunks</td><td class="n">61</td><td class="n">5.2M</td><td class="n">0.0M</td><td class="n">$0.10</td></tr><tr><td>Embeddings, queries</td><td class="n">215</td><td class="n">1.1M</td><td class="n">0.0M</td><td class="n">$0.02</td></tr></tbody></table></div>
+<div class="grid3" style="margin-top:14px">
+  <div class="card"><div class="who">Per SAP</div>$0.17 median, $0.10–$0.29 (10th–90th percentile), $0.44 highest; 1.3M tokens median</div>
+  <div class="card"><div class="who">What drives it</div>The number of judged facts, not page count. The most expensive SAP ($0.44, NEJMoa1814556) has 831 facts and 444 pages; next are NEJMoa2305861 ($0.37, 724 facts, 411 pages) and NEJMoa1507643 ($0.35, 752 facts, 301 pages).</div>
+  <div class="card"><div class="who">Prices used</div>Third-party list prices per 1M tokens: gpt-5.6-luna $0.20 in / $1.20 out; JEV $0.042 in, output free; embeddings $0.02. Check against billing.</div>
+</div>
+<p class="note">JEV's output tokens are reported by the API but not billed. Counted from <span class="mono">_cost.tsv</span> rows for this sample's documents on 28 October (20:17–22:01); rows from the pair-sample-1 and pair-sample-2 runs of the 11 shared protocols are not included.</p>
+</section>
+
+<section>
+<h2>3. Coverage: Source Recall@k</h2>
+<p>Does retrieval, ranking all pages without seeing the citation, put a cited page in its top k? This measures coverage, not correctness.
+It is reported next to the chance that a random pick of k pages would hit, because a claim citing many pages is easy to hit.</p>
+<figure>
+  <div class="fig-title">Recall@k, cited claims vs a random pick of k pages</div>
+  <svg class="chart" viewBox="0 0 560 230" role="img" aria-label="Recall at k for cited claims versus a random pick"><line class="ax" x1="36" x2="550" y1="196.0" y2="196.0"/><text class="lbl" x="30" y="200.0" text-anchor="end">0.0</text><line class="ax" x1="36" x2="550" y1="105.0" y2="105.0"/><text class="lbl" x="30" y="109.0" text-anchor="end">0.5</text><line class="ax" x1="36" x2="550" y1="14.0" y2="14.0"/><text class="lbl" x="30" y="18.0" text-anchor="end">1.0</text><g class="hit"><title>Cited claims, k = 1: 0.547</title><path d="M65.2,196.0 V100.4 q0,-4 4,-4 h26 q4,0 4,4 V196.0 Z" fill="var(--accent)"/><text class="val" x="82.2" y="91.4" text-anchor="middle">0.55</text></g><g class="hit"><title>Random pick, k = 1: 0.031</title><path d="M101.2,196.0 V194.3 q0,-4 4,-4 h26 q4,0 4,4 V196.0 Z" fill="var(--chart-base)"/><text class="val" x="118.2" y="185.3" text-anchor="middle">0.03</text></g><text class="lbl" x="100.2" y="218" text-anchor="middle">k = 1</text><g class="hit"><title>Cited claims, k = 3: 0.808</title><path d="M193.8,196.0 V53.0 q0,-4 4,-4 h26 q4,0 4,4 V196.0 Z" fill="var(--accent)"/><text class="val" x="210.8" y="44.0" text-anchor="middle">0.81</text></g><g class="hit"><title>Random pick, k = 3: 0.088</title><path d="M229.8,196.0 V184.0 q0,-4 4,-4 h26 q4,0 4,4 V196.0 Z" fill="var(--chart-base)"/><text class="val" x="246.8" y="175.0" text-anchor="middle">0.09</text></g><text class="lbl" x="228.8" y="218" text-anchor="middle">k = 3</text><g class="hit"><title>Cited claims, k = 5: 0.880</title><path d="M322.4,196.0 V39.8 q0,-4 4,-4 h26 q4,0 4,4 V196.0 Z" fill="var(--accent)"/><text class="val" x="339.4" y="30.8" text-anchor="middle">0.88</text></g><g class="hit"><title>Random pick, k = 5: 0.139</title><path d="M358.4,196.0 V174.7 q0,-4 4,-4 h26 q4,0 4,4 V196.0 Z" fill="var(--chart-base)"/><text class="val" x="375.4" y="165.7" text-anchor="middle">0.14</text></g><text class="lbl" x="357.4" y="218" text-anchor="middle">k = 5</text><g class="hit"><title>Cited claims, k = 10: 0.940</title><path d="M451.0,196.0 V28.9 q0,-4 4,-4 h26 q4,0 4,4 V196.0 Z" fill="var(--accent)"/><text class="val" x="468.0" y="19.9" text-anchor="middle">0.94</text></g><g class="hit"><title>Random pick, k = 10: 0.248</title><path d="M487.0,196.0 V154.8 q0,-4 4,-4 h26 q4,0 4,4 V196.0 Z" fill="var(--chart-base)"/><text class="val" x="504.0" y="145.8" text-anchor="middle">0.25</text></g><text class="lbl" x="486.0" y="218" text-anchor="middle">k = 10</text></svg>
+  <div class="legend"><span style="--c: var(--accent)">Cited claims (7,170)</span><span style="--c: var(--chart-base)">Random pick</span></div>
+  <figcaption><b>88.0%</b> of cited claims have a cited page in the top 5, against 13.9% by chance.
+  That is 1.3 points above pair-sample-1 (86.7%) and 4.6 above pair-sample-2 (83.4%):
+  the highest of the three samples at every k.</figcaption>
+</figure>
+<h3>Recall@k by unit</h3>
+<div class="tablewrap"><table><thead><tr><th>Unit</th><th class="n">n (cited)</th><th class="n">@1</th><th class="n">@3</th><th class="n">@5</th><th class="n">@10</th><th class="n">MRR, |S| = 1</th></tr></thead><tbody><tr><td>Cited claims</td><td class="n">7,170</td><td class="n">0.547<span class="muted"> / 0.031</span></td><td class="n">0.808<span class="muted"> / 0.088</span></td><td class="n">0.880<span class="muted"> / 0.139</span></td><td class="n">0.940<span class="muted"> / 0.248</span></td><td class="n">0.665</td></tr><tr><td>Atomic facts</td><td class="n">34,788</td><td class="n">0.538<span class="muted"> / 0.040</span></td><td class="n">0.802<span class="muted"> / 0.112</span></td><td class="n">0.878<span class="muted"> / 0.174</span></td><td class="n">0.940<span class="muted"> / 0.302</span></td><td class="n">0.646</td></tr></tbody></table></div>
+<p class="note">Each cell is Recall@k / random-pick baseline. MRR is computed over items citing exactly one page. Claims and facts without a specific cited page (page sweeps only) are excluded.</p>
+<h3>By number of cited pages</h3>
+<div class="tablewrap"><table><thead><tr><th>|S| (cited pages)</th><th class="n">Claims</th><th class="n">Recall@5</th><th class="n">Random</th><th class="n">Facts</th><th class="n">Recall@5</th><th class="n">Random</th></tr></thead><tbody><tr><td>1</td><td class="n">2,988</td><td class="n">0.840</td><td class="n muted">0.089</td><td class="n">7,819</td><td class="n">0.816</td><td class="n muted">0.086</td></tr><tr><td>2</td><td class="n">1,917</td><td class="n">0.894</td><td class="n muted">0.129</td><td class="n">8,410</td><td class="n">0.887</td><td class="n muted">0.131</td></tr><tr><td>3-4</td><td class="n">1,463</td><td class="n">0.918</td><td class="n muted">0.177</td><td class="n">9,661</td><td class="n">0.898</td><td class="n muted">0.183</td></tr><tr><td>5+</td><td class="n">802</td><td class="n">0.933</td><td class="n muted">0.281</td><td class="n">8,898</td><td class="n">0.904</td><td class="n muted">0.284</td></tr></tbody></table></div>
+<h3>Across documents</h3>
+<p>Median per-document Recall@5 (claims) is 0.887; the 10th percentile is 0.770;
+9 of 71 documents fall below 0.80 (21 of 100 in pair-sample-1, 32 of 98 in pair-sample-2). Low coverage means the cited pages and the claim text share few terms or numbers,
+which points at citations worth checking (or at text the extractor reads badly), not at a wrong claim.
+The 72nd document, jama.2024.2302, has no rankable claims: 114 of its 150 citations use a <span class="mono">p2</span> form the citation parser does not read.</p>
+<div class="tablewrap"><table><thead><tr><th class="mono">Lowest-coverage documents</th><th class="n">Cited claims</th><th class="n">Recall@5</th><th class="n">Recall@10</th></tr></thead><tbody><tr><td class="mono">10.1056_NEJMoa1602250/nejmoa1602250_protocol</td><td class="n">106</td><td class="n">0.236</td><td class="n">0.358</td></tr><tr><td class="mono">10.1056_NEJMoa1207290/nejmoa1207290_protocol</td><td class="n">56</td><td class="n">0.679</td><td class="n">0.696</td></tr><tr><td class="mono">10.1056_NEJMoa2509834/nejmoa2509834_protocol</td><td class="n">103</td><td class="n">0.689</td><td class="n">0.835</td></tr><tr><td class="mono">10.1056_NEJMoa2305861/nejmoa2305861_protocol</td><td class="n">123</td><td class="n">0.707</td><td class="n">0.821</td></tr><tr><td class="mono">10.1056_NEJMoa2400201/nejmoa2400201_protocol</td><td class="n">92</td><td class="n">0.728</td><td class="n">0.783</td></tr><tr><td class="mono">10.1056_NEJMoa1113249/nejmoa1113249_protocol</td><td class="n">88</td><td class="n">0.739</td><td class="n">0.875</td></tr><tr><td class="mono">10.1016_S0140-6736_25_01726-X/mmc1_protocol</td><td class="n">93</td><td class="n">0.763</td><td class="n">0.903</td></tr><tr><td class="mono">10.1001_jama.2021.11684/joi210083supp1_prod_1630095299.70089_protocol</td><td class="n">113</td><td class="n">0.770</td><td class="n">0.920</td></tr></tbody></table></div>
+<p class="note">In NEJMoa1602250, the lowest, the cited page is mostly 2–3 pages below the top-ranked one, which suggests the SAP cites the protocol's printed page numbers rather than the PDF page markers.</p>
+</section>
+
+<section>
+<h2>4. Accuracy</h2>
+<p>A fact is an error when the judge finds it <i>contradicted</i> or <i>not found</i> on the evidence shown, or, for a "not reported" fact, finds the protocol does report it.
+Strict scoring counts minor contradictions as errors; lenient does not. Every LLM verdict of supported or contradicted carries a quote that a script verified verbatim on the page.</p>
+<div class="tablewrap"><table><thead><tr><th>Quantity</th><th class="n">Symbol</th><th class="n">Facts</th><th class="n">Strict</th><th class="n">Lenient</th></tr></thead><tbody><tr><td>Flagged facts<div class="muted" style="font-size:12px">Every flagged fact, judged: a census</div></td><td class="n">acc<sub>T</sub></td><td class="n">33,709</td><td class="n">92.6%<div class="muted" style="font-size:12px">92.3–92.9%</div></td><td class="n">94.0%<div class="muted" style="font-size:12px">93.7–94.2%</div></td></tr><tr><td>Random 30% sample<div class="muted" style="font-size:12px">Unbiased estimate of document accuracy</div></td><td class="n">acc<sub>R</sub></td><td class="n">10,850</td><td class="n">92.8%<div class="muted" style="font-size:12px">92.3–93.3%</div></td><td class="n">94.1%<div class="muted" style="font-size:12px">93.6–94.5%</div></td></tr><tr><td>Sampled and unflagged<div class="muted" style="font-size:12px">What the triggers did not flag</div></td><td class="n">acc<sub>R∩U</sub></td><td class="n">760</td><td class="n">95.7%<div class="muted" style="font-size:12px">94.0–97.0%</div></td><td class="n">96.8%<div class="muted" style="font-size:12px">95.3–98.0%</div></td></tr><tr><td>Random sample, pooled<div class="muted" style="font-size:12px">Binomial GLMM, random intercept per document</div></td><td class="n">GLMM</td><td class="n">10,850</td><td class="n">93.2%<div class="muted" style="font-size:12px">92.7–93.6%</div></td><td class="n">94.6%<div class="muted" style="font-size:12px">94.2–95.0%</div></td></tr><tr><td>Trigger miss rate<div class="muted" style="font-size:12px">errors(R∩U) / |R∩U|</div></td><td class="n">miss</td><td class="n">760</td><td class="n">4.3%<div class="muted" style="font-size:12px">3.0–6.0%</div></td><td class="n">3.2%<div class="muted" style="font-size:12px">2.0–4.7%</div></td></tr></tbody></table></div>
+<p class="note">Clopper–Pearson 95% intervals. The GLMM interval comes from statsmodels' variational-Bayes fit, which tends to be narrow.</p>
+
+<div class="grid2" style="margin-top:14px">
+  <div class="card"><div class="who">Who decided the verdicts</div>
+    <div class="split"><span style="flex:18976;background:var(--ok)"></span><span style="flex:15493;background:var(--accent)"></span></div>
+    <div class="legend" style="margin-top:4px"><span style="--c: var(--ok)">JEV accepted, no quote: 55% of judged facts</span><span style="--c: var(--accent)">LLM judge</span></div>
+    <p style="margin:8px 0 0">JEV only ever accepts <i>supported</i>, so every error comes from LLM-judged facts: 2,524 errors in 15,493 LLM-judged facts (83.7% accurate).
+    If JEV's accepted verdicts were 3% wrong, accuracy would fall by about 1.7% points.</p></div>
+  <div class="card"><div class="who">"Not reported" facts are the weak spot</div>
+    <p style="margin:0">Absence facts are wrong 17.6% of the time strictly (10.5% lenient), over 2,672 judged:
+    the SAP says an item is not reported, and the protocol reports it. In the random sample, absence facts are 82.5% accurate
+    against 93.6% for facts that state something. That is still the weakest kind of fact, but less wrong than in pair-sample-1 (22.4%) and pair-sample-2 (23.5%).
+    Citation precision (cited pages the LLM judge said support the fact) is 22.6%.</p></div>
+</div>
+
+<h3>Verdicts</h3>
+<div class="tablewrap"><table><thead><tr><th>Fact</th><th>Verdict</th><th class="n">Facts</th><th class="n">Share</th></tr></thead><tbody><tr><td>Present</td><td><span class="pill ok">supported</span></td><td class="n">29,744</td><td class="n">86.3%</td></tr><tr><td>Present</td><td><span class="pill bad">not found</span></td><td class="n">1,619</td><td class="n">4.7%</td></tr><tr><td>Present</td><td><span class="pill warn">contradicted, minor</span></td><td class="n">274</td><td class="n">0.8%</td></tr><tr><td>Present</td><td><span class="pill bad">contradicted</span></td><td class="n">160</td><td class="n">0.5%</td></tr><tr><td>Absence</td><td><span class="pill ok">consistent</span></td><td class="n">2,201</td><td class="n">6.4%</td></tr><tr><td>Absence</td><td><span class="pill bad">contradicted</span></td><td class="n">280</td><td class="n">0.8%</td></tr><tr><td>Absence</td><td><span class="pill warn">contradicted, minor</span></td><td class="n">191</td><td class="n">0.6%</td></tr><tr><td>Absence</td><td><span class="pill muted">unverifiable</span></td><td class="n">7</td><td class="n">0.0%</td></tr></tbody></table></div>
+<p class="note"><i>Not found</i> is the largest error class. Some of these are retrieval misses (the supporting passage was never shown), not SAP errors; P3 measures how many.</p>
+
+<h3>By SAP section (random sample, strict)</h3>
+<figure>
+  <div class="fig-title">Accuracy by SAP section, with 95% intervals</div>
+  <svg class="chart" viewBox="0 0 640 536" role="img" aria-label="Random-sample accuracy by SAP section with 95% intervals"><line class="ax" x1="250.0" x2="250.0" y1="8" y2="514"/><text class="lbl" x="250.0" y="530" text-anchor="middle">80%</text><line class="ax" x1="332.5" x2="332.5" y1="8" y2="514"/><text class="lbl" x="332.5" y="530" text-anchor="middle">85%</text><line class="ax" x1="415.0" x2="415.0" y1="8" y2="514"/><text class="lbl" x="415.0" y="530" text-anchor="middle">90%</text><line class="ax" x1="497.5" x2="497.5" y1="8" y2="514"/><text class="lbl" x="497.5" y="530" text-anchor="middle">95%</text><line class="ax" x1="580.0" x2="580.0" y1="8" y2="514"/><text class="lbl" x="580.0" y="530" text-anchor="middle">100%</text><line x1="461.7" x2="461.7" y1="8" y2="514" stroke="var(--muted)" stroke-dasharray="4 3"/><g class="hit"><title>1.1 Background and Rationale: 96.9% (95% CI 92.2%–99.1%), 4 errors in 128 sampled facts</title><rect x="0" y="8" width="640" height="22" fill="transparent"/><text class="lbl" x="240" y="22" text-anchor="end">1.1 Background and Rationale</text><line x1="451.2" x2="565.8" y1="18" y2="18" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/><circle cx="528.4" cy="18" r="4.5" fill="var(--accent)" stroke="var(--surface)" stroke-width="2"/><text class="val" x="588" y="22">96.9%</text></g><g class="hit"><title>1.2 Objectives: 96.2% (95% CI 93.8%–97.9%), 15 errors in 394 sampled facts</title><rect x="0" y="30" width="640" height="22" fill="transparent"/><text class="lbl" x="240" y="44" text-anchor="end">1.2 Objectives</text><line x1="477.7" x2="544.6" y1="40" y2="40" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/><circle cx="517.2" cy="40" r="4.5" fill="var(--accent)" stroke="var(--surface)" stroke-width="2"/><text class="val" x="588" y="44">96.2%</text></g><g class="hit"><title>2.1 Trial Design: 95.3% (95% CI 93.3%–96.9%), 28 errors in 595 sampled facts</title><rect x="0" y="52" width="640" height="22" fill="transparent"/><text class="lbl" x="240" y="66" text-anchor="end">2.1 Trial Design</text><line x1="469.0" x2="528.0" y1="62" y2="62" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/><circle cx="502.4" cy="62" r="4.5" fill="var(--accent)" stroke="var(--surface)" stroke-width="2"/><text class="val" x="588" y="66">95.3%</text></g><g class="hit"><title>2.2 Randomization: 97.8% (95% CI 94.5%–99.4%), 4 errors in 183 sampled facts</title><rect x="0" y="74" width="640" height="22" fill="transparent"/><text class="lbl" x="240" y="88" text-anchor="end">2.2 Randomization</text><line x1="489.2" x2="570.1" y1="84" y2="84" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/><circle cx="543.9" cy="84" r="4.5" fill="var(--accent)" stroke="var(--surface)" stroke-width="2"/><text class="val" x="588" y="88">97.8%</text></g><g class="hit"><title>2.3 Sample Size: 88.5% (95% CI 86.5%–90.3%), 131 errors in 1138 sampled facts</title><rect x="0" y="96" width="640" height="22" fill="transparent"/><text class="lbl" x="240" y="110" text-anchor="end">2.3 Sample Size</text><line x1="357.1" x2="419.7" y1="106" y2="106" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/><circle cx="390.1" cy="106" r="4.5" fill="var(--accent)" stroke="var(--surface)" stroke-width="2"/><text class="val" x="588" y="110">88.5%</text></g><g class="hit"><title>2.4 Hypothesis Framework: 90.2% (95% CI 84.6%–94.3%), 16 errors in 164 sampled facts</title><rect x="0" y="118" width="640" height="22" fill="transparent"/><text class="lbl" x="240" y="132" text-anchor="end">2.4 Hypothesis Framework</text><line x1="326.6" x2="486.3" y1="128" y2="128" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/><circle cx="419.0" cy="128" r="4.5" fill="var(--accent)" stroke="var(--surface)" stroke-width="2"/><text class="val" x="588" y="132">90.2%</text></g><g class="hit"><title>2.5 Statistical Interim Analyses: 89.8% (95% CI 85.8%–93.0%), 30 errors in 294 sampled facts</title><rect x="0" y="140" width="640" height="22" fill="transparent"/><text class="lbl" x="240" y="154" text-anchor="end">2.5 Statistical Interim Analyses</text><line x1="344.9" x2="464.6" y1="150" y2="150" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/><circle cx="411.6" cy="150" r="4.5" fill="var(--accent)" stroke="var(--surface)" stroke-width="2"/><text class="val" x="588" y="154">89.8%</text></g><g class="hit"><title>2.6 Timing of Analyses: 90.7% (95% CI 87.4%–93.3%), 38 errors in 408 sampled facts</title><rect x="0" y="162" width="640" height="22" fill="transparent"/><text class="lbl" x="240" y="176" text-anchor="end">2.6 Timing of Analyses</text><line x1="372.8" x2="469.9" y1="172" y2="172" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/><circle cx="426.3" cy="172" r="4.5" fill="var(--accent)" stroke="var(--surface)" stroke-width="2"/><text class="val" x="588" y="176">90.7%</text></g><g class="hit"><title>3.1 Significance and Confidence Intervals: 88.1% (95% CI 82.6%–92.4%), 22 errors in 185 sampled facts</title><rect x="0" y="184" width="640" height="22" fill="transparent"/><text class="lbl" x="240" y="198" text-anchor="end">3.1 Significance and Confidence Intervals</text><line x1="292.1" x2="454.5" y1="194" y2="194" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/><circle cx="383.8" cy="194" r="4.5" fill="var(--accent)" stroke="var(--surface)" stroke-width="2"/><text class="val" x="588" y="198">88.1%</text></g><g class="hit"><title>3.2 Protocol Deviations: 94.3% (95% CI 91.1%–96.6%), 18 errors in 316 sampled facts</title><rect x="0" y="206" width="640" height="22" fill="transparent"/><text class="lbl" x="240" y="220" text-anchor="end">3.2 Protocol Deviations</text><line x1="433.9" x2="523.7" y1="216" y2="216" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/><circle cx="486.0" cy="216" r="4.5" fill="var(--accent)" stroke="var(--surface)" stroke-width="2"/><text class="val" x="588" y="220">94.3%</text></g><g class="hit"><title>3.3 Analysis Populations: 90.4% (95% CI 86.2%–93.7%), 25 errors in 261 sampled facts</title><rect x="0" y="228" width="640" height="22" fill="transparent"/><text class="lbl" x="240" y="242" text-anchor="end">3.3 Analysis Populations</text><line x1="352.1" x2="476.1" y1="238" y2="238" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/><circle cx="422.0" cy="238" r="4.5" fill="var(--accent)" stroke="var(--surface)" stroke-width="2"/><text class="val" x="588" y="242">90.4%</text></g><g class="hit"><title>4.1 Screening Data: 93.8% (95% CI 90.3%–96.3%), 18 errors in 289 sampled facts</title><rect x="0" y="250" width="640" height="22" fill="transparent"/><text class="lbl" x="240" y="264" text-anchor="end">4.1 Screening Data</text><line x1="420.5" x2="518.4" y1="260" y2="260" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/><circle cx="477.2" cy="260" r="4.5" fill="var(--accent)" stroke="var(--surface)" stroke-width="2"/><text class="val" x="588" y="264">93.8%</text></g><g class="hit"><title>4.2 Eligibility Criteria Summary: 95.8% (95% CI 94.0%–97.2%), 28 errors in 668 sampled facts</title><rect x="0" y="272" width="640" height="22" fill="transparent"/><text class="lbl" x="240" y="286" text-anchor="end">4.2 Eligibility Criteria Summary</text><line x1="481.0" x2="533.7" y1="282" y2="282" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/><circle cx="510.8" cy="282" r="4.5" fill="var(--accent)" stroke="var(--surface)" stroke-width="2"/><text class="val" x="588" y="286">95.8%</text></g><g class="hit"><title>4.3 Recruitment: 94.8% (95% CI 89.5%–97.9%), 7 errors in 134 sampled facts</title><rect x="0" y="294" width="640" height="22" fill="transparent"/><text class="lbl" x="240" y="308" text-anchor="end">4.3 Recruitment</text><line x1="407.3" x2="544.9" y1="304" y2="304" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/><circle cx="493.8" cy="304" r="4.5" fill="var(--accent)" stroke="var(--surface)" stroke-width="2"/><text class="val" x="588" y="308">94.8%</text></g><g class="hit"><title>4.4 Withdrawal and Follow-up: 95.1% (95% CI 92.2%–97.2%), 16 errors in 326 sampled facts</title><rect x="0" y="316" width="640" height="22" fill="transparent"/><text class="lbl" x="240" y="330" text-anchor="end">4.4 Withdrawal and Follow-up</text><line x1="450.5" x2="533.3" y1="326" y2="326" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/><circle cx="499.0" cy="326" r="4.5" fill="var(--accent)" stroke="var(--surface)" stroke-width="2"/><text class="val" x="588" y="330">95.1%</text></g><g class="hit"><title>4.5 Baseline Characteristics: 94.3% (95% CI 91.7%–96.3%), 25 errors in 439 sampled facts</title><rect x="0" y="338" width="640" height="22" fill="transparent"/><text class="lbl" x="240" y="352" text-anchor="end">4.5 Baseline Characteristics</text><line x1="443.2" x2="518.6" y1="348" y2="348" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/><circle cx="486.0" cy="348" r="4.5" fill="var(--accent)" stroke="var(--surface)" stroke-width="2"/><text class="val" x="588" y="352">94.3%</text></g><g class="hit"><title>5.1 Primary Outcomes: 94.9% (95% CI 92.7%–96.6%), 28 errors in 546 sampled facts</title><rect x="0" y="360" width="640" height="22" fill="transparent"/><text class="lbl" x="240" y="374" text-anchor="end">5.1 Primary Outcomes</text><line x1="459.1" x2="523.3" y1="370" y2="370" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/><circle cx="495.4" cy="370" r="4.5" fill="var(--accent)" stroke="var(--surface)" stroke-width="2"/><text class="val" x="588" y="374">94.9%</text></g><g class="hit"><title>5.2 Secondary Outcomes: 91.4% (95% CI 89.9%–92.7%), 139 errors in 1616 sampled facts</title><rect x="0" y="382" width="640" height="22" fill="transparent"/><text class="lbl" x="240" y="396" text-anchor="end">5.2 Secondary Outcomes</text><line x1="413.7" x2="459.9" y1="392" y2="392" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/><circle cx="438.1" cy="392" r="4.5" fill="var(--accent)" stroke="var(--surface)" stroke-width="2"/><text class="val" x="588" y="396">91.4%</text></g><g class="hit"><title>5.3 Analysis Methods: 94.1% (95% CI 92.3%–95.5%), 53 errors in 892 sampled facts</title><rect x="0" y="404" width="640" height="22" fill="transparent"/><text class="lbl" x="240" y="418" text-anchor="end">5.3 Analysis Methods</text><line x1="452.9" x2="506.0" y1="414" y2="414" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/><circle cx="482.0" cy="414" r="4.5" fill="var(--accent)" stroke="var(--surface)" stroke-width="2"/><text class="val" x="588" y="418">94.1%</text></g><g class="hit"><title>5.4 Missing Data: 89.9% (95% CI 85.6%–93.2%), 27 errors in 267 sampled facts</title><rect x="0" y="426" width="640" height="22" fill="transparent"/><text class="lbl" x="240" y="440" text-anchor="end">5.4 Missing Data</text><line x1="342.9" x2="468.3" y1="436" y2="436" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/><circle cx="413.1" cy="436" r="4.5" fill="var(--accent)" stroke="var(--surface)" stroke-width="2"/><text class="val" x="588" y="440">89.9%</text></g><g class="hit"><title>5.5 Additional Analyses: 92.5% (95% CI 89.9%–94.6%), 39 errors in 523 sampled facts</title><rect x="0" y="448" width="640" height="22" fill="transparent"/><text class="lbl" x="240" y="462" text-anchor="end">5.5 Additional Analyses</text><line x1="414.1" x2="491.6" y1="458" y2="458" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/><circle cx="457.0" cy="458" r="4.5" fill="var(--accent)" stroke="var(--surface)" stroke-width="2"/><text class="val" x="588" y="462">92.5%</text></g><g class="hit"><title>5.6 Harms: 94.2% (95% CI 92.4%–95.7%), 48 errors in 831 sampled facts</title><rect x="0" y="470" width="640" height="22" fill="transparent"/><text class="lbl" x="240" y="484" text-anchor="end">5.6 Harms</text><line x1="454.8" x2="509.2" y1="480" y2="480" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/><circle cx="484.7" cy="480" r="4.5" fill="var(--accent)" stroke="var(--surface)" stroke-width="2"/><text class="val" x="588" y="484">94.2%</text></g><g class="hit"><title>5.7 Software and References: 92.5% (95% CI 88.5%–95.4%), 19 errors in 253 sampled facts</title><rect x="0" y="492" width="640" height="22" fill="transparent"/><text class="lbl" x="240" y="506" text-anchor="end">5.7 Software and References</text><line x1="390.6" x2="504.4" y1="502" y2="502" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/><circle cx="456.1" cy="502" r="4.5" fill="var(--accent)" stroke="var(--surface)" stroke-width="2"/><text class="val" x="588" y="506">92.5%</text></g></svg>
+  <figcaption>Dashed line: pooled 92.8%. Weakest: significance and confidence intervals (88.1%), sample size (88.5%), statistical interim analyses (89.8%), missing data (89.9%); strongest: randomization (97.8%), background and rationale (96.9%), objectives (96.2%).
+  Interim analyses and significance and confidence intervals are below 91.5% in all three samples. The largest drops from pair-sample-1 are timing of analyses (5.5 points) and sample size (4.8).</figcaption>
+</figure>
+
+<h3>How well the triggers find errors</h3>
+<p>The triggers put 33,716 of 36,264 facts (93%) in the flagged set, almost all of them, so acc<sub>T</sub> ≈ acc<sub>R</sub>.
+The unflagged facts that were sampled (760) are wrong 4.3% of the time, well below flagged ones (7.4%).
+That is a clearer separation than in pair-sample-1 (7.0% vs 6.5%) or pair-sample-2 (8.1% vs 6.9%), but with nearly every fact flagged, the triggers still do little filtering. Error yield per trigger:</p>
+<div class="tablewrap"><table><thead><tr><th>Trigger</th><th>Fires on</th><th class="n">Flagged facts</th><th class="n">Error yield</th><th style="width:22%"></th></tr></thead><tbody><tr><td class="mono">NUM_MISS</td><td>Number not on any cited page</td><td class="n">623</td><td class="n">43.5%</td><td><div class="bar"><div class="track"><div class="fill" style="width:87%"></div></div></div></td></tr><tr><td class="mono">SELF_CONTRA</td><td>Absence claim the SAP answers elsewhere</td><td class="n">68</td><td class="n">35.3%</td><td><div class="bar"><div class="track"><div class="fill" style="width:71%"></div></div></div></td></tr><tr><td class="mono">ABSENCE_HITS</td><td>Absence claim with candidate pages</td><td class="n">2,672</td><td class="n">17.6%</td><td><div class="bar"><div class="track"><div class="fill" style="width:35%"></div></div></div></td></tr><tr><td class="mono">COVERAGE_MISS</td><td>Cited pages not in retrieval Top-5</td><td class="n">4,232</td><td class="n">13.3%</td><td><div class="bar"><div class="track"><div class="fill" style="width:27%"></div></div></div></td></tr><tr><td class="mono">SWEEP_ONLY</td><td>Only a page sweep cited</td><td class="n">1,472</td><td class="n">12.6%</td><td><div class="bar"><div class="track"><div class="fill" style="width:25%"></div></div></div></td></tr><tr><td class="mono">LOW_OVERLAP</td><td>Low overlap with best cited passage</td><td class="n">3,506</td><td class="n">12.0%</td><td><div class="bar"><div class="track"><div class="fill" style="width:24%"></div></div></div></td></tr><tr><td class="mono">CRITICAL</td><td>Critical SAP section</td><td class="n">11,945</td><td class="n">8.3%</td><td><div class="bar"><div class="track"><div class="fill" style="width:17%"></div></div></div></td></tr><tr><td class="mono">COMPOUND</td><td>Claim split into more than 3 facts</td><td class="n">27,920</td><td class="n">6.9%</td><td><div class="bar"><div class="track"><div class="fill" style="width:14%"></div></div></div></td></tr><tr><td class="mono">POLARITY</td><td>Direction / sidedness / arm disagrees</td><td class="n">93</td><td class="n">6.5%</td><td><div class="bar"><div class="track"><div class="fill" style="width:13%"></div></div></div></td></tr></tbody></table></div>
+<p class="note"><span class="mono">COMPOUND</span> and <span class="mono">CRITICAL</span> flag most facts at near the base error rate. <span class="mono">NUM_MISS</span>'s yield rose to 43.5% (21.7% and 16.1% in the earlier samples).
+<span class="mono">SELF_CONTRA</span> is at 35.3% on 68 facts (38.8% and 15.6% before), still on small counts.</p>
+
+<h3>Across documents</h3>
+<p>Per-document acc<sub>R</sub> (strict): median 93.0%, interquartile range 91.8%–95.1%, 10th percentile 88.6%.</p>
+<div class="tablewrap"><table><thead><tr><th class="mono">Lowest-accuracy documents</th><th class="n">Sampled facts</th><th class="n">acc<sub>R</sub></th><th class="n">acc<sub>T</sub></th></tr></thead><tbody><tr><td class="mono">10.1056_NEJMoa1207290/nejmoa1207290_protocol</td><td class="n">88</td><td class="n">78.4%</td><td class="n">82.4%</td></tr><tr><td class="mono">10.1056_NEJMoa2206966/nejmoa2206966_protocol</td><td class="n">137</td><td class="n">81.0%</td><td class="n">84.6%</td></tr><tr><td class="mono">10.1056_NEJMoa2312775/nejmoa2312775_protocol</td><td class="n">228</td><td class="n">86.4%</td><td class="n">84.8%</td></tr><tr><td class="mono">10.1056_NEJMoa2509834/nejmoa2509834_protocol</td><td class="n">177</td><td class="n">87.6%</td><td class="n">86.9%</td></tr><tr><td class="mono">10.1001_jama.2018.9432/joi180078supp1_prod_protocol</td><td class="n">163</td><td class="n">87.7%</td><td class="n">89.0%</td></tr><tr><td class="mono">10.1056_NEJMoa2203067/nejmoa2203067_protocol</td><td class="n">117</td><td class="n">88.0%</td><td class="n">86.7%</td></tr><tr><td class="mono">10.1001_jama.2019.12467/joi190091supp1_prod_protocol</td><td class="n">187</td><td class="n">88.2%</td><td class="n">89.6%</td></tr><tr><td class="mono">10.1001_jama.2015.13919/joi150131supp1_prod_protocol</td><td class="n">87</td><td class="n">88.5%</td><td class="n">89.7%</td></tr></tbody></table></div>
+<p class="note">NEJMoa1207290, the lowest, is the scanned protocol with 155 of 203 pages unsearchable; NEJMoa2206966 and NEJMoa2312775 also have unsearchable pages (39 of 165 and 43 of 224).</p>
+</section>
+
+<section>
+<h2>5. Compared with pair-sample-1 and pair-sample-2</h2>
+<p>Same pipeline, configuration and judge. Accuracy is in the same range: acc<sub>R</sub> strict is 92.8% against 93.5% and 92.9%, and the three intervals overlap.
+Coverage is the highest of the three, absence facts are wrong less often, and the trigger miss rate is lower.</p>
+<div class="tablewrap"><table><thead><tr><th>Quantity</th><th class="n">pair-sample-1</th><th class="n">pair-sample-2</th><th class="n">pair-sample-3</th></tr></thead><tbody><tr><td>SAPs reported (of the sample drawn)</td><td class="n">100 of 100</td><td class="n">98 of 100</td><td class="n">72 of 75</td></tr><tr><td>PDF pages (median per protocol)</td><td class="n">20,664 (158)</td><td class="n">21,875 (192)</td><td class="n">9,535 (118)</td></tr><tr><td>Atomic facts (per SAP)</td><td class="n">47,699 (477)</td><td class="n">47,494 (485)</td><td class="n">36,264 (504)</td></tr><tr><td>Flagged by a trigger (T / N)</td><td class="n">92.6%</td><td class="n">93.3%</td><td class="n">93.0%</td></tr><tr><td>Recall@5, cited claims</td><td class="n">0.867</td><td class="n">0.834</td><td class="n">0.880</td></tr><tr><td>MRR, cited claims, |S| = 1</td><td class="n">0.622</td><td class="n">0.592</td><td class="n">0.665</td></tr><tr><td>Documents with claim Recall@5 &lt; 0.80</td><td class="n">21 of 100</td><td class="n">32 of 98</td><td class="n">9 of 71</td></tr><tr><td>acc<sub>R</sub>, strict</td><td class="n">93.5% <span class="muted">(93.1–93.9%)</span></td><td class="n">92.9% <span class="muted">(92.4–93.3%)</span></td><td class="n">92.8% <span class="muted">(92.3–93.3%)</span></td></tr><tr><td>Pooled GLMM, strict</td><td class="n">93.7%</td><td class="n">93.1%</td><td class="n">93.2%</td></tr><tr><td>Trigger miss rate, strict</td><td class="n">7.0%</td><td class="n">8.1%</td><td class="n">4.3%</td></tr><tr><td>Absence facts wrong, strict</td><td class="n">22.4%</td><td class="n">23.5%</td><td class="n">17.6%</td></tr><tr><td>Judged facts settled by JEV</td><td class="n">56%</td><td class="n">53%</td><td class="n">55%</td></tr><tr><td>Total cost (median per SAP)</td><td class="n">$18.60 ($0.18)</td><td class="n">$19.25 ($0.19)</td><td class="n">$13.20 ($0.17)</td></tr></tbody></table></div>
+<p class="note">pair-sample-1 and pair-sample-2 figures are the ones computed for their results pages (<a href="qc-results.html">pair-sample-1</a>, <a href="qc-results-sample2.html">pair-sample-2</a>) with the same script.
+They are not recomputed here, because <span class="mono">qc-pipeline/out/</span> now holds this sample's outputs for the 11 shared protocols. pair-sample-3 has fewer documents (72), so its totals are not comparable with the earlier samples, but its rates and per-SAP figures are.</p>
+</section>
+
+<section>
+<h2>6. Next steps</h2>
+<div class="grid2">
+  <div class="card"><div class="who">Validate the judge (P3)</div>Planted errors and ~100 human gold labels, scored separately for JEV-accepted and LLM-judged facts. This is what turns these numbers into reportable ones.</div>
+  <div class="card"><div class="who">Catch unreadable text before judging</div>The garbled-text check missed jama.2025.21738's <span class="mono">/0/1/2…/i255</span> glyph codes, so its SAP was judged against unreadable pages, and an image-only PDF (jama.2020.0592) crashed the index instead of being OCR'd or skipped. Both protocols had to be removed from the sample.</div>
+  <div class="card"><div class="who">Parse every citation form</div>jama.2024.2302 writes citations as <span class="mono">p2</span>; 114 of its 150 went unparsed, which removes the document from coverage.</div>
+  <div class="card"><div class="who">Freeze a sharper trigger set</div><span class="mono">COMPOUND</span> and <span class="mono">CRITICAL</span> flag nearly everything in all three samples. Trimming them before freezing (end of P2) would make acc<sub>T</sub> and the miss rate informative.</div>
+</div>
+<p class="note">Source data: <span class="mono">qc-pipeline/out/</span> (<span class="mono">_summary.tsv</span>, <span class="mono">_coverage.tsv</span>, <span class="mono">_cost.tsv</span>, per-document <span class="mono">*.facts.jsonl</span>, <span class="mono">*.verdicts.jsonl</span>, <span class="mono">*.coverage.json</span>, <span class="mono">*.run.json</span> and <span class="mono">*.pages.meta.json</span>), restricted to the documents in <span class="mono">Benchmark_expr_samples/pair-sample-3/pairs.csv</span> whose run record points at <span class="mono">pair-sample-3</span>, and to cost rows from 28 October. The GLMM was fitted with <span class="mono">qc.metrics.pooled</span>.</p>
+</section>
+</main>
+</body>
+</html>

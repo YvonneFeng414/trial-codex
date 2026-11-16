@@ -38,10 +38,10 @@ from qc.text import sha
 
 SUMMARY_FIELDS = (
     "doc_id", "status", "stage", "backend", "judge_model", "judge_independent", "dense", "n_pages", "toc_pages",
-    "unsearchable_pages", "claims", "unparsed_citations", "facts", "absent_facts", "T", "R", "RU", "judged",
+    "unsearchable_pages", "garbled_pages", "claims", "unparsed_citations", "facts", "absent_facts", "T", "R", "RU", "judged",
     "acc_T", "acc_T_lo", "acc_T_hi", "acc_R", "acc_R_lo", "acc_R_hi",
     "acc_R_lenient", "miss", "miss_n", "miss_hi", "acc_lowvar", "citation_precision",
-    "absence_error_rate", "needs_review", "jev_mode", "jev_accepted", "llm_judged", "recall5_facts", "recall5_claims",
+    "absence_error_rate", "needs_review", "jev_mode", "jev_accepted", "llm_judged", "jev_errors", "recall5_facts", "recall5_claims",
     "input_tokens", "output_tokens", "seconds", "error",
 )
 COVERAGE_FIELDS = ("doc_id", "unit", "n", "k", "recall@1", "recall@3", "recall@5", "recall@10",
@@ -50,6 +50,10 @@ CSV_FIELDS = ("fact_id", "claim_id", "section", "field", "outcome_block", "statu
               "cited_pages", "sweep", "topk", "cited_rank", "triggers", "in_T", "in_R", "stratum",
               "verdict", "minor", "quote", "quote_page", "quote_verified", "supporting_pages",
               "override", "needs_review", "rationale")
+
+
+class SkipDocument(Exception):
+    """A document QC cannot check from its text layer; reported, not counted as a failure."""
 
 
 @dataclass
@@ -111,7 +115,12 @@ class Document:
         self.cache = self.workdir / "cache"
         self.cost = cost
         self.backend = OpenAIBackend(config, cost) if args.backend == "openai" else None
-        self.pages, self.page_meta = pages_mod.load(pair.pdf, self.workdir, pair.stem, ocr=getattr(args, "ocr", False))
+        self.pages, self.page_meta = pages_mod.load(pair.pdf, self.workdir, pair.stem, ocr=getattr(args, "ocr", False),
+                                                    ocr_garbled=not getattr(args, "no_garbled_ocr", False))
+        garbled = self.page_meta.get("garbled", [])
+        if len(garbled) > 0.5 * len(self.pages):
+            raise SkipDocument(f"{len(garbled)} of {len(self.pages)} pages still have a garbled text layer "
+                               "(glyph codes) after image OCR; see page_log in <stem>.pages.meta.json")
         self.markdown = pair.md.read_text(encoding="utf-8")
         self.claims = claims_mod.parse(self.markdown, pair.doc_id, max_page=len(self.pages))
         dense_backend = self.backend
@@ -182,6 +191,7 @@ class Document:
                                                  "judge_model": judge.model, "prompt_sha": None, "evidence_pages": []}
                 continue
             verdicts.update(judge.run_call(call, passage_ids, codes))
+        self.jev_errors = judge.front_errors
         return verdicts
 
 
@@ -300,6 +310,7 @@ def run_document(pair: Pair, config: dict, args, cost: CostLog) -> tuple[dict, l
         "backend": args.backend, "atomizer": "model" if use_model_atoms else "rule", "dense": doc.index.dense_name,
         "judge_independent": judge_independent(config) if doc.backend else None,
         "jev": config["jev"] if config["jev"]["enabled"] else None,
+        "jev_errors": getattr(doc, "jev_errors", []),
         "seed": config["sampling"]["seed"], "u": u, "pi": config["sampling"]["pi"],
         "triggers_version": triggers.TRIGGERS_VERSION, "lexicon_version": doc.lexicon.get("version"),
         "lexicon_sha": sha(json.dumps(doc.lexicon, sort_keys=True)), "md_sha": sha(doc.markdown),
@@ -317,6 +328,7 @@ def run_document(pair: Pair, config: dict, args, cost: CostLog) -> tuple[dict, l
         "judge_independent": (judge_independent(config) if doc.backend else ""),
         "dense": doc.index.dense_name, "n_pages": len(doc.pages),
         "toc_pages": len(doc.page_meta["toc"]), "unsearchable_pages": len(doc.page_meta["unsearchable"]),
+        "garbled_pages": len(doc.page_meta.get("garbled", [])),
         "claims": len(doc.claims), "unparsed_citations": sum(c["citation_unparsed"] for c in doc.claims),
         "facts": len(facts), "absent_facts": sum(f["status"] == "absent" for f in facts),
         "T": sum(f["in_T"] for f in facts), "R": sum(f["in_R"] for f in facts),
@@ -337,6 +349,7 @@ def run_document(pair: Pair, config: dict, args, cost: CostLog) -> tuple[dict, l
             "jev_mode": config["jev"]["mode"] if config["jev"]["enabled"] else "off",
             "jev_accepted": sum(v.get("judge_stage") == "jev" for v in verdicts.values()),
             "llm_judged": sum(v.get("judge_stage") == "llm" for v in verdicts.values()),
+            "jev_errors": len(getattr(doc, "jev_errors", [])),
         })
     cov_rows = []
     for unit in ("facts", "claims"):
@@ -500,9 +513,13 @@ def parse_args(argv: list[str]):
         parser.add_argument("--perturb", action="store_true", help="also run the coverage perturbation check")
         parser.add_argument("--jev", choices=("cascade", "shadow", "off"), default=None,
                             help="override jev.mode (off disables the JEV front end)")
+        parser.add_argument("--no-garbled-ocr", action="store_true",
+                            help="do not OCR pages whose text layer is glyph codes (on by default)")
         parser.add_argument("--ocr", action="store_true",
                             help="OCR thin pages with tools/ocr_pdf.py (off: they stay flagged unsearchable)")
         parser.add_argument("--fail-fast", action="store_true")
+        parser.add_argument("--workers", type=int, default=1, help="documents processed in parallel (processes)")
+        parser.add_argument("--resume", action="store_true", help="skip documents that already have full-stage results")
     args = parser.parse_args(argv)
     args.command = command
     return args
@@ -542,29 +559,96 @@ def main(argv: list[str] | None = None) -> int:
               "results are recorded as judge_independent=false (D6 overridden)", file=sys.stderr)
 
     pairs = pairs_from_csv(args.pairs, args.limit) if args.pairs else [pair_from_dir(args.doc, args.stem)]
-    cost = CostLog(args.out / "_cost.tsv")
-    summary, cover_rows = [], []
-    for number, pair in enumerate(pairs, start=1):
-        print(f"[{number}/{len(pairs)}] {pair.doc_id}", flush=True)
-        try:
-            row, cov = run_document(pair, config, args, cost)
-            summary.append(row)
-            cover_rows += cov
-            shown = {k: _fmt(row.get(k)) for k in ("claims", "facts", "T", "R", "judged", "recall5_facts", "recall5_claims", "acc_T", "acc_R")}
-            print("    " + "  ".join(f"{k}={v}" for k, v in shown.items() if v != ""), flush=True)
-        except Exception as exc:
-            if args.fail_fast:
-                raise
-            summary.append({"doc_id": pair.doc_id, "status": "error", "stage": args.stage, "error": f"{type(exc).__name__}: {exc}"})
-            print(f"    error: {exc}", file=sys.stderr)
-            (args.out / pair.doi_dir).mkdir(parents=True, exist_ok=True)
-            (args.out / pair.doi_dir / f"{pair.stem}.error.txt").write_text(traceback.format_exc(), encoding="utf-8")
-    upsert_tsv(args.out / "_summary.tsv", SUMMARY_FIELDS, summary, ("doc_id",))
-    upsert_tsv(args.out / "_coverage.tsv", COVERAGE_FIELDS, cover_rows, ("doc_id", "unit"))
+    if args.resume:
+        done = [p for p in pairs if is_done(p, args)]
+        pairs = [p for p in pairs if p not in done]
+        if done:
+            print(f"resume: skipping {len(done)} documents with full-stage results", flush=True)
+    cost_path = args.out / "_cost.tsv"
+    summary: list[dict] = []
+    total = len(pairs)
+
+    def record(number: int, pair: Pair, result: tuple[dict, list[dict], list[dict], str | None]) -> None:
+        row, cov, cost_rows, error = result
+        cost_log = CostLog(cost_path)
+        for cost_row in cost_rows:
+            cost_log.add(**cost_row)
+        summary.append(row)
+        # Written after every document, so a long run that stops keeps everything finished.
+        upsert_tsv(args.out / "_summary.tsv", SUMMARY_FIELDS, [row], ("doc_id",))
+        if cov:
+            upsert_tsv(args.out / "_coverage.tsv", COVERAGE_FIELDS, cov, ("doc_id", "unit"))
+        if error:
+            print(f"[{number}/{total}] {pair.doc_id}\n    error: {row['error']}", file=sys.stderr, flush=True)
+            return
+        if row["status"] == "skipped":
+            print(f"[{number}/{total}] {pair.doc_id}\n    skipped: {row['error']}", flush=True)
+            return
+        shown = {k: _fmt(row.get(k)) for k in ("claims", "facts", "T", "R", "judged", "jev_accepted", "recall5_claims",
+                                               "acc_T", "acc_R", "seconds")}
+        print(f"[{number}/{total}] {pair.doc_id}\n    " + "  ".join(f"{k}={v}" for k, v in shown.items() if v != ""), flush=True)
+
+    if args.workers <= 1 or total <= 1:
+        for number, pair in enumerate(pairs, start=1):
+            result = process_document(pair, config, args)
+            if args.fail_fast and result[3]:
+                print(result[3], file=sys.stderr)
+                return 1
+            record(number, pair, result)
+    else:
+        from concurrent.futures import ProcessPoolExecutor, as_completed
+
+        print(f"running {total} documents on {args.workers} workers", flush=True)
+        with ProcessPoolExecutor(max_workers=args.workers) as pool:
+            futures = {pool.submit(process_document, pair, config, args): pair for pair in pairs}
+            for number, future in enumerate(as_completed(futures), start=1):
+                pair = futures[future]
+                try:
+                    result = future.result()
+                except Exception as exc:  # the worker process itself died
+                    result = ({"doc_id": pair.doc_id, "status": "error", "stage": args.stage,
+                               "error": f"worker died: {type(exc).__name__}: {exc}"}, [], [], str(exc))
+                record(number, pair, result)
     failed = sum(r["status"] == "error" for r in summary)
-    print(f"done: {len(summary) - failed} ok, {failed} failed -> {args.out}")
+    skipped = sum(r["status"] == "skipped" for r in summary)
+    print(f"done: {len(summary) - failed - skipped} ok, {skipped} skipped, {failed} failed -> {args.out}")
     return 1 if failed else 0
 
+
+def is_done(pair: Pair, args) -> bool:
+    """A document counts as done when its full-stage run left metrics and a run record."""
+    work = args.out / pair.doi_dir
+    run_path = work / f"{pair.stem}.run.json"
+    if args.stage != "full" or not (work / f"{pair.stem}.metrics.json").is_file() or not run_path.is_file():
+        return False
+    return json.loads(run_path.read_text(encoding="utf-8")).get("stage") == "full"
+
+
+def process_document(pair: Pair, config: dict, args) -> tuple[dict, list[dict], list[dict], str | None]:
+    """Run one document; return (summary row, coverage rows, cost rows, traceback or None).
+
+    Runs in a worker process when --workers > 1. Cost rows are returned rather than
+    appended to _cost.tsv here, so parallel workers never write the shared file; each
+    document also keeps its own <stem>.cost.tsv in case its worker dies mid-run.
+    """
+    work = args.out / pair.doi_dir
+    work.mkdir(parents=True, exist_ok=True)
+    cost = CostLog(work / f"{pair.stem}.cost.tsv")
+    started = time.time()
+    try:
+        row, cov = run_document(pair, config, args, cost)
+        return row, cov, cost.rows, None
+    except SkipDocument as exc:
+        row = {"doc_id": pair.doc_id, "status": "skipped", "stage": args.stage, "error": str(exc),
+               "seconds": round(time.time() - started, 1)}
+        return row, [], cost.rows, None
+    except Exception as exc:
+        trace = traceback.format_exc()
+        (work / f"{pair.stem}.error.txt").write_text(trace, encoding="utf-8")
+        row = {"doc_id": pair.doc_id, "status": "error", "stage": args.stage, "error": f"{type(exc).__name__}: {exc}",
+               "input_tokens": cost.total("input_tokens"), "output_tokens": cost.total("output_tokens"),
+               "seconds": round(time.time() - started, 1)}
+        return row, [], cost.rows, trace
 
 if __name__ == "__main__":
     raise SystemExit(main())

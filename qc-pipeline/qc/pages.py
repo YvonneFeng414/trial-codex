@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import json
 import re
+import unicodedata
 import shutil
 import subprocess
 import sys
@@ -19,6 +20,10 @@ from qc import TOOLS_DIR
 from qc.text import sha
 
 MIN_CHARS = 20
+# Share of control characters above which a page's text layer is glyph codes, not text: a
+# font without a ToUnicode map extracts "Statistical" as "6WDWLVWLFDO" with \x03 for spaces.
+# Clean protocols peak near 1.3%; garbled pages run 35-74% (jama.2022.9265, jama.2024.9779).
+GARBLED_SHARE = 0.02
 PAGE_MARKER_RE = re.compile(r"^===== PAGE (\d+) OF (\d+) =====$", re.MULTILINE)
 # The plan's rule is `\.{5,}\s*\d+$`; the optional second number admits a margin line
 # number after the page number ("1.1 DISEASE BACKGROUND ........ 10 51"), which the
@@ -26,6 +31,7 @@ PAGE_MARKER_RE = re.compile(r"^===== PAGE (\d+) OF (\d+) =====$", re.MULTILINE)
 TOC_LINE_RE = re.compile(r"\.{5,}\s*\d+(?:\s+\d+)?\s*$")
 TOC_SHARE = 0.30
 OCR_DEPS = ("--with", "pypdf", "--with", "pypdfium2", "--with", "ocrmac", "--with", "reportlab")
+PAGE_OCR_SCRIPT = Path(__file__).with_name("ocr_pages.py")
 _TRAILING_INT_RE = re.compile(r"(\d{1,5})\s*$")
 
 
@@ -40,6 +46,11 @@ def split_pages(extracted: str) -> list[tuple[int, str]]:
 
 def nonspace(text: str) -> int:
     return sum(not char.isspace() for char in text)
+
+
+def control_share(text: str) -> float:
+    visible = [c for c in text if not c.isspace()]
+    return sum(unicodedata.category(c) == "Cc" for c in visible) / max(len(visible), 1)
 
 
 def is_toc(text: str) -> bool:
@@ -119,8 +130,26 @@ def _ocr(pdf: Path, out_pdf: Path, log: list[str]) -> bool:
     return True
 
 
-def build(pdf: Path, workdir: Path, stem: str, ocr: bool = True) -> tuple[list[dict], dict]:
-    """Extract, OCR thin pages if needed, flag pages; return the page records."""
+def _ocr_page_images(pdf: Path, numbers: list[int], log: list[str]) -> dict[int, str]:
+    """OCR pages from their rendered image (qc/ocr_pages.py), for garbled text layers."""
+    uv = shutil.which("uv")
+    if uv is None or sys.platform != "darwin":
+        log.append("garbled-page ocr skipped: needs uv and macOS (Apple Vision)")
+        return {}
+    command = [uv, "run", "--with", "pypdfium2", "--with", "ocrmac", str(PAGE_OCR_SCRIPT), str(pdf), *map(str, numbers)]
+    result = subprocess.run(command, capture_output=True, text=True)
+    if result.returncode != 0:
+        log.append(f"garbled-page ocr failed (exit {result.returncode}): {result.stderr.strip()[-300:]}")
+        return {}
+    return {int(k): v for k, v in json.loads(result.stdout).items()}
+
+
+def build(pdf: Path, workdir: Path, stem: str, ocr: bool = True, ocr_garbled: bool = True) -> tuple[list[dict], dict]:
+    """Extract, OCR thin pages if asked and garbled pages by default; return the page records.
+
+    A garbled page (its text layer is glyph codes) gets the OCR text of its rendered image
+    instead, when that text is itself clean; the page number is unchanged.
+    """
     workdir.mkdir(parents=True, exist_ok=True)
     txt = workdir / f"{stem}.extracted.txt"
     log: list[str] = []
@@ -143,16 +172,27 @@ def build(pdf: Path, workdir: Path, stem: str, ocr: bool = True) -> tuple[list[d
             else:
                 log.append("ocr changed the page count; OCR text discarded")
 
+    garbled_before = [n for n, text in raw if nonspace(text) >= MIN_CHARS and control_share(text) > GARBLED_SHARE]
+    if garbled_before and ocr_garbled:
+        recognized = _ocr_page_images(pdf, garbled_before, log)
+        replaced = {n for n, text in recognized.items()
+                    if nonspace(text) >= MIN_CHARS and control_share(text) <= GARBLED_SHARE}
+        ocr_pages |= replaced
+        raw = [(n, recognized[n] if n in replaced else text) for n, text in raw]
+        log.append(f"garbled pages: {len(garbled_before)}, replaced by image OCR: {len(replaced)}")
+
     records = []
     for number, text in raw:
         chars = nonspace(text)
+        garbled = chars >= MIN_CHARS and control_share(text) > GARBLED_SHARE
         records.append(
             {
                 "page": number,
                 "text": text,
                 "clean": strip_line_numbers(text),
                 "n_chars": chars,
-                "unsearchable": chars < MIN_CHARS,
+                "garbled": garbled,
+                "unsearchable": chars < MIN_CHARS or garbled,
                 "toc": is_toc(text),
                 "ocr": number in ocr_pages,
             }
@@ -162,24 +202,29 @@ def build(pdf: Path, workdir: Path, stem: str, ocr: bool = True) -> tuple[list[d
         "pdf_sha": sha(pdf.read_bytes(), 32),
         "n_pages": len(records),
         "thin_before_ocr": thin,
+        "garbled_before_ocr": garbled_before,
+        "ocr_garbled": ocr_garbled,
         "ocr_pages": sorted(ocr_pages),
         "unsearchable": [r["page"] for r in records if r["unsearchable"]],
+        "garbled": [r["page"] for r in records if r["garbled"]],
         "toc": [r["page"] for r in records if r["toc"]],
         "log": log,
     }
     return records, meta
 
 
-def load(pdf: Path, workdir: Path, stem: str, ocr: bool = True, force: bool = False):
+def load(pdf: Path, workdir: Path, stem: str, ocr: bool = True, force: bool = False, ocr_garbled: bool = True):
     """Cached build: reuse <stem>.pages.jsonl while the PDF's hash is unchanged."""
     pages_path = workdir / f"{stem}.pages.jsonl"
     meta_path = workdir / f"{stem}.pages.meta.json"
     if not force and pages_path.is_file() and meta_path.is_file():
         meta = json.loads(meta_path.read_text(encoding="utf-8"))
-        if meta.get("pdf_sha") == sha(pdf.read_bytes(), 32):
+        if (meta.get("pdf_sha") == sha(pdf.read_bytes(), 32) and "garbled" in meta
+                and meta.get("ocr_garbled") == ocr_garbled and (meta.get("ocr") == ocr or not meta.get("thin_before_ocr"))):
             with open(pages_path, encoding="utf-8") as stream:
                 return [json.loads(line) for line in stream], meta
-    records, meta = build(pdf, workdir, stem, ocr=ocr)
+    records, meta = build(pdf, workdir, stem, ocr=ocr, ocr_garbled=ocr_garbled)
+    meta["ocr"] = ocr
     with open(pages_path, "w", encoding="utf-8") as stream:
         for record in records:
             stream.write(json.dumps(record, ensure_ascii=False) + "\n")
